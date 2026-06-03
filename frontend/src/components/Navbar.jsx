@@ -83,7 +83,7 @@ const Navbar = () => {
                 onMouseEnter={() => setActiveMenu(index)}
                 onMouseLeave={() => setActiveMenu(null)}
               >
-                <button className="flex items-center gap-1 font-roboto-bold text-[19px]  text-gray-800 hover:text-blue-900 transition">
+                <button className="flex items-center gap-1 font-roboto-bold text-[20px]  text-gray-800 hover:text-blue-900 transition">
                   {item.title}
                   <ChevronDown size={16} />
                 </button>
