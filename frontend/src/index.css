@@ -11,7 +11,7 @@
 }
 
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 
@@ -24,37 +24,53 @@ html {
     font-family: 'extrabold';
     src: url('../public/fonts/Montserrat-ExtraBold.ttf');
 }
+
 @font-face {
     font-family: 'bold';
     src: url('../public/fonts/Montserrat-Bold.ttf');
 }
+
 @font-face {
     font-family: 'regular';
     src: url('../public/fonts/Montserrat-Regular.ttf');
 }
+
 @font-face {
     font-family: 'semibold';
     src: url('../public/fonts/Montserrat-SemiBold.ttf');
 }
 
-@theme default {
-    --font-regular: 'regular',
-    --font-bold: 'bold',
-    --font-extrabold: 'extrabold',
-    --font-medium: 'medium',
-    --font-medium: 'semibold',
-    --color-bg: '#161616',
-    --color-text-primary: '#F1F6F8',
-    --color-text-secondary: '#21273D',
+@font-face {
+    font-family: 'roboto';
+    src: url('../public/fonts/RobotoCondensed-Bold.ttf');
+    font-weight: 700;
+    font-style: normal;
+}
 
+@theme default {
+    --font-regular: 'regular';
+    --font-bold: 'bold';
+    --font-extrabold: 'extrabold';
+    --font-medium: 'medium';
+    --font-semibold: 'semibold';
+
+    --font-roboto: 'roboto';
+    --font-roboto-bold: 'roboto';
+
+    --color-bg: '#161616';
+    --color-text-primary: '#F1F6F8';
+    --color-text-secondary: '#21273D';
 }
 
 
+
+
 @keyframes scrollX {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
 }

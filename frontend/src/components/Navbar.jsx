@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import logo from "../assets/logo-text.png";
+import logo from "../assets/logo-bmc.png";
 import { ChevronDown } from "lucide-react";
 
 const menuItems = [
@@ -12,15 +12,7 @@ const menuItems = [
       "Global Presence",
     ],
   },
-  {
-    title: "Industries",
-    submenu: [
-      "Automotive",
-      "Heavy Equipment",
-      "Agribusiness",
-      "General Machining",
-    ],
-  },
+  
   {
     title: "Capabilities",
     submenu: [
@@ -68,21 +60,21 @@ const Navbar = () => {
 
   return (
     <header className="w-full bg-white border-b border-gray-200 sticky top-0 z-50">
-      <div className="max-w-[1500px] mx-auto px-10">
-        <div className="flex items-center justify-between h-[90px]">
-          
+      <div className="max-w-[1500px] mx-auto px-1">
+        <div className="flex  items-center justify-between h-[90px]">
+
           {/* Logo */}
           <div className="flex items-center">
             <img
               src={logo}
               alt="BMC"
-              className="h-14 object-contain"
+              className="h-18 object-contain"
             />
           </div>
 
           {/* Menu */}
-          <nav className="hidden font-bold xl:flex items-center gap-10 h-full">
-           
+          <nav className="hidden font-roboto xl:flex items-center gap-10 h-full">
+
 
             {menuItems.map((item, index) => (
               <div
@@ -91,20 +83,20 @@ const Navbar = () => {
                 onMouseEnter={() => setActiveMenu(index)}
                 onMouseLeave={() => setActiveMenu(null)}
               >
-                <button className="flex items-center gap-1 font-medium text-gray-800 hover:text-blue-900 transition">
+                <button className="flex items-center gap-1 font-roboto-bold text-[19px]  text-gray-800 hover:text-blue-900 transition">
                   {item.title}
                   <ChevronDown size={16} />
                 </button>
 
                 {/* Dropdown */}
                 {activeMenu === index && (
-                  <div className="absolute top-full left-0 w-[320px] bg-white shadow-xl border border-gray-100 py-5">
-                    <div className="flex flex-col">
+                  <div className="absolute top-full  left-0 w-[320px] bg-white shadow-xl border border-gray-100 py-5">
+                    <div className="flex  flex-col">
                       {item.submenu.map((sub, i) => (
                         <a
                           key={i}
                           href="#"
-                          className="px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-blue-900 transition"
+                          className="px-6 py-3  text-gray-700 hover:bg-gray-50 hover:text-blue-900 transition"
                         >
                           {sub}
                         </a>
@@ -115,10 +107,10 @@ const Navbar = () => {
               </div>
             ))}
 
-           
+
           </nav>
 
-    
+
         </div>
       </div>
     </header>
