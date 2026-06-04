@@ -41,11 +41,31 @@ html {
 }
 
 @font-face {
-    font-family: 'roboto';
-    src: url('../public/fonts/RobotoCondensed-Bold.ttf');
-    font-weight: 700;
+    font-family: 'Roboto Condensed';
+    src: url('../public/fonts/RobotoCondensed-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900;
     font-style: normal;
+    font-display: swap;
 }
+
+@font-face {
+    font-family: 'Inter';
+    src: url('../public/fonts/Inter-VariableFont_opsz,wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Roboto Condensed', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
 
 @theme default {
     --font-regular: 'regular';
