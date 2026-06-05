@@ -181,7 +181,7 @@ function StatCard({ value, label, sub, index }) {
   }, []);
   return (
     <div ref={ref} className="flex flex-col items-center text-center px-6 py-8 relative"
-      style={{ opacity: vis ? 1 : 0, transform: vis ? "translateY(0)" : "translateY(20px)", transition: `opacity 0.5s ease ${index * 100}ms, transform 0.5s ease ${index * 100}ms` }}>
+      style={{ opacity: vis ? 1 : 0, transform: vis ? "translateY(0)" : "translateY(20px)", transition: `opacity 0.5s ease ${index * 100}ms, transform 1s ease ${index * 200}ms` }}>
       <span className="font-bold text-white font-['Roboto_Condensed'] leading-none mb-1" style={{ fontSize: "clamp(2rem,3.5vw,2.8rem)" }}>{value}</span>
 
 
@@ -236,34 +236,7 @@ function MarketCard({ Icon, title, desc, index }) {
   );
 }
 
-/* ─── GALLERY ITEM ──────────────────────────── */
-function GalleryItem({ src, label }) {
-  const [hov, setHov] = useState(false);
-  return (
-    <div className="relative overflow-hidden cursor-pointer" onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)}>
-      <img src={src} alt={label} className="w-full h-full object-cover block"
-        style={{ transform: hov ? "scale(1.06)" : "scale(1)", transition: "transform 0.5s ease" }} />
-      <div className="absolute inset-0" style={{ background: hov ? "rgba(13,31,92,0.55)" : "rgba(13,31,92,0.2)", transition: "background 0.35s" }} />
-      <div className="absolute bottom-0 left-0 right-0 p-4"
-        style={{ transform: hov ? "translateY(0)" : "translateY(6px)", opacity: hov ? 1 : 0.7, transition: "all 0.3s ease" }}>
-        <span className="text-white font-bold uppercase tracking-[0.02em] block" style={{ fontSize: "0.8rem" }}>{label}</span>
 
-        <span className="text-[#D4A843] text-xs font-medium" style={{ opacity: hov ? 1 : 0, transition: "opacity 0.3s ease 0.1s" }}>View →</span>
-      </div>
-    </div>
-  );
-}
-
-/* ─── SECTION LABEL ─────────────────────────── */
-function SectionLabel({ text }) {
-  return (
-    <div className="flex items-center gap-3 mb-3 font-['Roboto Condensed',sans-serif]">
-      <div className="w-6 h-px bg-[#D4A843]" />
-      <span className="text-[#D4A843] font-[bold] uppercase tracking-[0.12em]" style={{ fontSize: "0.62rem" }}>{text}</span>
-    </div>
-
-  );
-}
 
 /* ─── HOME ──────────────────────────────────── */
 export default function Home() {
