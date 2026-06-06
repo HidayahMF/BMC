@@ -2,6 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import home1 from '../assets/home1.png'
 import noimage from "../assets/noimage.jpg"
+import blackimage from "../assets/blackimage.jpg"
 
 const AboutSection = () => {
   const navigate = useNavigate()
@@ -61,7 +62,7 @@ const AboutSection = () => {
           <button
             onClick={() => navigate('/about')}
             className="inline-flex items-center gap-2 bg-[#0D1F5C] text-white font-bold font-['Roboto_Condensed',sans-serif] uppercase tracking-widest px-6 py-3 rounded-sm hover:bg-[#D4A843] hover:text-[#0D1F5C] transition-all duration-200"           
-            data-aos-delay="500"
+            data-aos-delay="100"
             data-aos-duration="600"
           >
             Learn more about us
@@ -80,7 +81,7 @@ const AboutSection = () => {
         >
           <div className="md:-mr-20 md:-mb-16 h-full overflow-hidden rounded-sm">
             <img
-              src={noimage}
+              src={blackimage}
               alt="BMC Manufacturing"
               className="w-full h-full min-h-[360px] object-cover"
             />
