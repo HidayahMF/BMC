@@ -16,7 +16,7 @@ const AboutSection = () => {
         {/* Kolom kiri: teks */}
         <div data-aos="fade-right" data-aos-duration="800">
 
-          <span className="inline-block text-[15px] font-bold font-['Roboto_Condensed',sans-serif] tracking-[0.12em] uppercase text-[#B8922A] bg-[#FDF3DC] px-4 py-1.5 rounded-full mb-5">
+          <span className="inline-block text-[15px] font-medium font-['Roboto_Condensed',sans-serif] tracking-[0.12em] uppercase text-[#B8922A] bg-[#FDF3DC] px-4 py-1.5 rounded-full mb-5">
             About BMC
           </span>
 
@@ -30,7 +30,7 @@ const AboutSection = () => {
           </h2>
 
           <div
-            className="w-12 h-0.5 bg-[#D4A843] rounded mb-7"
+            className="w-12 h-0.5 bg-[#D4A843]  rounded mb-7"
             data-aos="fade-right"
             data-aos-delay="200"
             data-aos-duration="600"
@@ -83,7 +83,7 @@ const AboutSection = () => {
             <img
               src={blackimage}
               alt="BMC Manufacturing"
-              className="w-full h-full min-h-[360px] object-cover"
+              className="w-full h-full min-h-[360px] rounded-3xl object-cover"
             />
           </div>      
         </div>
