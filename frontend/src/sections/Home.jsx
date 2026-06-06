@@ -5,14 +5,15 @@ import home2 from "../assets/home2.png";
 import home3 from "../assets/home3.png";
 import home4 from "../assets/home4.png";
 import bmcvideo from "../assets/bmcvideo.mp4";
+import noimage from "../assets/noimage.jpg"
 
 /* ─── DATA ─────────────────────────────────── */
 const slides = [
   { type: "video", src: bmcvideo, tag: "PRECISION MANUFACTURING", title: ["Engineered", "for Excellence"], sub: "Supplying mission-critical components to Mitsubishi, Hino, Isuzu & more", cta: "Explore Products" },
-  { type: "image", src: home1, tag: "AUTOMOTIVE OEM & REM", title: ["Built for", "Every Drive"], sub: "High-precision parts for commercial cars and passenger vehicles", cta: "View Products" },
-  { type: "image", src: home2, tag: "HEAVY EQUIPMENT", title: ["Power the", "Industry"], sub: "Durable components trusted across heavy equipment & agribusiness sectors", cta: "Learn More" },
-  { type: "image", src: home3, tag: "GLOBAL EXPORTS", title: ["Made in", "Indonesia"], sub: "Exporting to Japan, Malaysia, Philippines, Thailand, Italy and beyond", cta: "Our Markets" },
-  { type: "image", src: home4, tag: "ISO CERTIFIED", title: ["Quality You", "Can Trust"], sub: "Rigorous quality control at every step of the manufacturing process", cta: "About BMC" },
+  { type: "image", src: noimage, tag: "AUTOMOTIVE OEM & REM", title: ["Built for", "Every Drive"], sub: "High-precision parts for commercial cars and passenger vehicles", cta: "View Products" },
+  { type: "image", src: noimage, tag: "HEAVY EQUIPMENT", title: ["Power the", "Industry"], sub: "Durable components trusted across heavy equipment & agribusiness sectors", cta: "Learn More" },
+  { type: "image", src: noimage, tag: "GLOBAL EXPORTS", title: ["Made in", "Indonesia"], sub: "Exporting to Japan, Malaysia, Philippines, Thailand, Italy and beyond", cta: "Our Markets" },
+  { type: "image", src: noimage, tag: "ISO CERTIFIED", title: ["Quality You", "Can Trust"], sub: "Rigorous quality control at every step of the manufacturing process", cta: "About BMC" },
 ];
 
 const stats = [
@@ -82,6 +83,7 @@ function HeroSlider() {
   const slide = slides[cur];
 
   return (
+    
     <div className="relative w-full overflow-hidden bg-[#0D1F5C]" style={{ height: "78vh", minHeight: "520px", maxHeight: "860px" }}>
 
       {/* media */}
