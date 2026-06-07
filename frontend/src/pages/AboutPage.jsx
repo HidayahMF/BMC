@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-import blackimage from "../assets/blackimage.jpg"
-import iso9001 from "../assets/iso9001.jpg"
-import iso14001 from "../assets/iso14001.jpg"
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import blackimage from "../assets/blackimage.jpg";
+import iso9001 from "../assets/iso9001.jpg";
+import iso14001 from "../assets/iso14001.jpg";
 // import iso45001 from "../assets/iso45001.jpg"
-
+import { ChevronRight } from "lucide-react";
 const sections = [
   {
-    id: 'overview',
-    tag: 'Who We Are',
-    title: 'Precision Engineering for Global Industries',
+    id: "overview",
+    tag: "Who We Are",
+    title: "Precision Engineering for Global Industries",
     short: `PT Braja Mukti Cakra (BMC) adalah perusahaan manufaktur komponen presisi yang telah menjadi mitra terpercaya berbagai industri selama hampir empat dekade.`,
     full: `PT Braja Mukti Cakra (BMC) adalah perusahaan manufaktur komponen presisi yang telah menjadi mitra terpercaya berbagai industri selama hampir empat dekade. Berdiri sejak tahun 1986, BMC berfokus pada produksi komponen berkualitas tinggi untuk OEM dan REM di sektor otomotif, alat berat, agribisnis, serta industri permesinan umum.
 
@@ -17,9 +17,9 @@ Didukung teknologi manufaktur modern, sistem manajemen mutu berstandar internasi
     img: blackimage,
   },
   {
-    id: 'journey',
-    tag: 'Our Journey',
-    title: 'Building Precision Since 1986',
+    id: "journey",
+    tag: "Our Journey",
+    title: "Building Precision Since 1986",
     short: `PT Braja Mukti Cakra didirikan pada 24 Januari 1986 melalui kolaborasi antara PT Krama Yudha Tiga Berlian Motors (KTB) dan PT Bakrie Autoparts.`,
     full: `PT Braja Mukti Cakra didirikan pada 24 Januari 1986 melalui kolaborasi antara PT Krama Yudha Tiga Berlian Motors (KTB), pemegang merek Mitsubishi di Indonesia, dan PT Bakrie Autoparts, salah satu pelopor industri pengecoran logam di Indonesia.
 
@@ -27,55 +27,53 @@ Berbekal transfer teknologi dan sistem produksi Jepang, BMC mengembangkan kapabi
     img: blackimage,
   },
   {
-    id: 'quality',
-    tag: 'Commitment to Quality',
-    title: 'Excellence in Every Component',
+    id: "quality",
+    tag: "Commitment to Quality",
+    title: "Excellence in Every Component",
     short: `Kualitas merupakan fondasi utama seluruh aktivitas operasional BMC — dari proses produksi hingga pengiriman akhir ke pelanggan.`,
     full: `Kualitas merupakan fondasi utama seluruh aktivitas operasional BMC. Setiap proses produksi dirancang untuk memastikan presisi, konsistensi, dan keandalan produk sesuai kebutuhan pelanggan OEM maupun aftermarket.
 
 BMC menerapkan sistem manajemen mutu yang memenuhi standar internasional ISO 9001:2015, ISO 14001:2015, dan ISO 45001:2018, diwujudkan melalui budaya continuous improvement dan penguatan kapabilitas engineering.`,
     img: blackimage,
   },
-]
+];
 
 const certs = [
   {
-    code: 'ISO 9001:2015',
-    label: 'Quality Management',
+    code: "ISO 9001:2015",
+    label: "Quality Management",
     img: iso9001,
   },
   {
-    code: 'ISO 14001:2015',
-    label: 'Environmental Management',
+    code: "ISO 14001:2015",
+    label: "Environmental Management",
     img: iso14001,
   },
   {
-    code: 'ISO 45001:2018',
-    label: 'Occupational Safety',
+    code: "ISO 45001:2018",
+    label: "Occupational Safety",
     img: null,
   },
-]
+];
 
 const AccordionSection = ({ section, index }) => {
-  const [expanded, setExpanded] = useState(false)
-  const paragraphs = section.full.split('\n\n')
-  const isEven = index % 2 === 0
+  const [expanded, setExpanded] = useState(false);
+  const paragraphs = section.full.split("\n\n");
+  const isEven = index % 2 === 0;
 
   // arah AOS: index 0 → dari kanan, index 1 → dari kiri, index 2 → dari kanan
-  const imgAos = isEven ? 'fade-left' : 'fade-right'
-  const txtAos = isEven ? 'fade-right' : 'fade-left'
+  const imgAos = isEven ? "fade-left" : "fade-right";
+  const txtAos = isEven ? "fade-right" : "fade-left";
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 border-t border-gray-100">
-
       {/* Gambar */}
       <div
         className={`relative overflow-hidden min-h-[280px] md:min-h-[380px]
-          ${isEven ? 'md:order-last' : 'md:order-first'}
+          ${isEven ? "md:order-last" : "md:order-first"}
         `}
         style={{
-           borderRadius: '24px'
-  
+          borderRadius: "24px",
         }}
         data-aos={imgAos}
         data-aos-duration="900"
@@ -92,7 +90,7 @@ const AccordionSection = ({ section, index }) => {
       {/* Teks */}
       <div
         className={`py-16 flex flex-col justify-center
-          ${isEven ? 'md:pr-20 md:pl-4 md:order-first' : 'md:pl-20 md:pr-4 md:order-last'}
+          ${isEven ? "md:pr-20 md:pl-4 md:order-first" : "md:pl-20 md:pr-4 md:order-last"}
         `}
         data-aos={txtAos}
         data-aos-duration="900"
@@ -108,11 +106,15 @@ const AccordionSection = ({ section, index }) => {
         <div className="w-10 h-0.5 bg-[#D4A843] mb-6" />
 
         {!expanded ? (
-          <p className="text-[15px] leading-relaxed text-gray-500">{section.short}</p>
+          <p className="text-[15px] leading-relaxed text-gray-500">
+            {section.short}
+          </p>
         ) : (
           <div className="space-y-4">
             {paragraphs.map((p, i) => (
-              <p key={i} className="text-[15px] leading-relaxed text-gray-500">{p}</p>
+              <p key={i} className="text-[15px] leading-relaxed text-gray-500">
+                {p}
+              </p>
             ))}
           </div>
         )}
@@ -121,34 +123,42 @@ const AccordionSection = ({ section, index }) => {
           onClick={() => setExpanded(!expanded)}
           className="mt-6 self-start inline-flex items-center gap-2 text-[#0D1F5C] text-sm font-medium hover:text-[#D4A843] transition-colors duration-200"
         >
-          {expanded ? 'Show Less' : 'Read More'}
+          {expanded ? "Show Less" : "Read More"}
           <svg
-            width="14" height="14" viewBox="0 0 20 20" fill="none"
-            className={`transition-transform duration-300 ${expanded ? 'rotate-180' : ''}`}
+            width="14"
+            height="14"
+            viewBox="0 0 20 20"
+            fill="none"
+            className={`transition-transform duration-300 ${expanded ? "rotate-180" : ""}`}
           >
-            <path d="M5 7l5 5 5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            <path
+              d="M5 7l5 5 5-5"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           </svg>
         </button>
       </div>
     </div>
-  )
-}
+  );
+};
 
 const AboutPage = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   // Scroll ke atas saat halaman dibuka
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }, [])
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
 
   return (
     <div className="bg-white font-['Roboto_Condensed',sans-serif]">
-
       {/* ── HERO ── */}
       <section
         id="about-hero"
-        className="relative h-[60vh] min-h-[400px] flex items-end bg-[#0D1F5C] overflow-hidden"
+        className="relative h-[40vh] min-h-80 flex items-end bg-[#0D1F5C] overflow-hidden"
       >
         <img
           src={blackimage}
@@ -159,13 +169,19 @@ const AboutPage = () => {
 
         {/* Tombol Back to Home */}
         <button
-          onClick={() => navigate('/')}
+          onClick={() => navigate("/")}
           className="absolute top-6 left-6 md:top-8 md:left-10 z-20 inline-flex items-center gap-2 text-white/70 text-xs uppercase tracking-widest hover:text-[#D4A843] transition-colors duration-200"
           data-aos="fade-down"
           data-aos-duration="600"
         >
           <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
-            <path d="M13 4l-6 6 6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            <path
+              d="M13 4l-6 6 6 6"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           </svg>
           Back to Home
         </button>
@@ -175,6 +191,21 @@ const AboutPage = () => {
           data-aos="fade-up"
           data-aos-duration="800"
         >
+        <p className="text-[#D4A843] text-[11px] font-medium tracking-[0.16em] uppercase mb-4 flex items-center">
+  <a href="/" className="hover:text-white/90">
+    Home
+  </a>
+
+  <ChevronRight size={12} className="mx-1" />
+
+  <a href="/aboutus" className="hover:text-white/90">
+    About Us
+  </a>
+
+  <ChevronRight size={12} className="mx-1" />
+
+  <span className="text-white">About BMC</span>
+</p>
           <p className="text-[#D4A843] text-[11px] font-medium tracking-[0.16em] uppercase mb-4">
             PT Braja Mukti Cakra
           </p>
@@ -201,12 +232,13 @@ const AboutPage = () => {
         data-aos-duration="1000"
       >
         <div className="max-w-6xl mx-auto">
-
           <div className="mb-14">
             <p className="text-[#D4A843] text-[11px] font-medium tracking-[0.14em] uppercase mb-3">
               Certifications
             </p>
-            <h2 className="text-[34px] font-bold text-white">International Quality Standards</h2>
+            <h2 className="text-[34px] font-bold text-white">
+              International Quality Standards
+            </h2>
             <div className="w-10 h-0.5 bg-[#D4A843] mt-4" />
           </div>
 
@@ -231,23 +263,31 @@ const AboutPage = () => {
                 ) : (
                   <div className="w-16 h-16 border border-[#D4A843]/60 rounded-full flex items-center justify-center mb-6">
                     <svg width="22" height="22" viewBox="0 0 20 20" fill="none">
-                      <path d="M5 10l4 4 6-7" stroke="#D4A843" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      <path
+                        d="M5 10l4 4 6-7"
+                        stroke="#D4A843"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
                     </svg>
                   </div>
                 )}
 
-                <p className="text-white font-bold text-[18px] mb-2 tracking-wide">{cert.code}</p>
+                <p className="text-white font-bold text-[18px] mb-2 tracking-wide">
+                  {cert.code}
+                </p>
                 <div className="w-8 h-0.5 bg-[#D4A843]/60 my-3" />
-                <p className="text-white/40 text-[12px] tracking-widest uppercase">{cert.label}</p>
+                <p className="text-white/40 text-[12px] tracking-widest uppercase">
+                  {cert.label}
+                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
-
-      
     </div>
-  )
-}
+  );
+};
 
-export default AboutPage
+export default AboutPage;

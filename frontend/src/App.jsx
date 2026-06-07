@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar";
 import Home from "./sections/Home";
 import AboutSection from "./sections/AboutSection";
 import AboutPage from "./pages/AboutPage"
-
+import Milestone from "./pages/Milestone";
 
 
 const MainLayout = () => (
@@ -21,7 +21,8 @@ const App = () => {
       <div className="scroll-smooth">
         <Routes>
           <Route path="/" element={<MainLayout />} />
-          <Route path="/about" element={<AboutPage />} />
+          <Route path="/aboutus" element={<AboutPage />} />
+          <Route path="/milestone" element={<Milestone />} />
         </Routes>
       </div>
     </BrowserRouter>

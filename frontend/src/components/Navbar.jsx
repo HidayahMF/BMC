@@ -1,16 +1,28 @@
 import { useState, useEffect, useRef } from "react";
+import { useNavigate, Link } from "react-router-dom";
 
 import logobmcbg from "../assets/logobmcbg.png";
 import { ChevronDown, Menu, X } from "lucide-react";
 
 const menuItems = [
   {
-    title: "Company",
-    submenu: ["Overview", "History & Milestones", "Vision & Mission", "Global Presence"],
+    title: "About Us",
+    submenu: [
+      "About BMC",
+      "History & Milestones",
+      "Vision & Mission",
+      "Global Presence",
+    ],
   },
   {
     title: "Capabilities",
-    submenu: ["Casting", "Machining", "CNC Process", "Heat Treatment", "Quality Control"],
+    submenu: [
+      "Casting",
+      "Machining",
+      "CNC Process",
+      "Heat Treatment",
+      "Quality Control",
+    ],
   },
   {
     title: "Products",
@@ -36,6 +48,7 @@ const menuItems = [
 ];
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const [activeMenu, setActiveMenu] = useState(null);
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -65,6 +78,32 @@ const Navbar = () => {
   };
 
   const isTransparent = !scrolled && !mobileOpen;
+
+  const getRouteByTitle = (title) => {
+
+    switch (title) {
+      case "About Us":
+      case "About BMC":
+         return "/aboutus";
+      case "Vision & Mission":
+      case "Global Presence":
+       
+
+      case "History & Milestones":
+        return "/milestone";
+
+      default:
+  
+        return "/aboutus";
+    }
+  };
+
+  const handleNavigate = (title) => {
+    const to = getRouteByTitle(title);
+    navigate(to);
+    setMobileOpen(false);
+    setActiveMenu(null);
+  };
 
   return (
     <>
@@ -110,9 +149,13 @@ const Navbar = () => {
                 onMouseLeave={handleLeave}
               >
                 <button
+                  type="button"
+                  onClick={() => handleNavigate(item.title)}
                   className={
                     "flex items-center gap-1 px-4 h-full font-['Roboto Condensed',sans-serif] font-[600] text-[0.95rem] uppercase whitespace-nowrap transition-colors duration-200 bg-transparent border-none cursor-pointer " +
-                    (isTransparent ? "text-white/90 hover:text-[#D4A843]" : "text-[#1a2a5e] hover:text-[#D4A843]")
+                    (isTransparent
+                      ? "text-white/90 hover:text-[#D4A843]"
+                      : "text-[#1a2a5e] hover:text-[#D4A843]")
                   }
                 >
                   {item.title}
@@ -139,9 +182,10 @@ const Navbar = () => {
                   <div className="bg-white shadow-[0_8px_32px_rgba(13,31,92,0.18)]">
                     <div className="py-1">
                       {item.submenu.map((sub, j) => (
-                        <a
+                        <button
                           key={j}
-                          href="#"
+                          type="button"
+                          onClick={() => handleNavigate(sub)}
                           className="
                             relative block px-[18px] py-2.5 overflow-hidden
                             text-[0.95rem]  font-['Roboto Condensed',sans-serif]  text-[#1a1a2e]
@@ -149,6 +193,7 @@ const Navbar = () => {
                             whitespace-nowrap no-underline
                             transition-colors duration-150
                             group/item
+                            text-left w-full
                           "
                         >
                           {/* Parallelogram hover background */}
@@ -165,7 +210,7 @@ const Navbar = () => {
                           <span className="relative z-10 group-hover/item:text-white transition-colors duration-150">
                             {sub}
                           </span>
-                        </a>
+                        </button>
                       ))}
                     </div>
                   </div>
@@ -200,8 +245,9 @@ const Navbar = () => {
           {menuItems.map((item, i) => (
             <div key={i} className="border-b border-[#f0f2f8]">
               <button
+                type="button"
                 className="flex items-center justify-between w-full px-6 py-4 bg-transparent border-none cursor-pointer font-['Roboto Condensed',sans-serif] font-semibold text-base uppercase tracking-[0.01em] text-[#0D1F5C]"
-                onClick={() => setMobileExpanded(mobileExpanded === i ? null : i)}
+                onClick={() => handleNavigate(item.title)}
               >
                 {item.title}
                 <ChevronDown
@@ -211,19 +257,19 @@ const Navbar = () => {
               </button>
 
               <div
-                className={`overflow-hidden bg-[#f8f9fc] transition-all duration-300 ease-in-out ${mobileExpanded === i ? "max-h-[400px]" : "max-h-0"
-                  }`}
+                className={`overflow-hidden bg-[#f8f9fc] transition-all duration-300 ease-in-out ${
+                  mobileExpanded === i ? "max-h-[400px]" : "max-h-0"
+                }`}
               >
                 {item.submenu.map((sub, j) => (
-                  <a
+                  <button
                     key={j}
-                    href="#"
-                    className="block px-8 py-2.5 text-[0.9rem] text-[#3a4a7a] no-underline hover:text-[#D4A843] hover:pl-10 transition-all duration-150"
+                    type="button"
+                    onClick={() => handleNavigate(sub)}
+                    className="block w-full text-left px-8 py-2.5 text-[0.9rem] text-[#3a4a7a] no-underline hover:text-[#D4A843] hover:pl-10 transition-all duration-150"
                   >
-
-
                     {sub}
-                  </a>
+                  </button>
                 ))}
               </div>
             </div>
@@ -254,4 +300,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
