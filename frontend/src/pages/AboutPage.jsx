@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import blackimage from "../assets/blackimage.jpg";
-import iso9001 from "../assets/iso9001.jpg";
-import iso14001 from "../assets/iso14001.jpg";
-// import iso45001 from "../assets/iso45001.jpg"
+import iso9001 from "../assets/iso9001.png"
+import iso14001 from "../assets/iso14001.png"
+import iso45001 from "../assets/iso45001.png"
+import iatf16949 from "../assets/iatf16949.png"
 import { ChevronRight } from "lucide-react";
 const sections = [
   {
@@ -52,7 +53,12 @@ const certs = [
   {
     code: "ISO 45001:2018",
     label: "Occupational Safety",
-    img: null,
+    img: iso45001,
+  },
+  {
+    code: "IATF 16949:2016",
+    label: "Quality Management System",
+    img: iatf16949,
   },
 ];
 
