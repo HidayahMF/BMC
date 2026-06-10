@@ -60,7 +60,7 @@ const AboutSection = () => {
           </p>
 
           <button
-            onClick={() => navigate('/about')}
+            onClick={() => navigate('/aboutus')}
             className="inline-flex items-center gap-2 bg-[#0D1F5C] text-white font-bold font-['Roboto_Condensed',sans-serif] uppercase tracking-widest px-6 py-3 rounded-sm hover:bg-[#D4A843] hover:text-[#0D1F5C] transition-all duration-200"           
             data-aos-delay="100"
             data-aos-duration="600"
@@ -72,7 +72,7 @@ const AboutSection = () => {
           </button>
         </div>
 
-        {/* Kolom kanan: gambar */}
+
         <div
           className="relative md:self-stretch"
           data-aos="fade-left"

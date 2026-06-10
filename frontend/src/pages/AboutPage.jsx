@@ -197,21 +197,21 @@ const AboutPage = () => {
           data-aos="fade-up"
           data-aos-duration="800"
         >
-        <p className="text-[#D4A843] text-[11px] font-medium tracking-[0.16em] uppercase mb-4 flex items-center">
-  <a href="/" className="hover:text-white/90">
-    Home
-  </a>
+          <p className="text-[#D4A843] text-[11px] font-medium tracking-[0.16em] uppercase mb-4 flex items-center">
+            <a href="/" className="hover:text-white/90">
+              Home
+            </a>
 
-  <ChevronRight size={12} className="mx-1" />
+            <ChevronRight size={12} className="mx-1" />
 
-  <a href="/aboutus" className="hover:text-white/90">
-    About Us
-  </a>
+            <a href="/aboutus" className="hover:text-white/90">
+              About Us
+            </a>
 
-  <ChevronRight size={12} className="mx-1" />
+            <ChevronRight size={12} className="mx-1" />
 
-  <span className="text-white">About BMC</span>
-</p>
+            <span className="text-white">About BMC</span>
+          </p>
           <p className="text-[#D4A843] text-[11px] font-medium tracking-[0.16em] uppercase mb-4">
             PT Braja Mukti Cakra
           </p>
@@ -231,67 +231,7 @@ const AboutPage = () => {
         ))}
       </section>
 
-      {/* ── CERTIFICATIONS ── */}
-      <section
-        className="bg-[#0D1F5C] py-20 px-6 md:px-20 mt-10"
-        data-aos="fade-up"
-        data-aos-duration="1000"
-      >
-        <div className="max-w-6xl mx-auto">
-          <div className="mb-14">
-            <p className="text-[#D4A843] text-[11px] font-medium tracking-[0.14em] uppercase mb-3">
-              Certifications
-            </p>
-            <h2 className="text-[34px] font-bold text-white">
-              International Quality Standards
-            </h2>
-            <div className="w-10 h-0.5 bg-[#D4A843] mt-4" />
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {certs.map((cert, i) => (
-              <div
-                key={i}
-                className="border border-white/10 p-8 flex flex-col items-center text-center hover:border-[#D4A843]/50 transition-all duration-300 group"
-                data-aos="fade-up"
-                data-aos-delay={i * 120}
-                data-aos-duration="600"
-              >
-                {/* Gambar ISO */}
-                {cert.img ? (
-                  <div className="w-full h-36 flex items-center justify-center mb-6 overflow-hidden rounded-sm bg-white/5 p-3">
-                    <img
-                      src={cert.img}
-                      alt={cert.code}
-                      className="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                ) : (
-                  <div className="w-16 h-16 border border-[#D4A843]/60 rounded-full flex items-center justify-center mb-6">
-                    <svg width="22" height="22" viewBox="0 0 20 20" fill="none">
-                      <path
-                        d="M5 10l4 4 6-7"
-                        stroke="#D4A843"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </div>
-                )}
-
-                <p className="text-white font-bold text-[18px] mb-2 tracking-wide">
-                  {cert.code}
-                </p>
-                <div className="w-8 h-0.5 bg-[#D4A843]/60 my-3" />
-                <p className="text-white/40 text-[12px] tracking-widest uppercase">
-                  {cert.label}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+     
     </div>
   );
 };
