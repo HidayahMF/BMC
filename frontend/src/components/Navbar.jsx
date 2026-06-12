@@ -86,11 +86,13 @@ const Navbar = () => {
       case "About BMC":
         return "/aboutus";
       case "Vision & Mission":
+        return "/visimisi"
       case "Global Presence":
 
 
       case "History & Milestones":
         return "/milestone";
+
 
       default:
 
@@ -211,10 +213,11 @@ const Navbar = () => {
             <img
               src={logobmcbg}
               alt="BMC"
-              className={`object-contain transition-all duration-300 ${scrolled ? "h-10" : "h-13"}`}
+              className={`object-contain transition-all duration-300 ${scrolled ? "h-10" : "h-13"
+                }`}
               style={{
                 filter: isTransparent
-                  ? "drop-shadow(0 0 2px rgba(255,255,255,0.9)) drop-shadow(0 0 4px rgba(255,255,255,0.8)) drop-shadow(0 2px 8px rgba(0,0,0,0.7))"
+                  ? "brightness(0) invert(1)"
                   : "none",
               }}
             />

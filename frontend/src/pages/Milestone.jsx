@@ -375,7 +375,7 @@ const Milestone = () => {
             <span style={{ margin: "0 6px" }}>&rsaquo;</span>
             <a href="/aboutus" style={{ color: "#D4A843", textDecoration: "none" }}>About Us</a>
             <span style={{ margin: "0 6px" }}>&rsaquo;</span>
-            <span style={{ color: "white" }}>Milestone</span>
+            <span style={{ color: "white" }}>History & Milestones</span>
           </p>
           <h1
             style={{

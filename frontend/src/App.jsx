@@ -5,6 +5,7 @@ import Home from "./sections/Home";
 import AboutSection from "./sections/AboutSection";
 import AboutPage from "./pages/AboutPage"
 import Milestone from "./pages/Milestone";
+import Visimisi from "./pages/Visimisi";
 
 
 const MainLayout = () => (
@@ -23,6 +24,8 @@ const App = () => {
           <Route path="/" element={<MainLayout />} />
           <Route path="/aboutus" element={<AboutPage />} />
           <Route path="/milestone" element={<Milestone />} />
+          <Route path="/visimisi" element={<Visimisi />} />
+
         </Routes>
       </div>
     </BrowserRouter>
