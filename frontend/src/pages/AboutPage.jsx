@@ -5,6 +5,7 @@ import iso9001 from "../assets/iso9001.png"
 import iso14001 from "../assets/iso14001.png"
 import iso45001 from "../assets/iso45001.png"
 import iatf16949 from "../assets/iatf16949.png"
+import peta from "../assets/peta.png"
 import { ChevronRight } from "lucide-react";
 const sections = [
   {
@@ -72,7 +73,7 @@ const AccordionSection = ({ section, index }) => {
   const txtAos = isEven ? "fade-right" : "fade-left";
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 border-t border-gray-100">
+    <div className="pt-10 grid grid-cols-1 md:grid-cols-2 border-t border-gray-100">
       {/* Gambar */}
       <div
         className={`relative overflow-hidden min-h-[280px] md:min-h-[380px]
@@ -161,6 +162,7 @@ const AboutPage = () => {
 
   return (
     <div className="bg-white font-['Roboto_Condensed',sans-serif]">
+
       {/* ── HERO ── */}
       <section
         id="about-hero"
@@ -204,13 +206,13 @@ const AboutPage = () => {
 
             <ChevronRight size={12} className="mx-1" />
 
-            <a href="/aboutus" className="hover:text-white/90">
+            <a href="/" className="hover:text-white/90">
               About Us
             </a>
 
             <ChevronRight size={12} className="mx-1" />
 
-            <span className="text-white">About BMC</span>
+            <span className="text-white">Company Profile</span>
           </p>
           <p className="text-[#D4A843] text-[11px] font-medium tracking-[0.16em] uppercase mb-4">
             PT Braja Mukti Cakra
@@ -231,7 +233,37 @@ const AboutPage = () => {
         ))}
       </section>
 
-     
+      <div
+        className="flex justify-center mt-20"
+        data-aos="fade-up"
+        data-aos-duration="800"
+        data-aos-once="true"
+      >
+        <div>
+          <h2
+            className="text-[28px] md:text-[32px] font-bold font-['Roboto_Condensed',sans-serif] text-[#0D1F5C] leading-tight mb-5 text-center"
+            data-aos="fade-down"
+            data-aos-duration="700"
+            data-aos-delay="100"
+            data-aos-once="true"
+          >
+            THE PRECISION VALUE
+          </h2>
+
+          <div
+            data-aos="zoom-in"
+            data-aos-duration="1000"
+            data-aos-delay="250"
+            data-aos-once="true"
+          >
+            <img
+              src={peta}
+              alt="The Precision Value"
+              className="w-full max-w-6xl h-auto mx-auto pb-10"
+            />
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

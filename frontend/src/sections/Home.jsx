@@ -6,14 +6,17 @@ import home3 from "../assets/home3.png";
 import home4 from "../assets/home4.png";
 import bmcvideo from "../assets/bmcvideo.mp4";
 import noimage from "../assets/noimage.jpg"
+import bmc1 from "../assets/bmc1.png"
+import bmc2 from "../assets/bmc2.png"
+import bmc3 from "../assets/bmc3.png"
 
 /* ─── DATA ─────────────────────────────────── */
 const slides = [
   { type: "video", src: bmcvideo, tag: "PRECISION MANUFACTURING", title: ["Engineered", "for Excellence"], sub: "Supplying mission-critical components to Mitsubishi, Hino, Isuzu & more", cta: "Explore Products" },
-  { type: "image", src: noimage, tag: "AUTOMOTIVE OEM & REM", title: ["Built for", "Every Drive"], sub: "High-precision parts for commercial cars and passenger vehicles", cta: "View Products" },
-  { type: "image", src: noimage, tag: "HEAVY EQUIPMENT", title: ["Power the", "Industry"], sub: "Durable components trusted across heavy equipment & agribusiness sectors", cta: "Learn More" },
-  { type: "image", src: noimage, tag: "GLOBAL EXPORTS", title: ["Made in", "Indonesia"], sub: "Exporting to Japan, Malaysia, Philippines, Thailand, Italy and beyond", cta: "Our Markets" },
-  { type: "image", src: noimage, tag: "ISO CERTIFIED", title: ["Quality You", "Can Trust"], sub: "Rigorous quality control at every step of the manufacturing process", cta: "About BMC" },
+  { type: "image", src: bmc2, tag: "AUTOMOTIVE OEM & REM", title: ["Built for", "Every Drive"], sub: "High-precision parts for commercial cars and passenger vehicles", cta: "View Products" },
+  { type: "image", src: bmc1, tag: "HEAVY EQUIPMENT", title: ["Power the", "Industry"], sub: "Durable components trusted across heavy equipment & agribusiness sectors", cta: "Learn More" },
+  { type: "image", src: bmc3, tag: "GLOBAL EXPORTS", title: ["Made in", "Indonesia"], sub: "Exporting to Japan, Malaysia, Philippines, Thailand, Italy and beyond", cta: "Our Markets" },
+  
 ];
 
 const stats = [
@@ -262,6 +265,7 @@ export default function Home() {
           </div>
 
         </div>
+        
       </section>
     </div>
   );

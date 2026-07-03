@@ -353,6 +353,25 @@ const Milestone = () => {
               "linear-gradient(100deg, #0D1F5C 40%, #0D1F5C80 70%, transparent)",
           }}
         />
+        {/* Tombol Back to Home */}
+        <button
+          onClick={() => window.location.assign('/')}
+          className="absolute top-6 left-6 md:top-8 md:left-10 z-20 inline-flex items-center gap-2 text-white/70 text-xs uppercase tracking-widest hover:text-[#D4A843] transition-colors duration-200"
+          data-aos="fade-down"
+          data-aos-duration="600"
+        >
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+            <path
+              d="M13 4l-6 6 6 6"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+          Back to Home
+        </button>
+
         <div
           style={{
             position: "relative",
@@ -373,7 +392,7 @@ const Milestone = () => {
           >
             <a href="/" style={{ color: "#D4A843", textDecoration: "none" }}>Home</a>
             <span style={{ margin: "0 6px" }}>&rsaquo;</span>
-            <a href="/aboutus" style={{ color: "#D4A843", textDecoration: "none" }}>About Us</a>
+            <a href="/companyprofile" style={{ color: "#D4A843", textDecoration: "none" }}>About Us</a>
             <span style={{ margin: "0 6px" }}>&rsaquo;</span>
             <span style={{ color: "white" }}>History & Milestones</span>
           </p>
@@ -565,7 +584,7 @@ const Milestone = () => {
             </p>
           </div>
           <a
-            href="/aboutus"
+            href="/companyprofile"
             style={{
               background: "#D4A843",
               color: "#0D1F5C",

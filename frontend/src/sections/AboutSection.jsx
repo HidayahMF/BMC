@@ -4,6 +4,7 @@ import home1 from '../assets/home1.png'
 import noimage from "../assets/noimage.jpg"
 import blackimage from "../assets/blackimage.jpg"
 
+
 const AboutSection = () => {
   const navigate = useNavigate()
 
@@ -17,7 +18,7 @@ const AboutSection = () => {
         <div data-aos="fade-right" data-aos-duration="800">
 
           <span className="inline-block text-[15px] font-medium font-['Roboto_Condensed',sans-serif] tracking-[0.12em] uppercase text-[#B8922A] bg-[#FDF3DC] px-4 py-1.5 rounded-full mb-5">
-            About BMC
+            Company Profile
           </span>
 
           <h2
@@ -60,7 +61,7 @@ const AboutSection = () => {
           </p>
 
           <button
-            onClick={() => navigate('/aboutus')}
+            onClick={() => navigate('/companyprofile')}
             className="inline-flex items-center gap-2 bg-[#0D1F5C] text-white font-bold font-['Roboto_Condensed',sans-serif] uppercase tracking-widest px-6 py-3 rounded-sm hover:bg-[#D4A843] hover:text-[#0D1F5C] transition-all duration-200"           
             data-aos-delay="100"
             data-aos-duration="600"

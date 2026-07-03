@@ -61,7 +61,28 @@ body {
 }
 
 
+@theme {
+  --color-navy:  #0D1F5C;
+  --color-gold:  #D4A843;
+  --color-site:  #F4F6FC;
+  --color-muted: #6B7A9E;
+  --color-bdr:   #DDE1EF;
+  --color-card:  #F8F9FD;
 
+  --font-condensed: 'Roboto Condensed', sans-serif;
+
+  --animate-bmc-fade:  bmcFadeIn  0.2s  ease;
+  --animate-bmc-slide: bmcSlideUp 0.28s ease;
+}
+
+@keyframes bmcFadeIn  {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes bmcSlideUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
 
 @keyframes scrollX {
     0% {
