@@ -15,6 +15,11 @@ import MachiningSection from "./sections/MachiningSection"
 import MachiningPage from "./pages/MachiningPage"
 import AwardCertif from "./pages/AwardsCertif"
 import ContactUs from "./pages/ContactUs";
+import CustomerSection from "./sections/CustomerSection"
+import CustomerPage from "./pages/CustomerPage"
+import BeritaPage from "./pages/BeritaPage";
+import ManajemenPage from "./pages/ManajemenPage";
+
 
 const MainLayout = () => (
   <>
@@ -23,6 +28,7 @@ const MainLayout = () => (
     <AboutSection />
     <ProductSection/>
     <MachiningSection/>
+    <CustomerSection/>
 
     <Footer />
   </>
@@ -55,6 +61,9 @@ const App = () => {
           <Route path="/machiningfacilities" element={<PageLayout><MachiningPage /></PageLayout>} />
           <Route path="/events" element={<PageLayout><AwardCertif /></PageLayout>} />
           <Route path="/contactus" element={<PageLayout><ContactUs /></PageLayout>} />
+          <Route path="/customer" element={<PageLayout><CustomerPage /></PageLayout>} />
+          <Route path="/berita" element={<PageLayout><BeritaPage /></PageLayout>} />
+          <Route path="/customer" element={<PageLayout><ManajemenPage /></PageLayout>} />
 
 
       

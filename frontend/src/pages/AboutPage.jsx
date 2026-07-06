@@ -7,6 +7,8 @@ import iso45001 from "../assets/iso45001.png"
 import iatf16949 from "../assets/iatf16949.png"
 import peta from "../assets/peta.png"
 import { ChevronRight } from "lucide-react";
+import home1 from "../assets/home1.png"
+import bmc2 from "../assets/bmc2.png"
 const sections = [
   {
     id: "overview",
@@ -16,7 +18,7 @@ const sections = [
     full: `PT Braja Mukti Cakra (BMC) adalah perusahaan manufaktur komponen presisi yang telah menjadi mitra terpercaya berbagai industri selama hampir empat dekade. Berdiri sejak tahun 1986, BMC berfokus pada produksi komponen berkualitas tinggi untuk OEM dan REM di sektor otomotif, alat berat, agribisnis, serta industri permesinan umum.
 
 Didukung teknologi manufaktur modern, sistem manajemen mutu berstandar internasional, serta sumber daya manusia yang berpengalaman, BMC terus menghadirkan solusi komponen presisi yang memenuhi standar global.`,
-    img: blackimage,
+    img: home1,
   },
   {
     id: "journey",
@@ -164,16 +166,18 @@ const AboutPage = () => {
     <div className="bg-white font-['Roboto_Condensed',sans-serif]">
 
       {/* ── HERO ── */}
-      <section
+    <section
         id="about-hero"
         className="relative h-[40vh] min-h-80 flex items-end bg-[#0D1F5C] overflow-hidden"
       >
         <img
-          src={blackimage}
+          src={bmc2}
           alt="BMC"
-          className="absolute inset-0 w-full h-full object-cover opacity-25"
+          className="absolute inset-0 w-full h-full object-cover opacity-60"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0D1F5C] via-[#0D1F5C]/80 to-transparent" />
+        {/* Gradient dibuat lebih tipis & hanya menutupi sisi kiri bawah agar gambar tetap terlihat jelas */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0D1F5C]/80 via-[#0D1F5C]/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0D1F5C]/70 via-transparent to-transparent" />
 
         {/* Tombol Back to Home */}
         <button
@@ -217,10 +221,10 @@ const AboutPage = () => {
           <p className="text-[#D4A843] text-[11px] font-medium tracking-[0.16em] uppercase mb-4">
             PT Braja Mukti Cakra
           </p>
-          <h1 className="text-[48px] md:text-[64px] font-bold text-white leading-[1.05] mb-4">
+          <h1 className="text-[48px] md:text-[64px] font-bold text-white leading-[1.05] mb-4 drop-shadow-lg">
             About Us
           </h1>
-          <p className="text-white/50 text-[16px] leading-relaxed max-w-lg">
+          <p className="text-white/70 text-[16px] leading-relaxed max-w-lg drop-shadow-md">
             Precision Engineering for Global Industries
           </p>
         </div>

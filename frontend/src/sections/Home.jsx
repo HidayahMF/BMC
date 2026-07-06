@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { Truck, Car, HardHat, Wheat, Settings, Globe, ArrowRight, Play, ChevronRight } from "lucide-react";
 import home1 from "../assets/home1.png";
 import home2 from "../assets/home2.png";
@@ -9,14 +10,16 @@ import noimage from "../assets/noimage.jpg"
 import bmc1 from "../assets/bmc1.png"
 import bmc2 from "../assets/bmc2.png"
 import bmc3 from "../assets/bmc3.png"
+import mbaevi from "../assets/mbaevi.jpeg"
 
 /* ─── DATA ─────────────────────────────────── */
 const slides = [
-  { type: "video", src: bmcvideo, tag: "PRECISION MANUFACTURING", title: ["Engineered", "for Excellence"], sub: "Supplying mission-critical components to Mitsubishi, Hino, Isuzu & more", cta: "Explore Products" },
-  { type: "image", src: bmc2, tag: "AUTOMOTIVE OEM & REM", title: ["Built for", "Every Drive"], sub: "High-precision parts for commercial cars and passenger vehicles", cta: "View Products" },
-  { type: "image", src: bmc1, tag: "HEAVY EQUIPMENT", title: ["Power the", "Industry"], sub: "Durable components trusted across heavy equipment & agribusiness sectors", cta: "Learn More" },
-  { type: "image", src: bmc3, tag: "GLOBAL EXPORTS", title: ["Made in", "Indonesia"], sub: "Exporting to Japan, Malaysia, Philippines, Thailand, Italy and beyond", cta: "Our Markets" },
-  
+    { type: "image", src: mbaevi, tag: "AUTOMOTIVE OEM & REM", title: ["Built for", "Every Drive"], sub: "High-precision parts for commercial cars and passenger vehicles", cta: "View Products", link: "/parts" },
+  { type: "video", src: bmcvideo, tag: "PRECISION MANUFACTURING", title: ["Engineered", "for Excellence"], sub: "Supplying mission-critical components to Mitsubishi, Hino, Isuzu & more", cta: "Explore Products", link: "/parts" },
+  { type: "image", src: bmc2, tag: "AUTOMOTIVE OEM & REM", title: ["Built for", "Every Drive"], sub: "High-precision parts for commercial cars and passenger vehicles", cta: "View Products", link: "/parts" },
+  { type: "image", src: bmc1, tag: "HEAVY EQUIPMENT", title: ["Power the", "Industry"], sub: "Durable components trusted across heavy equipment & agribusiness sectors", cta: "Learn More", link: "/companyprofile" },
+  { type: "image", src: bmc3, tag: "GLOBAL EXPORTS", title: ["Made in", "Indonesia"], sub: "Exporting to Japan, Malaysia, Philippines, Thailand, Italy and beyond", cta: "Our Markets", link: "/companyprofile" },
+
 ];
 
 const stats = [
@@ -44,6 +47,7 @@ const gallery = [
 
 /* ─── HERO SLIDER ───────────────────────────── */
 function HeroSlider() {
+    const navigate = useNavigate();
   const [cur, setCur] = useState(0);
   const [fading, setFading] = useState(false);
   const [txtIn, setTxtIn] = useState(true);
@@ -126,8 +130,10 @@ function HeroSlider() {
 
           {slide.sub}
         </p>
-        <button className="group inline-flex items-center gap-2.5 self-start bg-[#D4A843] text-[#0D1F5C] font-[600] uppercase tracking-[0.08em] px-5 py-2.5 rounded-sm text-xs hover:bg-white transition-all duration-200 hover:-translate-y-0.5 font-['Roboto Condensed',sans-serif]">
-
+        <button
+          onClick={() => slide.link && navigate(slide.link)}
+          className="group inline-flex items-center gap-2.5 self-start bg-[#D4A843] text-[#0D1F5C] font-[600] uppercase tracking-[0.08em] px-5 py-2.5 rounded-sm text-xs hover:bg-white transition-all duration-200 hover:-translate-y-0.5 font-['Roboto Condensed',sans-serif]"
+        >
           {slide.cta}
           <ArrowRight size={14} className="transition-transform duration-200 group-hover:translate-x-1" />
         </button>

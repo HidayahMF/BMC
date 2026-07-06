@@ -16,6 +16,8 @@ const menuItems = [
       "Vision & Mission",
       "Events, Awards & Certification",
       "Top Management",
+      "Customer",
+      "Berita",
     ],
   },
   {
@@ -90,7 +92,7 @@ const Navbar = () => {
         return "/events";
 
       case "Top Management":
-        return "/management";
+        return "/majemen";
 
       case "Commercial Car":
         return "/commercialcar";
@@ -104,8 +106,15 @@ const Navbar = () => {
 
            case "Machining Facilities":
         return "/machiningfacilities";
-           case "Contact Us":
+        
+        case "Contact Us":
         return "/contactus";
+
+                case "Customer":
+        return "/customer";
+          
+        case "Berita":
+        return "/berita";
 
       default:
         return "/";

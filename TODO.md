@@ -1,12 +1,19 @@
-# TODO
+## TODO - Hero CTA navigation + placeholder routes
 
-## Font Migration: Rajdhani ➜ Inter Variable (Navbar & Home)
-- [ ] Update global font setup to use local Inter Variable TTF and set `font-family: 'Inter', sans-serif` as primary.
-- [ ] Remove Rajdhani imports/usages from `frontend/src/components/Navbar.jsx`.
-- [ ] Update Navbar typography weights/hierarchy + natural letter-spacing; keep layout/colors/animations unchanged.
-- [ ] Remove Rajdhani references from `frontend/src/sections/Home.jsx` (including inline styles and injected `<style>` imports).
-- [ ] Ensure Hero/Section/Body/Button font weights match requirements (Hero 700-800, Section 700, Navbar 600, Body 400-500, Buttons 600).
-- [ ] Adjust letter-spacing: remove/replace overly tracking/widest where used for Rajdhani; use subtle natural values.
-- [ ] Validate responsive behavior (desktop/tablet/mobile) after font changes.
-- [ ] Run dev build/lint if available to ensure no breaking changes.
+- [ ] Update `frontend/src/sections/Home.jsx`
+  - [ ] Add `link` property to each object in `slides`
+  - [ ] Make CTA button call `navigate(slide.link)` (no hardcoded destinations)
+  - [ ] Preserve existing hero animation/design logic
+
+- [ ] Create placeholder pages (modern industrial design, responsive, reusable)
+  - [ ] `frontend/src/pages/ProductsPage.jsx` for `/products`
+  - [ ] `frontend/src/pages/MarketsPage.jsx` for `/markets`
+  - [ ] `frontend/src/pages/ExportsPage.jsx` for `/exports`
+  - [ ] `frontend/src/pages/AboutPageFull.jsx` for `/about`
+
+- [ ] Wire routing
+  - [ ] Update `frontend/src/App.jsx` to add routes for `/products`, `/markets`, `/exports`, `/about`
+
+- [ ] Verify
+  - [ ] Build/run frontend to ensure routing works and no animation logic was modified
 

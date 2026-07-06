@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
+import { ChevronRight } from "lucide-react";
 import { products, categories } from "../data/Products";
+import blackimage from "../assets/blackimage.jpg";
 
 /* ─── CATEGORY COLOR MAP ── */
 const CAT_COLOR = {
@@ -213,6 +215,7 @@ function Modal({ product, onClose }) {
 
 /* ─── MAIN COMPONENT: Halaman Parts (Katalog Lengkap) ──── */
 const Parts = () => {
+  const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const [activeCat, setActiveCat] = useState("All");
   const [search,    setSearch]    = useState("");
@@ -248,119 +251,179 @@ const Parts = () => {
   const handleSearch   = (e)   => { setSearch(e.target.value); setShowCount(12); };
 
   return (
-    <section className="bg-site py-[60px_0]  font-condensed min-h-screen">
-      <div className="max-w-[1280px] mx-auto px-6 pt-16">
+    <div className="font-condensed">
+      {/* ── HERO ── */}
+      <section
+        id="parts-hero"
+        className="relative h-[40vh] min-h-80 flex items-end bg-[#0D1F5C] overflow-hidden"
+      >
+        <img
+          src={blackimage}
+          alt="BMC"
+          className="absolute inset-0 w-full h-full object-cover opacity-25"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0D1F5C] via-[#0D1F5C]/80 to-transparent" />
 
-        {/* Heading */}
-        <div className="text-center mt-4">
-          <p className="text-[0.62rem] font-bold text-gold tracking-[0.2em] uppercase mb-3">
-            Precision Manufacturing Since 1986
-          </p>
-          <h2 className="text-[clamp(1.9rem,4vw,2.9rem)] font-bold text-navy uppercase tracking-[0.03em] leading-[1.1] mb-[14px]">
-            Katalog Produk Lengkap
-          </h2>
-          <div className="w-[52px] h-[3px] bg-gold mx-auto mb-[18px] rounded-sm" />
-        </div>
-
-        {/* Controls */}
-        <div className="flex flex-col gap-4 mb-8">
-
-          <div className="relative max-w-[440px]">
-            <svg
-              width="16" height="16" viewBox="0 0 24 24"
-              fill="none" stroke="#6B7A9E" strokeWidth="2"
-              strokeLinecap="round" strokeLinejoin="round"
-              className="absolute left-[14px] top-1/2 -translate-y-1/2 pointer-events-none"
-            >
-              <circle cx="11" cy="11" r="8" />
-              <path d="m21 21-4.35-4.35" />
-            </svg>
-            <input
-              value={search}
-              onChange={handleSearch}
-              placeholder="Cari produk, kategori, atau aplikasi..."
-              className="w-full h-[46px] pl-[42px] pr-4 border-[1.5px] border-bdr rounded-[9px] text-[0.86rem] text-navy bg-white font-condensed transition-[border-color,box-shadow] duration-200 placeholder-[#a0aac4] focus:outline-none focus:border-gold focus:shadow-[0_0_0_3px_rgba(212,168,67,0.15)]"
+        {/* Tombol Back to Home */}
+        <button
+          onClick={() => navigate("/")}
+          className="absolute top-6 left-6 md:top-8 md:left-10 z-20 inline-flex items-center gap-2 text-white/70 text-xs uppercase tracking-widest hover:text-[#D4A843] transition-colors duration-200"
+          data-aos="fade-down"
+          data-aos-duration="600"
+        >
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+            <path
+              d="M13 4l-6 6 6 6"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
-          </div>
+          </svg>
+          Back to Home
+        </button>
 
-          <div className="flex gap-2 flex-wrap">
-            {categories.map((cat) => {
-              const active = activeCat === cat;
-              return (
-                <button
-                  key={cat}
-                  onClick={() => resetAndFilter(cat)}
-                  className={[
-                    "px-[18px] py-[7px] rounded-3xl border-[1.5px] text-[0.7rem] font-bold tracking-[0.07em] uppercase cursor-pointer font-condensed transition-all duration-[180ms] inline-flex items-center gap-[7px]",
-                    active
-                      ? "border-navy bg-navy text-white"
-                      : "border-bdr bg-white text-muted hover:border-navy hover:text-navy hover:bg-[#EEF1FB]",
-                  ].join(" ")}
-                >
-                  {cat}
-                  {active && filtered.length > 0 && (
-                    <span className="bg-gold text-navy text-[0.6rem] font-bold px-[7px] py-[1px] rounded-[10px] leading-[1.6]">
-                      {filtered.length}
-                    </span>
-                  )}
-                </button>
-              );
-            })}
-          </div>
-        </div>
+        <div
+          className="relative z-10 px-6 md:px-20 pb-14 max-w-3xl"
+          data-aos="fade-up"
+          data-aos-duration="800"
+        >
+          <p className="text-[#D4A843] text-[11px] font-medium tracking-[0.16em] uppercase mb-4 flex items-center">
+            <a href="/" className="hover:text-white/90">
+              Home
+            </a>
 
-        {(search || activeCat !== "All") && (
-          <p className="text-[0.78rem] text-muted mb-5">
-            {filtered.length === 0
-              ? "Tidak ada produk ditemukan"
-              : `Menampilkan ${visible.length} dari ${filtered.length} produk`}
-            {search && <> untuk "<strong className="text-navy">{search}</strong>"</>}
+            <ChevronRight size={12} className="mx-1" />
+
+            <span className="text-white">Parts</span>
           </p>
-        )}
+          <p className="text-[#D4A843] text-[11px] font-medium tracking-[0.16em] uppercase mb-4">
+            PT Braja Mukti Cakra
+          </p>
+          <h1 className="text-[48px] md:text-[64px] font-bold text-white leading-[1.05] mb-4">
+            Spare Parts Catalog
+          </h1>
+          <p className="text-white/50 text-[16px] leading-relaxed max-w-lg">
+            Precision Engineering for Global Industries
+          </p>
+        </div>
+      </section>
 
-        {filtered.length === 0 && (
-          <div className="text-center py-16">
-            <div className="text-5xl mb-4">🔍</div>
-            <p className="text-base font-bold text-navy mb-2">Produk tidak ditemukan</p>
-            <p className="text-[0.82rem] text-muted mb-5">
-              Coba kata kunci lain atau pilih kategori berbeda
+      {/* ── KATALOG PRODUK (kode lama, tidak diubah) ── */}
+     <section className="bg-site py-[60px_0] font-condensed min-h-screen pb-20 md:pb-28">
+        <div className="max-w-[1280px] mx-auto px-6 pt-16">
+
+          {/* Heading */}
+          <div className="text-center mt-4">
+            <p className="text-[0.62rem] font-bold text-gold tracking-[0.2em] uppercase mb-3">
+              Precision Manufacturing Since 1986
             </p>
-            <button
-              onClick={() => { setSearch(""); setActiveCat("All"); }}
-              className="px-6 py-[9px] bg-navy text-white border-none rounded-lg text-[0.75rem] font-bold tracking-[0.08em] uppercase font-condensed cursor-pointer hover:opacity-90 transition-opacity"
-            >
-              Reset Filter
-            </button>
+            <h2 className="text-[clamp(1.9rem,4vw,2.9rem)] font-bold text-navy uppercase tracking-[0.03em] leading-[1.1] mb-[14px]">
+              Katalog Produk Lengkap
+            </h2>
+            <div className="w-[52px] h-[3px] bg-gold mx-auto mb-[18px] rounded-sm" />
           </div>
-        )}
 
-        {filtered.length > 0 && (
-          <>
-            <div
-              className="grid gap-5"
-              style={{ gridTemplateColumns: "repeat(auto-fill, minmax(215px, 1fr))" }}
-            >
-              {visible.map((p, i) => (
-                <ProductCard key={p.id} product={p} index={i} onClick={setSelected} />
-              ))}
+          {/* Controls */}
+          <div className="flex flex-col gap-4 mb-8">
+
+            <div className="relative max-w-[440px]">
+              <svg
+                width="16" height="16" viewBox="0 0 24 24"
+                fill="none" stroke="#6B7A9E" strokeWidth="2"
+                strokeLinecap="round" strokeLinejoin="round"
+                className="absolute left-[14px] top-1/2 -translate-y-1/2 pointer-events-none"
+              >
+                <circle cx="11" cy="11" r="8" />
+                <path d="m21 21-4.35-4.35" />
+              </svg>
+              <input
+                value={search}
+                onChange={handleSearch}
+                placeholder="Cari produk, kategori, atau aplikasi..."
+                className="w-full h-[46px] pl-[42px] pr-4 border-[1.5px] border-bdr rounded-[9px] text-[0.86rem] text-navy bg-white font-condensed transition-[border-color,box-shadow] duration-200 placeholder-[#a0aac4] focus:outline-none focus:border-gold focus:shadow-[0_0_0_3px_rgba(212,168,67,0.15)]"
+              />
             </div>
 
-            {hasMore && (
-              <div className="text-center mt-11 pb-10">
-                <button
-                  onClick={() => setShowCount((v) => v + 12)}
-                  className="px-10 py-[13px] border-2 border-navy rounded-[9px] bg-white text-navy text-[0.75rem] font-bold tracking-[0.1em] uppercase font-condensed cursor-pointer transition-all duration-200 hover:bg-navy hover:text-gold"
-                >
-                  Tampilkan Lebih Banyak ({filtered.length - showCount} produk tersisa)
-                </button>
-              </div>
-            )}
-          </>
-        )}
-      </div>
+            <div className="flex gap-2 flex-wrap">
+              {categories.map((cat) => {
+                const active = activeCat === cat;
+                return (
+                  <button
+                    key={cat}
+                    onClick={() => resetAndFilter(cat)}
+                    className={[
+                      "px-[18px] py-[7px] rounded-3xl border-[1.5px] text-[0.7rem] font-bold tracking-[0.07em] uppercase cursor-pointer font-condensed transition-all duration-[180ms] inline-flex items-center gap-[7px]",
+                      active
+                        ? "border-navy bg-navy text-white"
+                        : "border-bdr bg-white text-muted hover:border-navy hover:text-navy hover:bg-[#EEF1FB]",
+                    ].join(" ")}
+                  >
+                    {cat}
+                    {active && filtered.length > 0 && (
+                      <span className="bg-gold text-navy text-[0.6rem] font-bold px-[7px] py-[1px] rounded-[10px] leading-[1.6]">
+                        {filtered.length}
+                      </span>
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
 
-      {selected && <Modal product={selected} onClose={() => setSelected(null)} />}
-    </section>
+          {(search || activeCat !== "All") && (
+            <p className="text-[0.78rem] text-muted mb-5">
+              {filtered.length === 0
+                ? "Tidak ada produk ditemukan"
+                : `Menampilkan ${visible.length} dari ${filtered.length} produk`}
+              {search && <> untuk "<strong className="text-navy">{search}</strong>"</>}
+            </p>
+          )}
+
+          {filtered.length === 0 && (
+            <div className="text-center py-16">
+              <div className="text-5xl mb-4">🔍</div>
+              <p className="text-base font-bold text-navy mb-2">Produk tidak ditemukan</p>
+              <p className="text-[0.82rem] text-muted mb-5">
+                Coba kata kunci lain atau pilih kategori berbeda
+              </p>
+              <button
+                onClick={() => { setSearch(""); setActiveCat("All"); }}
+                className="px-6 py-[9px] bg-navy text-white border-none rounded-lg text-[0.75rem] font-bold tracking-[0.08em] uppercase font-condensed cursor-pointer hover:opacity-90 transition-opacity"
+              >
+                Reset Filter
+              </button>
+            </div>
+          )}
+
+          {filtered.length > 0 && (
+            <>
+              <div
+                className="grid gap-5"
+                style={{ gridTemplateColumns: "repeat(auto-fill, minmax(215px, 1fr))" }}
+              >
+                {visible.map((p, i) => (
+                  <ProductCard key={p.id} product={p} index={i} onClick={setSelected} />
+                ))}
+              </div>
+
+              {hasMore && (
+  <div className="text-center mt-11">
+    <button
+      onClick={() => setShowCount((v) => v + 12)}
+      className="px-10 py-[13px] border-2 border-navy rounded-[9px] bg-white text-navy text-[0.75rem] font-bold tracking-[0.1em] uppercase font-condensed cursor-pointer transition-all duration-200 hover:bg-navy hover:text-gold"
+    >
+      Tampilkan Lebih Banyak ({filtered.length - showCount} produk tersisa)
+    </button>
+  </div>
+)}
+            </>
+          )}
+        </div>
+
+        {selected && <Modal product={selected} onClose={() => setSelected(null)} />}
+      </section>
+    </div>
   );
 };
 

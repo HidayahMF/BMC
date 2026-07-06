@@ -1,8 +1,22 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { ChevronRight, X, ArrowRight, ShieldCheck } from "lucide-react";
+import blackimage from "../assets/blackimage.jpg";
 import iso9001 from "../assets/iso9001.png";
 import iso14001 from "../assets/iso14001.png";
 import iso45001 from "../assets/iso45001.png";
 import proper2025 from "../assets/proper2025.png";
+
+/* ------------------------------------------------------------------ */
+/*  ONE CONSISTENT COLOR SYSTEM — no rainbow tags, high contrast only  */
+/* ------------------------------------------------------------------ */
+
+const NAVY = "#0D1F5C";
+const INK = "#050B2B"; // deeper near-black navy for max contrast text
+const BRASS = "#D4A843";
+const PAPER = "#F4F6FC";
+const SLATE = "#5A6785"; // muted body text, still readable (>4.5:1 on white)
+const BRASS_DARK = "#8A6413"; // darker brass variant for readable text-on-light use
 
 /* ─── DATA SERTIFIKASI & PENGHARGAAN ── */
 const CERTIFICATIONS = [
@@ -40,18 +54,10 @@ const CERTIFICATIONS = [
   },
 ];
 
-const TAG_COLOR = {
-  Quality:     { bg: "#EBF5FF", text: "#185FA5" },
-  Environment: { bg: "#EEF9F1", text: "#3B6D11" },
-  Safety:      { bg: "#FEECEC", text: "#A32D2D" },
-  Award:       { bg: "#FFF8E7", text: "#92650A" },
-};
-
 /* ─── CERTIFICATE CARD ── */
 function CertCard({ item, index, onClick }) {
   const [hov, setHov] = useState(false);
   const [vis, setVis] = useState(false);
-  const tc = TAG_COLOR[item.tag] || TAG_COLOR.Quality;
 
   useEffect(() => {
     const t = setTimeout(() => setVis(true), 150 + index * 100);
@@ -67,27 +73,31 @@ function CertCard({ item, index, onClick }) {
         opacity: vis ? 1 : 0,
         transform: vis ? "translateY(0)" : "translateY(24px)",
         transition: "opacity 0.55s ease, transform 0.55s ease, box-shadow 0.25s ease, border-color 0.25s ease",
+        borderColor: hov ? NAVY : "#DDE1EF",
+        boxShadow: hov
+          ? `0 18px 40px ${NAVY}26`
+          : "0 2px 10px rgba(13,31,92,0.05)",
       }}
-      className={[
-        "relative rounded-2xl bg-white cursor-pointer font-condensed border-[1.5px] overflow-hidden group",
-        hov ? "border-[#D4A843] shadow-[0_16px_40px_rgba(13,31,92,0.14)]" : "border-[#DDE1EF] shadow-[0_2px_10px_rgba(13,31,92,0.05)]",
-      ].join(" ")}
+      className="relative rounded-2xl bg-white cursor-pointer font-condensed border-[1.5px] overflow-hidden group"
     >
-      {/* Gold top accent */}
+      {/* top accent — single color, always same */}
       <div
-        className="absolute top-0 left-0 right-0 h-[3px] bg-[#D4A843] origin-left transition-transform duration-300"
-        style={{ transform: hov ? "scaleX(1)" : "scaleX(0)" }}
+        className="absolute top-0 left-0 right-0 h-[3px] origin-left transition-transform duration-300"
+        style={{ background: BRASS, transform: hov ? "scaleX(1)" : "scaleX(0)" }}
       />
 
       {/* Certificate image */}
-      <div className="h-[210px] bg-[#F4F6FC] flex items-center justify-center p-6 border-b border-[#DDE1EF] overflow-hidden">
+      <div
+        className="h-[210px] flex items-center justify-center p-6 border-b overflow-hidden"
+        style={{ background: PAPER, borderColor: "#DDE1EF" }}
+      >
         <img
           src={item.image}
           alt={item.name}
           className="max-h-full max-w-full object-contain transition-transform duration-300"
           style={{
             transform: hov ? "scale(1.06)" : "scale(1)",
-            filter: "drop-shadow(0 6px 14px rgba(13,31,92,0.12))",
+            filter: "drop-shadow(0 6px 14px rgba(13,31,92,0.15))",
           }}
         />
       </div>
@@ -95,31 +105,33 @@ function CertCard({ item, index, onClick }) {
       {/* Info */}
       <div className="p-5">
         <span
-          className="inline-block text-[0.56rem] font-bold tracking-[0.12em] uppercase px-2.5 py-[3px] rounded-full mb-3"
-          style={{ background: tc.bg, color: tc.text }}
+          className="inline-flex items-center gap-1.5 text-[0.56rem] font-bold tracking-[0.14em] uppercase px-2.5 py-[4px] rounded-full mb-3"
+          style={{ background: INK, color: BRASS }}
         >
+          <ShieldCheck size={11} strokeWidth={2.5} />
           {item.tag}
         </span>
-        <h3 className="text-[1rem] font-bold text-[#0D1F5C] uppercase tracking-wide leading-tight mb-1">
+        <h3 className="text-[1rem] font-bold uppercase tracking-wide leading-tight mb-1" style={{ color: INK }}>
           {item.name}
         </h3>
-        <p className="text-[0.72rem] text-[#8B96C0] font-semibold uppercase tracking-wider mb-3">
+        <p className="text-[0.72rem] font-semibold uppercase tracking-wider mb-3" style={{ color: SLATE }}>
           {item.subtitle}
         </p>
-        <p className="text-[0.76rem] text-[#6B7A9E] leading-[1.6] line-clamp-3">
+        <p className="text-[0.78rem] leading-[1.6] line-clamp-3" style={{ color: SLATE }}>
           {item.desc}
         </p>
 
-        <div className="mt-4 flex items-center gap-1.5 text-[0.68rem] font-bold text-[#0D1F5C] uppercase tracking-wide">
+        <div
+          className="mt-4 flex items-center gap-1.5 text-[0.68rem] font-bold uppercase tracking-wide"
+          style={{ color: NAVY }}
+        >
           Lihat Sertifikat
-          <svg
-            width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+          <ArrowRight
+            size={13}
+            strokeWidth={2.5}
             className="transition-transform duration-200"
             style={{ transform: hov ? "translateX(3px)" : "translateX(0)" }}
-          >
-            <path d="M5 12h14M13 6l6 6-6 6" />
-          </svg>
+          />
         </div>
       </div>
     </div>
@@ -139,21 +151,23 @@ function Lightbox({ item, onClose }) {
   }, [onClose]);
 
   if (!item) return null;
-  const tc = TAG_COLOR[item.tag] || TAG_COLOR.Quality;
 
   return (
     <div
       onClick={onClose}
       className="fixed inset-0 z-[1000] flex items-center justify-center p-5 animate-bmc-fade"
-      style={{ background: "rgba(9,22,72,0.8)", backdropFilter: "blur(6px)" }}
+      style={{ background: "rgba(5,11,43,0.82)", backdropFilter: "blur(6px)" }}
     >
       <div
         onClick={(e) => e.stopPropagation()}
         className="bg-white rounded-[18px] w-full max-w-[600px] max-h-[90vh] overflow-y-auto font-condensed animate-bmc-slide"
       >
-        <div className="bg-[#0D1F5C] px-[22px] py-[18px] flex items-start justify-between gap-3 rounded-t-[18px] sticky top-0 z-10">
+        <div
+          className="px-[22px] py-[18px] flex items-start justify-between gap-3 rounded-t-[18px] sticky top-0 z-10"
+          style={{ background: INK }}
+        >
           <div>
-            <p className="text-[0.56rem] text-[#D4A843] font-bold tracking-[0.16em] uppercase mb-1">
+            <p className="text-[0.56rem] font-bold tracking-[0.16em] uppercase mb-1" style={{ color: BRASS }}>
               Sertifikasi & Penghargaan
             </p>
             <h3 className="text-[1.1rem] font-bold text-white uppercase tracking-[0.03em] leading-[1.2]">
@@ -163,37 +177,44 @@ function Lightbox({ item, onClose }) {
           <button
             onClick={onClose}
             aria-label="Tutup"
-            className="shrink-0 mt-[2px] w-9 h-9 rounded-full bg-white/[0.12] border-none text-white text-base flex items-center justify-center cursor-pointer hover:bg-white/20 transition-colors"
+            className="shrink-0 mt-[2px] w-9 h-9 rounded-full bg-white/[0.12] border-none text-white flex items-center justify-center cursor-pointer hover:bg-white/20 transition-colors"
           >
-            ✕
+            <X size={16} strokeWidth={2.5} />
           </button>
         </div>
 
-        <div className="bg-[#F4F6FC] border-b border-[#DDE1EF] flex items-center justify-center p-8 min-h-[320px]">
+        <div
+          className="border-b flex items-center justify-center p-8 min-h-[320px]"
+          style={{ background: PAPER, borderColor: "#DDE1EF" }}
+        >
           <img
             src={item.image}
             alt={item.name}
             className="max-h-[420px] max-w-full object-contain rounded-md"
-            style={{ filter: "drop-shadow(0 10px 24px rgba(13,31,92,0.16))" }}
+            style={{ filter: "drop-shadow(0 10px 24px rgba(13,31,92,0.18))" }}
           />
         </div>
 
         <div className="p-[22px_24px]">
           <span
-            className="inline-block text-[0.6rem] font-bold px-3 py-[4px] rounded-full uppercase tracking-[0.08em] mb-3"
-            style={{ background: tc.bg, color: tc.text }}
+            className="inline-flex items-center gap-1.5 text-[0.6rem] font-bold px-3 py-[5px] rounded-full uppercase tracking-[0.1em] mb-3"
+            style={{ background: INK, color: BRASS }}
           >
+            <ShieldCheck size={12} strokeWidth={2.5} />
             {item.tag}
           </span>
-          <p className="text-[0.72rem] text-[#8B96C0] font-semibold uppercase tracking-wider mb-2">
+          <p className="text-[0.72rem] font-semibold uppercase tracking-wider mb-2" style={{ color: SLATE }}>
             {item.subtitle}
           </p>
-          <p className="text-[0.86rem] text-[#4A5568] leading-[1.75] mb-5">
+          <p className="text-[0.86rem] leading-[1.75] mb-5" style={{ color: "#334063" }}>
             {item.desc}
           </p>
           <button
             onClick={onClose}
-            className="px-5 py-3 rounded-[9px] border-[1.5px] border-[#DDE1EF] bg-transparent text-[#6B7A9E] text-[0.75rem] font-bold tracking-[0.06em] uppercase font-condensed cursor-pointer hover:border-[#0D1F5C] hover:text-[#0D1F5C] transition-colors duration-150"
+            className="px-5 py-3 rounded-[9px] border-[1.5px] bg-transparent text-[0.75rem] font-bold tracking-[0.06em] uppercase font-condensed cursor-pointer transition-colors duration-150"
+            style={{ borderColor: "#DDE1EF", color: SLATE }}
+            onMouseEnter={(e) => { e.currentTarget.style.borderColor = NAVY; e.currentTarget.style.color = NAVY; }}
+            onMouseLeave={(e) => { e.currentTarget.style.borderColor = "#DDE1EF"; e.currentTarget.style.color = SLATE; }}
           >
             Tutup
           </button>
@@ -205,6 +226,7 @@ function Lightbox({ item, onClose }) {
 
 /* ─── MAIN COMPONENT ── */
 const AwardsCertif = () => {
+  const navigate = useNavigate();
   const [entered, setEntered] = useState(false);
   const [selected, setSelected] = useState(null);
 
@@ -214,72 +236,124 @@ const AwardsCertif = () => {
   }, []);
 
   return (
-    <section className="bg-[#F4F6FC] py-20 font-condensed">
-      <div className="max-w-[1280px] mx-auto px-6">
-
-        {/* Heading */}
+    <div className="font-condensed">
+      {/* ── HERO ── */}
+      <section
+        id="awards-hero"
+        className="relative h-[40vh] min-h-80 flex items-end overflow-hidden"
+        style={{ background: NAVY }}
+      >
+        <img
+          src={blackimage}
+          alt="BMC"
+          className="absolute inset-0 w-full h-full object-cover opacity-20"
+        />
         <div
-          className="text-center mb-14"
-          style={{
-            opacity: entered ? 1 : 0,
-            transform: entered ? "translateY(0)" : "translateY(24px)",
-            transition: "opacity 0.6s ease, transform 0.6s ease",
-          }}
+          className="absolute inset-0"
+          style={{ background: `linear-gradient(100deg, ${NAVY} 40%, ${NAVY}CC 70%, transparent)` }}
+        />
+
+        {/* Tombol Back to Home */}
+        <button
+          onClick={() => navigate("/")}
+          className="absolute top-6 left-6 md:top-8 md:left-10 z-20 inline-flex items-center gap-2 text-white/70 text-xs uppercase tracking-widest transition-colors duration-200"
+          onMouseEnter={(e) => (e.currentTarget.style.color = BRASS)}
+          onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.7)")}
         >
-          <p className="text-[0.62rem] font-bold text-[#D4A843] tracking-[0.22em] uppercase mb-3">
-            Komitmen Kualitas & Standar
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+            <path d="M13 4l-6 6 6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+          Back to Home
+        </button>
+
+        <div className="relative z-10 px-6 md:px-20 pb-14 max-w-3xl">
+          <p className="text-[11px] font-medium tracking-[0.16em] uppercase mb-4 flex items-center" style={{ color: BRASS }}>
+            <a href="/" className="hover:text-white/90">Home</a>
+            <ChevronRight size={12} className="mx-1" />
+            <a href="/companyprofile" className="hover:text-white/90">About Us</a>
+            <ChevronRight size={12} className="mx-1" />
+            <span className="text-white">Awards & Certifications</span>
           </p>
-          <h2 className="text-[clamp(1.9rem,4vw,2.9rem)] font-bold text-[#0D1F5C] uppercase tracking-[0.03em] leading-[1.1] mb-4">
-            Awards &amp; Certifications
-          </h2>
-          <div className="w-[52px] h-[3px] bg-[#D4A843] mx-auto mb-5 rounded-sm" />
-          <p className="text-[0.86rem] text-[#6B7A9E] max-w-xl mx-auto">
-            Diakui melalui sertifikasi sistem manajemen internasional dan penghargaan atas
-            kinerja lingkungan, keselamatan, dan kualitas produksi.
+          <p className="text-[11px] font-medium tracking-[0.16em] uppercase mb-4" style={{ color: BRASS }}>
+            PT Braja Mukti Cakra
+          </p>
+          <h1 className="text-[48px] md:text-[64px] font-bold text-white leading-[1.05] mb-4">
+            Awards & Certifications
+          </h1>
+          <p className="text-white/55 text-[16px] leading-relaxed max-w-lg">
+            Diakui Melalui Standar Kualitas dan Kinerja Terbaik
           </p>
         </div>
+      </section>
 
-        {/* Stats bar */}
-        <div
-          className="flex flex-wrap justify-center gap-x-10 gap-y-4 mb-14"
-          style={{ opacity: entered ? 1 : 0, transition: "opacity 0.7s ease 0.15s" }}
-        >
-          {[
-            { n: "4", l: "Sertifikasi & Penghargaan" },
-            { n: "3", l: "Standar ISO Internasional" },
-            { n: "100%", l: "Kepatuhan Regulasi" },
-          ].map((s) => (
-            <div key={s.l} className="text-center">
-              <p className="text-[1.8rem] font-bold text-[#0D1F5C] leading-none mb-1">{s.n}</p>
-              <p className="text-[0.62rem] text-[#8B96C0] uppercase tracking-widest font-semibold">{s.l}</p>
-            </div>
-          ))}
+      {/* ── CERTIFICATIONS ── */}
+      <section className="py-20 font-condensed" style={{ background: PAPER }}>
+        <div className="max-w-[1280px] mx-auto px-6">
+
+          {/* Heading */}
+          <div
+            className="text-center mb-14"
+            style={{
+              opacity: entered ? 1 : 0,
+              transform: entered ? "translateY(0)" : "translateY(24px)",
+              transition: "opacity 0.6s ease, transform 0.6s ease",
+            }}
+          >
+            <p className="text-[0.62rem] font-bold tracking-[0.22em] uppercase mb-3" style={{ color: BRASS_DARK }}>
+              Komitmen Kualitas & Standar
+            </p>
+            <h2 className="text-[clamp(1.9rem,4vw,2.9rem)] font-bold uppercase tracking-[0.03em] leading-[1.1] mb-4" style={{ color: NAVY }}>
+              Awards &amp; Certifications
+            </h2>
+            <div className="w-[52px] h-[3px] mx-auto mb-5 rounded-sm" style={{ background: BRASS }} />
+            <p className="text-[0.86rem] max-w-xl mx-auto" style={{ color: SLATE }}>
+              Diakui melalui sertifikasi sistem manajemen internasional dan penghargaan atas
+              kinerja lingkungan, keselamatan, dan kualitas produksi.
+            </p>
+          </div>
+
+          {/* Stats bar */}
+          <div
+            className="flex flex-wrap justify-center gap-x-10 gap-y-4 mb-14"
+            style={{ opacity: entered ? 1 : 0, transition: "opacity 0.7s ease 0.15s" }}
+          >
+            {[
+              { n: "4", l: "Sertifikasi & Penghargaan" },
+              { n: "3", l: "Standar ISO Internasional" },
+              { n: "100%", l: "Kepatuhan Regulasi" },
+            ].map((s) => (
+              <div key={s.l} className="text-center">
+                <p className="text-[1.8rem] font-bold leading-none mb-1" style={{ color: NAVY }}>{s.n}</p>
+                <p className="text-[0.62rem] uppercase tracking-widest font-semibold" style={{ color: SLATE }}>{s.l}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Grid sertifikat */}
+          <div
+            className="grid gap-6"
+            style={{
+              gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
+              opacity: entered ? 1 : 0,
+              transition: "opacity 0.8s ease 0.2s",
+            }}
+          >
+            {CERTIFICATIONS.map((item, i) => (
+              <CertCard key={item.id} item={item} index={i} onClick={setSelected} />
+            ))}
+          </div>
         </div>
 
-        {/* Grid sertifikat */}
-        <div
-          className="grid gap-6"
-          style={{
-            gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
-            opacity: entered ? 1 : 0,
-            transition: "opacity 0.8s ease 0.2s",
-          }}
-        >
-          {CERTIFICATIONS.map((item, i) => (
-            <CertCard key={item.id} item={item} index={i} onClick={setSelected} />
-          ))}
-        </div>
-      </div>
+        {selected && <Lightbox item={selected} onClose={() => setSelected(null)} />}
 
-      {selected && <Lightbox item={selected} onClose={() => setSelected(null)} />}
-
-      <style>{`
-        @keyframes bmc-fade { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes bmc-slide { from { opacity: 0; transform: translateY(20px) scale(0.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
-        .animate-bmc-fade { animation: bmc-fade 0.2s ease; }
-        .animate-bmc-slide { animation: bmc-slide 0.25s ease; }
-      `}</style>
-    </section>
+        <style>{`
+          @keyframes bmc-fade { from { opacity: 0; } to { opacity: 1; } }
+          @keyframes bmc-slide { from { opacity: 0; transform: translateY(20px) scale(0.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
+          .animate-bmc-fade { animation: bmc-fade 0.2s ease; }
+          .animate-bmc-slide { animation: bmc-slide 0.25s ease; }
+        `}</style>
+      </section>
+    </div>
   );
 };
 
