@@ -26,7 +26,7 @@ const stats = [
   { value: "1986", label: "Est. Year", sub: "Decades of precision" },
   { value: "200+", label: "Employees", sub: "Skilled professionals" },
   { value: "5+", label: "Export Countries", sub: "Global footprint" },
-  { value: "OEM/REM", label: "Market Segments", sub: "Dual market capability" },
+  { value: "OEM / REM", label: "Market Segments", sub: "Dual market capability" },
 ];
 
 const markets = [

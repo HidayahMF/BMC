@@ -71,18 +71,16 @@ function PartnerCard({ item, index }) {
         transition: "opacity 0.5s ease, transform 0.5s ease, border-color 0.25s ease, box-shadow 0.25s ease",
       }}
       className={[
-        "relative rounded-2xl bg-white border-[1.5px] flex flex-col items-center justify-center h-[150px] px-6 pt-6 pb-4",
+        "relative rounded-2xl bg-white border-[1.5px] flex flex-col items-center justify-center h-[150px] px-6 pt-6 pb-4 overflow-hidden",
         hov ? "border-[#D4A843] shadow-[0_14px_32px_rgba(13,31,92,0.10)]" : "border-[#E3E7F3] shadow-[0_2px_10px_rgba(13,31,92,0.04)]",
       ].join(" ")}
     >
       <img
         src={item.logo}
         alt={item.name}
-        className="max-h-[60px] max-w-full object-contain grayscale opacity-60 transition-all duration-300"
+        className="max-h-[60px] max-w-full object-contain transition-transform duration-300 ease-out"
         style={{
-          filter: hov ? "grayscale(0)" : "grayscale(1)",
-          opacity: hov ? 1 : 0.6,
-          transform: hov ? "scale(1.06)" : "scale(1)",
+          transform: hov ? "scale(1.15)" : "scale(1)",
         }}
       />
       <p
@@ -253,4 +251,4 @@ const MitraPage = () => {
   );
 };
 
-export default MitraPage;
+export default MitraPage;     

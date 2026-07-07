@@ -44,12 +44,12 @@ function PartnerLogo({ item, index }) {
         transform: vis ? "translateY(0)" : "translateY(18px)",
         transition: "opacity 0.5s ease, transform 0.5s ease",
       }}
-      className="group relative rounded-2xl bg-white border-[1.5px] border-[#E3E7F3] flex items-center justify-center h-[110px] px-6 hover:border-[#D4A843] hover:shadow-[0_12px_30px_rgba(13,31,92,0.10)] transition-all duration-300"
+      className="group relative rounded-2xl bg-white border-[1.5px] border-[#E3E7F3] flex items-center justify-center h-[110px] px-6 overflow-hidden hover:border-[#D4A843] hover:shadow-[0_12px_30px_rgba(13,31,92,0.10)] transition-all duration-300"
     >
       <img
         src={item.logo}
         alt={item.name}
-        className="max-h-[52px] max-w-full object-contain grayscale opacity-60 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105"
+        className="max-h-[52px] max-w-full object-contain transition-transform duration-300 ease-out group-hover:scale-125"
       />
     </div>
   );
