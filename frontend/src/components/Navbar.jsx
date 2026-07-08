@@ -92,7 +92,7 @@ const Navbar = () => {
         return "/events";
 
       case "Top Management":
-        return "/majemen";
+        return "/manajemen";
 
       case "Commercial Car":
         return "/commercialcar";

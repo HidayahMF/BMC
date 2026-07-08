@@ -1,7 +1,3 @@
-// =======================
-// IMPORT IMAGES
-// =======================
-
 import balancerShaft from "../assets/Balancer Shaft.png";
 import bracketEngine from "../assets/Bracket Engine.png";
 import bracketExhPipe from "../assets/Bracket Exh Pipe.png";

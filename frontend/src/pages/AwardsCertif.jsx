@@ -6,6 +6,14 @@ import iso9001 from "../assets/iso9001.png";
 import iso14001 from "../assets/iso14001.png";
 import iso45001 from "../assets/iso45001.png";
 import proper2025 from "../assets/proper2025.png";
+import iatf16949 from "../assets/iatf16949.png";
+import gooddelivery from "../assets/gooddelivery.jpg";
+import excelentoemdelivery from "../assets/excelentoemdelivery.jpg";
+import excelentoesdelivery from "../assets/excelentoesdelivery.png";
+import excelentquality from "../assets/excelentquality.jpg";
+import lingkunganhidup from "../assets/lingkunganhidup.jpg";
+import pajakkontribusi from "../assets/pajakkontribusi.jpg";
+import appreciation from "../assets/appreciation.jpg"
 
 /* ------------------------------------------------------------------ */
 /*  ONE CONSISTENT COLOR SYSTEM — no rainbow tags, high contrast only  */
@@ -22,34 +30,98 @@ const BRASS_DARK = "#8A6413"; // darker brass variant for readable text-on-light
 const CERTIFICATIONS = [
   {
     id: 1,
-    name: "ISO 9001:2015",
-    subtitle: "Quality Management System",
-    image: iso9001,
-    desc: "Sertifikasi standar internasional untuk sistem manajemen mutu, memastikan konsistensi kualitas produk dan proses produksi.",
+    name: "IATF 16949:2016",
+    subtitle: "Automotive Quality Management System",
+    image: iatf16949,
+    desc: "Sistem Manajemen Mutu Otomotif untuk pembuatan pemesinan (machining) dan perakitan komponen (assembling parts) yang digunakan pada mesin (engine), poros penggerak (drive axle), dan sistem rem (brake system). Berlaku 25 Mei 2023 – 24 Mei 2026, diterbitkan oleh BSI (British Standards Institution).",
     tag: "Quality",
   },
   {
     id: 2,
-    name: "ISO 14001:2015",
-    subtitle: "Environmental Management System",
-    image: iso14001,
-    desc: "Sertifikasi standar internasional untuk sistem manajemen lingkungan, mendukung komitmen operasional yang ramah lingkungan.",
-    tag: "Environment",
+    name: "ISO 9001:2015",
+    subtitle: "Quality Management System",
+    image: iso9001,
+    desc: "Sertifikasi standar internasional untuk sistem manajemen mutu, memastikan konsistensi kualitas produk dan proses produksi pada sektor mesin, poros penggerak, dan sistem rem.",
+    tag: "Quality",
   },
   {
     id: 3,
-    name: "ISO 45001:2018",
-    subtitle: "Occupational Health & Safety",
-    image: iso45001,
-    desc: "Sertifikasi sistem manajemen keselamatan dan kesehatan kerja untuk melindungi seluruh karyawan di lingkungan produksi.",
-    tag: "Safety",
+    name: "ISO 14001:2015",
+    subtitle: "Environmental Management System",
+    image: iso14001,
+    desc: "Sertifikasi standar internasional untuk sistem manajemen lingkungan, mendukung komitmen operasional yang ramah lingkungan dalam proses manufaktur.",
+    tag: "Environment",
   },
   {
     id: 4,
-    name: "PROPER 2025",
-    subtitle: "Penilaian Kinerja Perusahaan",
+    name: "ISO 45001:2018",
+    subtitle: "Occupational Health & Safety",
+    image: iso45001,
+    desc: "Sertifikasi sistem manajemen keselamatan dan kesehatan kerja (K3) untuk melindungi seluruh karyawan di lingkungan produksi presisi.",
+    tag: "Safety",
+  },
+  {
+    id: 5,
+    name: "PROPER – Peringkat Biru",
+    subtitle: "Penilaian Kinerja Perusahaan (2023–2024)",
     image: proper2025,
-    desc: "Penghargaan dari Kementerian Lingkungan Hidup atas kinerja pengelolaan lingkungan perusahaan yang taat dan berkelanjutan.",
+    desc: "Penghargaan Program Penilaian Peringkat Kinerja Perusahaan dalam Pengelolaan Lingkungan Hidup (PROPER) dengan predikat Peringkat Biru, menunjukkan kepatuhan penuh perusahaan terhadap regulasi lingkungan yang berlaku.",
+    tag: "Environment",
+  },
+  {
+    id: 6,
+    name: "Fuso Good Delivery Supplier",
+    subtitle: "Annual Supplier Meeting 2026 · CY2025",
+    image: gooddelivery,
+    desc: "Penghargaan Good Delivery Supplier dari PT Krama Yudha Tiga Berlian Motors, PT Mitsubishi Krama Yudha Motors and Manufacturing, & PT Krama Yudha Ratu Motor, atas komitmen menghadirkan layanan tepat waktu, andal, dan berkualitas dalam produksi kendaraan Fuso di Indonesia.",
+    tag: "Award",
+  },
+  {
+    id: 7,
+    name: "Isuzu Excellent OES Delivery Performance",
+    subtitle: "Isuzu Supplier Conference 2025 · Tahun 2024",
+    image: excelentoesdelivery,
+    desc: "Certificate of Appreciation dari PT Isuzu Astra Motor Indonesia (IAMI) atas kinerja pengiriman Original Equipment Service (OES) terbaik sepanjang tahun 2024, diberikan pada 24 Februari 2025.",
+    tag: "Award",
+  },
+  {
+    id: 8,
+    name: "Isuzu Excellent OEM Delivery Performance",
+    subtitle: "Isuzu Supplier Conference 2025 · Tahun 2024",
+    image: excelentoemdelivery,
+    desc: "Certificate of Appreciation dari PT Isuzu Astra Motor Indonesia (IAMI) atas kinerja pengiriman Original Equipment Manufacturer (OEM) terbaik sepanjang tahun 2024, diberikan pada 24 Februari 2025.",
+    tag: "Award",
+  },
+  {
+    id: 9,
+    name: "Isuzu Excellent Quality Performance",
+    subtitle: "Isuzu Supplier Conference 2025 · Tahun 2024",
+    image: excelentquality,
+    desc: "Certificate of Appreciation dari PT Isuzu Astra Motor Indonesia (IAMI) atas pencapaian kinerja kualitas (Quality Performance) terbaik dan presisi produk sepanjang tahun 2024, diberikan pada 24 Februari 2025.",
+    tag: "Award",
+  },
+  {
+    id: 10,
+    name: "Wajib Pajak Kontribusi Besar",
+    subtitle: "Tahun Pajak 2024",
+    image: pajakkontribusi,
+    desc: "Piagam Penghargaan (No: Sert-62/KPP.3312/2025) dari Kepala KPP Madya Kota Bekasi atas peran serta aktif dan kontribusi besar terhadap pendapatan negara melalui kepatuhan wajib pajak tahun 2024, diberikan 18 Februari 2025.",
+    tag: "Award",
+  },
+  {
+    id: 11,
+    name: "Penghijauan Kota Bekasi",
+    subtitle: "Dinas Lingkungan Hidup · 28 Februari 2025",
+    image: lingkunganhidup,
+    desc: "Sertifikat Apresiasi dari Kepala Dinas Lingkungan Hidup (DLH) Kota Bekasi atas partisipasi aktif perusahaan dalam penyediaan pohon sebagai wujud nyata dukungan program penghijauan wilayah Kota Bekasi.",
+    tag: "Environment",
+  },
+  {
+    id: 12,
+    name: "Best Delivery Achievement",
+    subtitle: "PT Hino Motors Manufacturing Indonesia · 30 Maret 2022",
+    image: appreciation, 
+    desc: "Penghargaan dari PT Hino Motors Manufacturing Indonesia atas pengakuan terhadap kinerja luar biasa dan dukungan penuh (outstanding performance and support) sepanjang tahun 2021.",
     tag: "Award",
   },
 ];
@@ -78,7 +150,7 @@ function CertCard({ item, index, onClick }) {
           ? `0 18px 40px ${NAVY}26`
           : "0 2px 10px rgba(13,31,92,0.05)",
       }}
-      className="relative rounded-2xl bg-white cursor-pointer font-condensed border-[1.5px] overflow-hidden group"
+      className="relative rounded-2xl bg-white cursor-pointer font-condensed border-[1.5px] overflow-hidden group h-full flex flex-col"
     >
       {/* top accent — single color, always same */}
       <div
@@ -88,7 +160,7 @@ function CertCard({ item, index, onClick }) {
 
       {/* Certificate image */}
       <div
-        className="h-[210px] flex items-center justify-center p-6 border-b overflow-hidden"
+        className="h-[210px] shrink-0 flex items-center justify-center p-6 border-b overflow-hidden"
         style={{ background: PAPER, borderColor: "#DDE1EF" }}
       >
         <img
@@ -103,9 +175,9 @@ function CertCard({ item, index, onClick }) {
       </div>
 
       {/* Info */}
-      <div className="p-5">
+      <div className="p-5 flex flex-col flex-1">
         <span
-          className="inline-flex items-center gap-1.5 text-[0.56rem] font-bold tracking-[0.14em] uppercase px-2.5 py-[4px] rounded-full mb-3"
+          className="inline-flex items-center gap-1.5 text-[0.56rem] font-bold tracking-[0.14em] uppercase px-2.5 py-[4px] rounded-full mb-3 self-start"
           style={{ background: INK, color: BRASS }}
         >
           <ShieldCheck size={11} strokeWidth={2.5} />
@@ -122,7 +194,7 @@ function CertCard({ item, index, onClick }) {
         </p>
 
         <div
-          className="mt-4 flex items-center gap-1.5 text-[0.68rem] font-bold uppercase tracking-wide"
+          className="mt-auto pt-4 flex items-center gap-1.5 text-[0.68rem] font-bold uppercase tracking-wide"
           style={{ color: NAVY }}
         >
           Lihat Sertifikat
@@ -318,8 +390,8 @@ const AwardsCertif = () => {
             style={{ opacity: entered ? 1 : 0, transition: "opacity 0.7s ease 0.15s" }}
           >
             {[
-              { n: "4", l: "Sertifikasi & Penghargaan" },
-              { n: "3", l: "Standar ISO Internasional" },
+              { n: "12", l: "Sertifikasi & Penghargaan" },
+              { n: "4", l: "Standar Manajemen Internasional" },
               { n: "100%", l: "Kepatuhan Regulasi" },
             ].map((s) => (
               <div key={s.l} className="text-center">

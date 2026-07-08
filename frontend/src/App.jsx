@@ -18,6 +18,7 @@ import ContactUs from "./pages/ContactUs";
 import CustomerSection from "./sections/CustomerSection"
 import CustomerPage from "./pages/CustomerPage"
 import BeritaPage from "./pages/BeritaPage";
+import BeritaPageAwal from "./pages/BeritaPageAwal"
 import ManajemenPage from "./pages/ManajemenPage";
 
 
@@ -62,8 +63,9 @@ const App = () => {
           <Route path="/events" element={<PageLayout><AwardCertif /></PageLayout>} />
           <Route path="/contactus" element={<PageLayout><ContactUs /></PageLayout>} />
           <Route path="/customer" element={<PageLayout><CustomerPage /></PageLayout>} />
-          <Route path="/berita" element={<PageLayout><BeritaPage /></PageLayout>} />
-          <Route path="/customer" element={<PageLayout><ManajemenPage /></PageLayout>} />
+          <Route path="/berita" element={<PageLayout><BeritaPageAwal /></PageLayout>} />
+          <Route path="/berita/:slug" element={<PageLayout><BeritaPage /></PageLayout>} />
+          <Route path="/manajemen" element={<PageLayout><ManajemenPage /></PageLayout>} />
 
 
       
