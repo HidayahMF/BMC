@@ -1,14 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { ChevronRight, X, ArrowUpRight, Quote } from "lucide-react";
-import { dewanDireksi, dewanKomisaris } from "../data/ManajemenData";
+import { headOf} from "../data/ManajemenData";
 
-/* ────────────────────────────────────────────────────────────
-   Helpers
-──────────────────────────────────────────────────────────── */
 
-// The highest-ranking person (Direktur Utama / Komisaris Utama) gets the
-// VIP treatment. We detect "utama" in the position string; if none is
-// found, the first entry in the array is treated as the lead.
 const splitVIP = (data) => {
   const vipIdx = data.findIndex((p) =>
     p.position?.toLowerCase().includes("utama")
@@ -19,9 +13,7 @@ const splitVIP = (data) => {
   return { vip, rest };
 };
 
-/* ────────────────────────────────────────────────────────────
-   Small building blocks
-──────────────────────────────────────────────────────────── */
+
 
 const MonoBadge = ({ children, tone = "light" }) => (
   <span
@@ -35,9 +27,7 @@ const MonoBadge = ({ children, tone = "light" }) => (
   </span>
 );
 
-/* ────────────────────────────────────────────────────────────
-   Side Drawer — full bio detail
-──────────────────────────────────────────────────────────── */
+
 
 const ProfileDrawer = ({ person, open, onClose }) => {
   useEffect(() => {
@@ -106,7 +96,7 @@ const ProfileDrawer = ({ person, open, onClose }) => {
             {/* Scrollable body */}
             <div className="flex-1 overflow-y-auto p-6 md:p-8">
               <div className="flex flex-wrap gap-2 mb-7">
-                <MonoBadge tone="dark">Menjabat sejak {person.since}</MonoBadge>
+               
                 <MonoBadge tone="dark">{person.code}</MonoBadge>
               </div>
 
@@ -155,7 +145,7 @@ const VIPCard = ({ person, label, onOpen }) => (
 
       <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
         <p className="font-mono text-[11px] tracking-[0.3em] uppercase text-[#D4A843] mb-3">
-          {person.code} &middot; Menjabat sejak {person.since}
+          {person.code} 
         </p>
         <h2 className="font-['Roboto_Condensed',sans-serif] text-3xl md:text-5xl font-bold text-white leading-[1.05]">
           {person.name}
@@ -223,9 +213,7 @@ const MemberCard = ({ person, onOpen }) => (
       <p className="text-white/65 text-[13px] mt-0.5">{person.position}</p>
 
       <div className="flex items-center justify-between mt-3 pt-3 border-t border-white/10">
-        <span className="font-mono text-[10px] uppercase tracking-widest text-white/50">
-          Sejak {person.since}
-        </span>
+        
         <span className="flex items-center gap-1 text-[11px] font-semibold text-[#D4A843] opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
           Profil
           <ArrowUpRight size={12} />
@@ -244,7 +232,7 @@ const ManajemenPage = () => {
   const [selected, setSelected] = useState(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
 
-  const data = activeTab === "direksi" ? dewanDireksi : dewanKomisaris;
+  const data = activeTab === "direksi" ? headOf : BoardOFD;
   const { vip, rest } = splitVIP(data);
   const vipLabel =
     activeTab === "direksi" ? "Pucuk Pimpinan Direksi" : "Pucuk Pimpinan Komisaris";
@@ -302,8 +290,8 @@ const ManajemenPage = () => {
         <div className="flex justify-center">
           <div className="inline-flex bg-white border border-[#0D1F5C]/10 rounded-full p-1.5 shadow-lg shadow-[#0D1F5C]/5">
             {[
-              { key: "komisaris", label: "Dewan Komisaris" },
-              { key: "direksi", label: "Dewan Direksi" },
+              { key: "komisaris", label: "headOf" },
+              { key: "direksi", label: "BoardOFD" },
             ].map((tab) => (
               <button
                 key={tab.key}

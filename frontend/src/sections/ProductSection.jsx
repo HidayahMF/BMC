@@ -18,10 +18,10 @@ const CAT_COLOR = {
   "Heavy Equipment": { bg: "#F4F4F4", text: "#444444" },
 };
 
-/* jumlah produk yang ditampilkan di Home */
-const PREVIEW_COUNT = 8;
 
-/* ─── PRODUCT CARD ─────────────────────────────────────── */
+const PREVIEW_IDS = [7, 14, 15, 16, 23, 33];
+
+
 function ProductCard({ product, index, onClick }) {
   const [hov, setHov] = useState(false);
   const [vis, setVis] = useState(false);
@@ -195,8 +195,11 @@ export default function ProductSection() {
   const [selected, setSelected] = useState(null);
   const navigate = useNavigate();
 
-  const preview = products.slice(0, PREVIEW_COUNT);
+const PREVIEW_IDS = [7, 14, 15, 16, 23, 33];
 
+const preview = products.filter(product =>
+  PREVIEW_IDS.includes(product.id)
+);
   return (
     <section id="products" className="bg-site py-[80px_0_60px] font-condensed">
       <div className="max-w-[1280px] mx-auto px-6 pt-8">

@@ -368,3 +368,4 @@ export const categories = [
   "Seal",
   "Heavy Equipment",
 ];
+

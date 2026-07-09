@@ -122,10 +122,7 @@ const ContactUs = () => {
                             data-aos="fade-right"
                             data-aos-duration="700"
                         >
-                            <div
-                                className="absolute -bottom-16 -right-16 w-64 h-64 rounded-full opacity-[0.08] pointer-events-none"
-                                style={{ background: "#D4A843" }}
-                            />
+                           
 
                             <div className="relative z-10">
                                 <p className="text-[#D4A843] text-[11px] font-bold tracking-[0.2em] uppercase mb-1">

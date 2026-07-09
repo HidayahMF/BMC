@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { ChevronRight } from "lucide-react";
 import Trukkuning from "../assets/Trukkuning.png";
 import Trukoren  from "../assets/Trukoren.png";
+import blackimage from "../assets/blackimage.jpg";
+
 import bracketFrAbs    from "../assets/Bracket Fr Abs.png";
 import bracketSpringFr from "../assets/Bracket Spring FR.png";
 import bracketSpringRr from "../assets/Bracket Spring RR.png";
@@ -93,6 +97,7 @@ function PulseDot({ color, active }) {
 export default function SparePartDiagram() {
   const [active, setActive]   = useState(null);
   const [entered, setEntered] = useState(false);
+  const navigate = useNavigate();
 
   // entry animation
   useEffect(() => {
@@ -104,7 +109,71 @@ export default function SparePartDiagram() {
   const cc = activeSpot ? (CAT_COLOR[activeSpot.category] || CAT_COLOR.Engine) : null;
 
   return (
-    <section className="bg-[#F4F6FC] py-16 font-condensed">
+    <div className="bg-white font-condensed">
+      {/* ── HERO ── */}
+    <section
+  id="parts-hero"
+  className="relative h-[40vh] min-h-80 flex items-end bg-[#0D1F5C] overflow-hidden"
+>
+  <img
+    src={blackimage}
+    alt="BMC Commercial Vehicle Parts"
+    className="absolute inset-0 w-full h-full object-cover opacity-25"
+  />
+  <div className="absolute inset-0 bg-gradient-to-r from-[#0D1F5C] via-[#0D1F5C]/80 to-transparent" />
+
+  {/* Tombol Back to Home */}
+  <button
+    onClick={() => navigate("/")}
+    className="absolute top-6 left-6 md:top-8 md:left-10 z-20 inline-flex items-center gap-2 text-white/70 text-xs uppercase tracking-widest hover:text-[#D4A843] transition-colors duration-200"
+    data-aos="fade-down"
+    data-aos-duration="600"
+  >
+    <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+      <path
+        d="M13 4l-6 6 6 6"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+    Back to Home
+  </button>
+
+  <div
+    className="relative z-10 px-6 md:px-20 pb-14 max-w-3xl"
+    data-aos="fade-up"
+    data-aos-duration="800"
+  >
+    <p className="text-[#D4A843] text-[11px] font-medium tracking-[0.16em] uppercase mb-4 flex items-center">
+      <a href="/" className="hover:text-white/90">
+        Home
+      </a>
+
+      <ChevronRight size={12} className="mx-1" />
+
+      <a href="/parts" className="hover:text-white/90">
+        Parts
+      </a>
+
+      <ChevronRight size={12} className="mx-1" />
+
+      <span className="text-white">Commercial</span>
+    </p>
+    <p className="text-[#D4A843] text-[11px] font-medium tracking-[0.16em] uppercase mb-4">
+      PT Braja Mukti Cakra
+    </p>
+    <h1 className="text-[48px] md:text-[64px] font-bold text-white leading-[1.05] mb-4">
+      Commercial Vehicle Parts
+    </h1>
+    <p className="text-white/50 text-[16px] leading-relaxed max-w-lg">
+      Reliable Components for Heavy-Duty Commercial Fleets
+    </p>
+  </div>
+</section>
+
+      <section className="bg-[#F4F6FC] py-16 font-condensed">
       <div className="max-w-[1280px] mx-auto px-6">
 
         {/* ── HEADING ── */}
@@ -399,6 +468,7 @@ export default function SparePartDiagram() {
         }
         .animate-ping { animation: ping 1.6s cubic-bezier(0,0,0.2,1) infinite; }
       `}</style>
-    </section>
+      </section>
+    </div>
   );
 }
