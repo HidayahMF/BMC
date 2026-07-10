@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Factory,
   Settings,
@@ -780,6 +781,7 @@ function Lightbox({ item, onClose, onPrev, onNext }) {
    MAIN PAGE
 ══════════════════════════════════════════════════════════ */
 const MachiningFacilities = () => {
+    const navigate = useNavigate();
   const [activeCat, setActiveCat] = useState("All");
   const [lightboxItem, setLightboxItem] = useState(null);
 
@@ -812,6 +814,16 @@ const MachiningFacilities = () => {
           HERO + STATS (dark navy)
       ══════════════════════════════════════════════ */}
       <section className="bg-[#0A1642] pt-20 pb-16 relative overflow-hidden">
+          <button
+            type="button"
+            onClick={() => navigate("/")}
+            className="absolute top-6 left-6 md:top-8 md:left-10 z-[999] pointer-events-auto inline-flex items-center gap-2 text-white/70 text-xs uppercase tracking-widest hover:text-[#D4A843] transition-colors duration-200"
+          >
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+            <path d="M13 4l-6 6 6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+          Back to Home
+        </button>
         <div
           className="absolute inset-0 opacity-[0.04] pointer-events-none"
           style={{

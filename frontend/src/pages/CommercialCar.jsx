@@ -125,7 +125,7 @@ export default function SparePartDiagram() {
   {/* Tombol Back to Home */}
   <button
     onClick={() => navigate("/")}
-    className="absolute top-6 left-6 md:top-8 md:left-10 z-20 inline-flex items-center gap-2 text-white/70 text-xs uppercase tracking-widest hover:text-[#D4A843] transition-colors duration-200"
+    className="absolute top-6 left-6 md:top-8 md:left-10 z-999 inline-flex items-center gap-2 text-white/70 text-xs uppercase tracking-widest hover:text-[#D4A843] transition-colors duration-200"
     data-aos="fade-down"
     data-aos-duration="600"
   >

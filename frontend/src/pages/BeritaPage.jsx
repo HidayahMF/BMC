@@ -46,7 +46,7 @@ const LinkedinIcon = (props) => (
         </h1>
         <button
           onClick={() => navigate("/berita")}
-          className="inline-flex items-center gap-2 bg-[#0D1F5C] text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-[#0D1F5C]/90 transition-colors"
+          className="absolute top-6 left-6 md:top-8 md:left-10 z-999 inline-flex items-center gap-2 text-white/70 text-xs uppercase tracking-widest hover:text-[#D4A843] transition-colors duration-200"
         >
           <ArrowLeft size={16} /> Kembali ke Berita
         </button>
@@ -70,7 +70,7 @@ const LinkedinIcon = (props) => (
 
         <button
           onClick={() => navigate("/berita")}
-          className="absolute top-6 left-6 md:top-8 md:left-10 z-20 inline-flex items-center gap-2 text-white/70 text-xs uppercase tracking-widest hover:text-[#D4A843] transition-colors duration-200"
+          className="absolute top-6 left-6 md:top-8 md:left-10 z-[9999] pointer-events-auto inline-flex items-center gap-2 text-white/70 text-xs uppercase tracking-widest hover:text-[#D4A843] transition-colors duration-200"
         >
           <ArrowLeft size={16} />
           Kembali ke Berita

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { ChevronRight, X, ArrowUpRight, Quote } from "lucide-react";
-import { headOf} from "../data/ManajemenData";
-
+import { management } from "../data/ManajemenData";
 
 const splitVIP = (data) => {
   const vipIdx = data.findIndex((p) =>
@@ -12,8 +11,6 @@ const splitVIP = (data) => {
   const rest = data.filter((_, i) => i !== idx);
   return { vip, rest };
 };
-
-
 
 const MonoBadge = ({ children, tone = "light" }) => (
   <span
@@ -26,8 +23,6 @@ const MonoBadge = ({ children, tone = "light" }) => (
     {children}
   </span>
 );
-
-
 
 const ProfileDrawer = ({ person, open, onClose }) => {
   useEffect(() => {
@@ -96,7 +91,6 @@ const ProfileDrawer = ({ person, open, onClose }) => {
             {/* Scrollable body */}
             <div className="flex-1 overflow-y-auto p-6 md:p-8">
               <div className="flex flex-wrap gap-2 mb-7">
-               
                 <MonoBadge tone="dark">{person.code}</MonoBadge>
               </div>
 
@@ -145,7 +139,7 @@ const VIPCard = ({ person, label, onOpen }) => (
 
       <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
         <p className="font-mono text-[11px] tracking-[0.3em] uppercase text-[#D4A843] mb-3">
-          {person.code} 
+          {person.code}
         </p>
         <h2 className="font-['Roboto_Condensed',sans-serif] text-3xl md:text-5xl font-bold text-white leading-[1.05]">
           {person.name}
@@ -213,7 +207,6 @@ const MemberCard = ({ person, onOpen }) => (
       <p className="text-white/65 text-[13px] mt-0.5">{person.position}</p>
 
       <div className="flex items-center justify-between mt-3 pt-3 border-t border-white/10">
-        
         <span className="flex items-center gap-1 text-[11px] font-semibold text-[#D4A843] opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
           Profil
           <ArrowUpRight size={12} />
@@ -227,15 +220,33 @@ const MemberCard = ({ person, onOpen }) => (
    Page
 ──────────────────────────────────────────────────────────── */
 
+const TABS = [
+  { key: "commissioners", label: "Board of Commissioners", group: "board-of-commissioners" },
+  { key: "directors", label: "Board of Directors", group: "board-of-directors" },
+  { key: "heads", label: "Head of Departments", group: "head-of-department" },
+];
+
+const VIP_LABELS = {
+  commissioners: "Pucuk Pimpinan Komisaris",
+  directors: "Pucuk Pimpinan Direksi",
+  heads: "Kepala Departemen",
+};
+
+const MEMBER_LABELS = {
+  commissioners: "Komisaris",
+  directors: "Direksi",
+  heads: "Departemen",
+};
+
 const ManajemenPage = () => {
-  const [activeTab, setActiveTab] = useState("direksi");
+  const [activeTab, setActiveTab] = useState("commissioners");
   const [selected, setSelected] = useState(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
 
-  const data = activeTab === "direksi" ? headOf : BoardOFD;
+  const activeGroup = TABS.find((tab) => tab.key === activeTab)?.group;
+  const data = management.filter((item) => item.group === activeGroup);
   const { vip, rest } = splitVIP(data);
-  const vipLabel =
-    activeTab === "direksi" ? "Pucuk Pimpinan Direksi" : "Pucuk Pimpinan Komisaris";
+  const vipLabel = VIP_LABELS[activeTab];
 
   const openProfile = (person) => {
     setSelected(person);
@@ -245,16 +256,24 @@ const ManajemenPage = () => {
 
   return (
     <div className="bg-[#FAFAF8] font-['Inter',sans-serif] min-h-screen">
-      {/* ── BREADCRUMB ── */}
-      <div className="border-b border-[#0D1F5C]/10">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center gap-2 text-[11px] font-mono uppercase tracking-wider text-[#64748B]">
-          <a href="/" className="hover:text-[#D4A843] transition-colors">Beranda</a>
-          <ChevronRight size={11} />
-          <a href="/tentang-kami" className="hover:text-[#D4A843] transition-colors">Tentang Kami</a>
-          <ChevronRight size={11} />
-          <span className="text-[#0D1F5C] font-semibold">Manajemen</span>
-        </div>
-      </div>
+
+      <button
+        onClick={() => window.location.assign("/")}
+        className="absolute top-6 left-6 md:top-8 md:left-10 z-999 inline-flex items-center gap-2 text-white/70 text-xs uppercase tracking-widest hover:text-[#D4A843] transition-colors duration-200"
+        data-aos="fade-down"
+        data-aos-duration="600"
+      >
+        <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+          <path
+            d="M13 4l-6 6 6 6"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+        Back to Home
+      </button>
 
       {/* ── HERO ── */}
       <section className="relative overflow-hidden bg-[#08132E] py-24 px-6">
@@ -289,10 +308,7 @@ const ManajemenPage = () => {
       <section className="max-w-7xl mx-auto px-6 -mt-7 relative z-10">
         <div className="flex justify-center">
           <div className="inline-flex bg-white border border-[#0D1F5C]/10 rounded-full p-1.5 shadow-lg shadow-[#0D1F5C]/5">
-            {[
-              { key: "komisaris", label: "headOf" },
-              { key: "direksi", label: "BoardOFD" },
-            ].map((tab) => (
+            {TABS.map((tab) => (
               <button
                 key={tab.key}
                 onClick={() => setActiveTab(tab.key)}
@@ -310,15 +326,17 @@ const ManajemenPage = () => {
       </section>
 
       {/* ── VIP FEATURE ── */}
-      <section className="max-w-7xl mx-auto px-6 pt-16">
-        <VIPCard person={vip} label={vipLabel} onOpen={() => openProfile(vip)} />
-      </section>
+      {vip && (
+        <section className="max-w-7xl mx-auto px-6 pt-16">
+          <VIPCard person={vip} label={vipLabel} onOpen={() => openProfile(vip)} />
+        </section>
+      )}
 
       {/* ── MEMBER GRID ── */}
       <section className="max-w-7xl mx-auto px-6 py-16">
         <div className="flex items-center gap-4 mb-8">
           <span className="font-mono text-[11px] tracking-[0.25em] uppercase text-[#D4A843]">
-            Anggota {activeTab === "direksi" ? "Direksi" : "Komisaris"} Lainnya
+            Anggota {MEMBER_LABELS[activeTab]} Lainnya
           </span>
           <div className="h-px flex-1 bg-[#0D1F5C]/10" />
         </div>

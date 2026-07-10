@@ -328,7 +328,7 @@ const AwardsCertif = () => {
         {/* Tombol Back to Home */}
         <button
           onClick={() => navigate("/")}
-          className="absolute top-6 left-6 md:top-8 md:left-10 z-20 inline-flex items-center gap-2 text-white/70 text-xs uppercase tracking-widest transition-colors duration-200"
+          className="absolute top-6 left-6 md:top-8 md:left-10 z-999 inline-flex items-center gap-2 text-white/70 text-xs uppercase tracking-widest transition-colors duration-200"
           onMouseEnter={(e) => (e.currentTarget.style.color = BRASS)}
           onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.7)")}
         >
