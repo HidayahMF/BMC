@@ -4,9 +4,13 @@
 // import Director from "../assets/Director.png";
 
 import HeadOfCommercial from "../assets/HeadOfCommercial.png";
+import HeadOfCommercial1 from "../assets/HeadOfCommercial1.png";
 import HeadOfHCGS from "../assets/HeadOfHCGS.png";
+import HeadOfHCGS1 from "../assets/HeadOfHCGS1.png";
 import HeadOfOperasional from "../assets/HeadOfOperasional.png";
+import HeadOfOperasional1 from "../assets/HeadOfOperasional1.png";
 import HeadOfFinance from "../assets/HeadOfFinance.jpg";
+import HeadOfFinance1 from "../assets/HeadOfFinance1.png";
 
 export const management = [
   // =====================================================
@@ -56,8 +60,8 @@ export const management = [
     group: "head-of-department",
     code: "HEAD · 01",
     name: "BONI GAMAWAN",
-    position: "Head of Finance, Procurement & IT",
-    photo: HeadOfFinance,
+    position: "Head of Finance Accounting, Procurement & IT",
+    photo: HeadOfFinance1,
     bio: ".....",
   },
   {
@@ -65,7 +69,7 @@ export const management = [
     code: "HEAD · 02",
     name: "ROBYANDI DWI RONUDI",
     position: "Head of Commercial",
-    photo: HeadOfCommercial,
+    photo: HeadOfCommercial1,
     bio: ".....",
   },
   {
@@ -73,15 +77,15 @@ export const management = [
     code: "HEAD · 03",
     name: "LELA HAMONG PRASETYO",
     position: "Head of Human Capital & General Services",
-    photo: HeadOfHCGS,
+    photo: HeadOfHCGS1,
     bio: ".....",
   },
   {
     group: "head-of-department",
     code: "HEAD · 04",
     name: "ARIF WIDAYAT",
-    position: "Head of Operations",
-    photo: HeadOfOperasional,
+    position: "Head of Operational",
+    photo: HeadOfOperasional1,
     bio: ".....",
   },
 ];
