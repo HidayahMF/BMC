@@ -7,7 +7,7 @@ import HeadOfCommercial from "../assets/HeadOfCommercial.png";
 import HeadOfCommercial1 from "../assets/HeadOfCommercial1.png";
 import HeadOfHCGS from "../assets/HeadOfHCGS.png";
 import HeadOfHCGS1 from "../assets/HeadOfHCGS1.png";
-import HeadOfOperasional from "../assets/HeadOfOperasional.png";
+
 import HeadOfOperasional1 from "../assets/HeadOfOperasional1.png";
 import HeadOfFinance from "../assets/HeadOfFinance.jpg";
 import HeadOfFinance1 from "../assets/HeadOfFinance1.png";
@@ -22,7 +22,7 @@ export const management = [
     name: " ANINDRA ARDIANSYAH BAKRIE",
     position: "President Commissioner",
     photo: PresidentCommissioner,
-    bio: ".....",
+    // bio: ".....",
   },
   {
     group: "board-of-commissioners",
@@ -30,7 +30,7 @@ export const management = [
     name: "TAKUYA OGAWA",
     position: "Commissioner",
     photo: Commissioner,
-    bio: ".....",
+    // bio: ".....",
   },
 
   // =====================================================
@@ -42,7 +42,7 @@ export const management = [
     name: "V. BIMO KURNIATMOKO",
     position: "President Director",
     photo: PresidentDirector,
-    bio: ".....",
+    // bio: ".....",
   },
   {
     group: "board-of-directors",
@@ -50,7 +50,7 @@ export const management = [
     name: "AHMAD ABADI",
     position: "Director",
     photo: Director,
-    bio: ".....",
+    // bio: ".....",
   },
 
   // =====================================================
@@ -62,15 +62,15 @@ export const management = [
     name: "BONI GAMAWAN",
     position: "Head of Finance Accounting, Procurement & IT",
     photo: HeadOfFinance1,
-    bio: ".....",
+    // bio: ".....",
   },
   {
     group: "head-of-department",
     code: "HEAD · 02",
     name: "ROBYANDI DWI RONUDI",
-    position: "Head of Commercial",
+    position: "Head of Commercial & Bussines Development",
     photo: HeadOfCommercial1,
-    bio: ".....",
+    // bio: ".....",
   },
   {
     group: "head-of-department",
@@ -78,7 +78,7 @@ export const management = [
     name: "LELA HAMONG PRASETYO",
     position: "Head of Human Capital & General Services",
     photo: HeadOfHCGS1,
-    bio: ".....",
+    // bio: ".....",
   },
   {
     group: "head-of-department",
@@ -86,6 +86,6 @@ export const management = [
     name: "ARIF WIDAYAT",
     position: "Head of Operational",
     photo: HeadOfOperasional1,
-    bio: ".....",
+    // bio: ".....",
   },
 ];

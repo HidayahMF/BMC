@@ -29,7 +29,7 @@ const menuItems = [
     ],
   },
   {
-    title: "Machining Facilities",
+    title: "Facilities & Equipment",
 
   },
   {
@@ -104,7 +104,7 @@ const Navbar = () => {
       case "General Parts & Accessories":
         return "/parts";
 
-           case "Machining Facilities":
+           case "Facilities & Equipment":
         return "/machiningfacilities";
         
         case "Contact Us":

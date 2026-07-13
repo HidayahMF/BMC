@@ -710,7 +710,7 @@ function Lightbox({ item, onClose, onPrev, onNext }) {
         <div className="bg-[#0D1F5C] px-[22px] py-[18px] flex items-start justify-between gap-3 rounded-t-[18px] sticky top-0 z-10">
           <div>
             <p className="text-[0.56rem] text-[#D4A843] font-bold tracking-[0.16em] uppercase mb-1">
-              {info.machineType || "Machining Facility"}
+              {info.machineType || "Facilities & Equipment"}
             </p>
             <h3 className="text-[1.1rem] font-bold text-white uppercase tracking-[0.03em] leading-[1.2]">
               {item.name}
@@ -863,7 +863,7 @@ const MachiningFacilities = () => {
               State-of-the-Art Manufacturing
             </p>
             <h1 className="text-[clamp(1.9rem,4vw,2.9rem)] font-bold text-white uppercase tracking-[0.03em] leading-[1.1] mb-4">
-              Machining Facilities
+             Facilities & Equipment
             </h1>
             <div className="w-[52px] h-[3px] bg-[#D4A843] mx-auto mb-5 rounded-sm" />
             <p className="text-[0.86rem] text-[#AEB8DA] max-w-xl mx-auto">

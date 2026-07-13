@@ -84,18 +84,18 @@ const ProfileDrawer = ({ person, open, onClose }) => {
                 <MonoBadge tone="dark">{person.code}</MonoBadge>
               </div>
 
-              <Quote size={22} className="text-[#D4A843] mb-3" strokeWidth={1.5} />
+              {/* <Quote size={22} className="text-[#D4A843] mb-3" strokeWidth={1.5} />
               <p className="text-[#334155] text-[15px] leading-relaxed">
                 {person.bio}
-              </p>
-                <a
+              </p> */}
+                {/* <a
               
                 href="#"
                 className="inline-flex items-center gap-1.5 mt-8 text-sm font-semibold text-[#0D1F5C] hover:text-[#D4A843] transition-colors duration-200"
               >
                 Lihat profil lengkap
                 <ArrowUpRight size={14} />
-              </a>
+              </a> */}
             </div>
           </>
         )}
