@@ -35,7 +35,7 @@ const ContactUs = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const to = "marketingteam@bmc.co.id";
+        const to = "marketing@bmc.co.id";
         const subject = encodeURIComponent(form.subject || "Pertanyaan dari Website");
         const body = encodeURIComponent(
             `Nama: ${form.name}\nEmail: ${form.email}\n\n${form.message}`

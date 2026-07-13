@@ -600,7 +600,7 @@ const Milestone = () => {
             </p>
           </div>
           <a
-            href="/companyprofile"
+            href="/"
             className="whitespace-nowrap rounded-lg bg-[#D4A843] px-7 py-3 text-sm font-extrabold uppercase tracking-[0.05em] text-[#0D1F5C] no-underline"
           >
             About Us →
