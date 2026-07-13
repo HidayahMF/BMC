@@ -254,33 +254,7 @@
         </section>
 
         {/* ── CLOSING CTA ── */}
-        <section className="bg-[#0A1642] py-16 relative overflow-hidden">
-          <div
-            className="absolute inset-0 opacity-[0.04] pointer-events-none"
-            style={{
-              backgroundImage:
-                "linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)",
-              backgroundSize: "48px 48px",
-            }}
-          />
-          <div className="max-w-[720px] mx-auto px-6 text-center relative">
-            <p className="text-[#D4A843] text-[0.62rem] font-bold tracking-[0.22em] uppercase mb-3">
-              Bergabung Bersama Kami
-            </p>
-            <h3 className="text-white text-[1.6rem] md:text-[2rem] font-bold uppercase tracking-wide leading-tight mb-4">
-              Menjadi Mitra Manufaktur Presisi Anda
-            </h3>
-            <p className="text-[#AEB8DA] text-[0.86rem] leading-relaxed mb-8">
-              Kami terbuka untuk kerja sama jangka panjang dengan prinsip mutu, layanan, dan nilai terbaik.
-            </p>
-            <button
-              onClick={() => navigate("/contactus")}
-              className="px-10 py-[14px] bg-[#D4A843] text-[#0A1642] border-none rounded-[9px] text-[0.78rem] font-bold tracking-[0.1em] uppercase font-condensed cursor-pointer hover:opacity-90 transition-opacity"
-            >
-              Hubungi Kami →
-            </button>
-          </div>
-        </section>
+      
       </div>
     );
   };

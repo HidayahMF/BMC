@@ -1,7 +1,7 @@
-// import PresidentCommissioner from "../assets/PresidentCommissioner.png";
-// import Commissioner from "../assets/Commissioner.png";
-// import PresidentDirector from "../assets/PresidentDirector.png";
-// import Director from "../assets/Director.png";
+import PresidentCommissioner from "../assets/PresidentCommissioner.png";
+import Commissioner from "../assets/Commissioner.png";
+  import PresidentDirector from "../assets/PresidentDirector.png";
+import Director from "../assets/Director.png";
 
 import HeadOfCommercial from "../assets/HeadOfCommercial.png";
 import HeadOfCommercial1 from "../assets/HeadOfCommercial1.png";
@@ -21,7 +21,7 @@ export const management = [
     code: "BOC · 01",
     name: " ANINDRA ARDIANSYAH BAKRIE",
     position: "President Commissioner",
-    // photo: PresidentCommissioner,
+    photo: PresidentCommissioner,
     bio: ".....",
   },
   {
@@ -29,7 +29,7 @@ export const management = [
     code: "BOC · 02",
     name: "TAKUYA OGAWA",
     position: "Commissioner",
-    // photo: Commissioner,
+    photo: Commissioner,
     bio: ".....",
   },
 
@@ -41,7 +41,7 @@ export const management = [
     code: "BOD · 01",
     name: "V. BIMO KURNIATMOKO",
     position: "President Director",
-    // photo: PresidentDirector,
+    photo: PresidentDirector,
     bio: ".....",
   },
   {
@@ -49,7 +49,7 @@ export const management = [
     code: "BOD · 02",
     name: "AHMAD ABADI",
     position: "Director",
-    // photo: Director,
+    photo: Director,
     bio: ".....",
   },
 
