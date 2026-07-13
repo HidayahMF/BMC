@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { ChevronRight, X, ArrowRight, ShieldCheck } from "lucide-react";
 import blackimage from "../assets/blackimage.jpg";
-import iso9001 from "../assets/iso9001.png";
+import iso9001 from "../assets/iso9001.jpg";
 import iso14001 from "../assets/iso14001.png";
 import iso45001 from "../assets/iso45001.png";
 import proper2025 from "../assets/proper2025.png";
-import iatf16949 from "../assets/iatf16949.png";
+import iatf16949 from "../assets/iatf16949.jpg";
 import gooddelivery from "../assets/gooddelivery.jpg";
 import excelentoemdelivery from "../assets/excelentoemdelivery.jpg";
 import excelentoesdelivery from "../assets/excelentoesdelivery.png";
@@ -34,7 +34,7 @@ const CERTIFICATIONS = [
     name: "IATF 16949:2016",
     subtitle: "Automotive Quality Management System",
     image: iatf16949,
-    desc: "Sistem Manajemen Mutu Otomotif untuk pembuatan pemesinan (machining) dan perakitan komponen (assembling parts) yang digunakan pada mesin (engine), poros penggerak (drive axle), dan sistem rem (brake system). Berlaku 25 Mei 2023 – 24 Mei 2026, diterbitkan oleh BSI (British Standards Institution).",
+    desc: "Sistem Manajemen Mutu Otomotif untuk pembuatan pemesinan (machining) dan perakitan komponen (assembling parts) yang digunakan pada mesin (engine), poros penggerak (drive axle), dan sistem rem (brake system). diterbitkan oleh BSI (British Standards Institution).",
     tag: "Quality",
   },
   {

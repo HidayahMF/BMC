@@ -92,11 +92,11 @@ const IconLI = () => (
 );
 
 const socials = [
-  {
-    Icon: IconFB,
-    href: "https://www.facebook.com/ptbmc/?locale=id_ID",
-    label: "Facebook",
-  },
+  // {
+  //   Icon: IconFB,
+  //   href: "https://www.facebook.com/ptbmc/?locale=id_ID",
+  //   label: "Facebook",
+  // },
   {
     Icon: IconIG,
     href: "https://www.instagram.com/ptbrajamukticakra/",
@@ -112,7 +112,7 @@ const socials = [
 const contacts = [
   {
     Icon: IconMail,
-    text: "marketingteam@bmc.co.id",
+    text: "marketing@bmc.co.id",
   },
   {
     Icon: IconPhone,

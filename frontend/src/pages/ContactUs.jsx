@@ -178,7 +178,7 @@ const ContactUs = () => {
                                                 Robyandi Dwi Ronudi
                                             </p>
                                             <p className="text-white/60 text-[12px] leading-relaxed">
-                                                Commercial Dept. Head
+                                               Head of Commercial & Bussines Development 
                                             </p>
                                         </div>
                                     </div>
@@ -240,10 +240,10 @@ const ContactUs = () => {
                                             </p>
                                             
                                             <a
-                                                href="mailto:marketingteam@bmc.co.id"
+                                                href="mailto:marketing@bmc.co.id"
                                                 className="block text-white text-[13.5px] font-semibold hover:text-[#D4A843] transition-colors truncate"
                                             >
-                                                marketingteam@bmc.co.id
+                                                marketing@bmc.co.id
                                             </a>
                                         </div>
                                     </div>
