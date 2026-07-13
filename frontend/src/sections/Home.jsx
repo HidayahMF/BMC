@@ -16,7 +16,7 @@ import mbaevi1 from "../assets/mbaevi1.jpeg"
 
 /* ─── DATA ─────────────────────────────────── */
 const slides = [
-    { type: "image", src: mbaevi1, tag: "AUTOMOTIVE OEM & REM", title: ["Built for", "Every Drive"], sub: "High-precision parts for commercial cars and passenger vehicles", cta: "View Products", link: "/parts" },
+    { type: "image", src: mbaevi1, tag: "AUTOMOTIVE OEM & OES", title: ["Built for", "Every Drive"], sub: "High-precision parts for commercial cars and passenger vehicles", cta: "View Products", link: "/parts" },
   { type: "image", src: bmc1, tag: "HEAVY EQUIPMENT", title: ["Power the", "Industry"], sub: "Durable components trusted across heavy equipment & agribusiness sectors", cta: "Learn More", link: "/companyprofile" },
   { type: "image", src: bmc3, tag: "GLOBAL EXPORTS", title: ["Made in", "Indonesia"], sub: "Exporting to Japan, Malaysia, Philippines, Thailand, Italy and beyond", cta: "Our Markets", link: "/companyprofile" },
 
