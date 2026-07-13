@@ -11,6 +11,8 @@ import rotorBrake from "../assets/Rotor Brake.png";
 import knuckleSteering from "../assets/Knuckle Steering.png";
 import caseBearing from "../assets/Case Bearing.png";
 import bracketEngine from "../assets/Bracket Engine.png";
+import bmc2 from "../assets/bmc2.jpg";
+
 
 /* ─── CATEGORY COLORS ── */
 const CAT_COLOR = {
@@ -84,67 +86,79 @@ const PassengerCar = () => {
   return (
     <div className="bg-white font-condensed">
       {/* ── HERO ── */}
-      <section
-        id="parts-hero"
-        className="relative h-[40vh] min-h-80 flex items-end bg-[#0D1F5C] overflow-hidden"
-      >
-        <img
-          src={blackimage}
-          alt="BMC Passenger Car Parts"
-          className="absolute inset-0 w-full h-full object-cover opacity-25"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0D1F5C] via-[#0D1F5C]/80 to-transparent" />
+    <section
+  id="parts-hero"
+  className="relative h-[40vh] min-h-80 flex items-end bg-[#0D1F5C] overflow-hidden"
+>
+  <img
+    src={bmc2}
+    alt="BMC Passenger Car Parts"
+    className="absolute inset-0 w-full h-full object-cover opacity-60"
+  />
 
-        {/* Tombol Back to Home */}
-        <button
-          onClick={() => navigate("/")}
-          className="absolute top-6 left-6 md:top-8 md:left-10 z-999 inline-flex items-center gap-2 text-white/70 text-xs uppercase tracking-widest hover:text-[#D4A843] transition-colors duration-200"
-          data-aos="fade-down"
-          data-aos-duration="600"
-        >
-          <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
-            <path
-              d="M13 4l-6 6 6 6"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-          Back to Home
-        </button>
+  {/* Left Gradient */}
+  <div className="absolute inset-0 bg-gradient-to-r from-[#0D1F5C]/80 via-[#0D1F5C]/40 to-transparent" />
 
-        <div
-          className="relative z-10 px-6 md:px-20 pb-14 max-w-3xl"
-          data-aos="fade-up"
-          data-aos-duration="800"
-        >
-          <p className="text-[#D4A843] text-[11px] font-medium tracking-[0.16em] uppercase mb-4 flex items-center">
-            <a href="/" className="hover:text-white/90">
-              Home
-            </a>
+  {/* Bottom Gradient */}
+  <div className="absolute inset-0 bg-gradient-to-t from-[#0D1F5C]/70 via-transparent to-transparent" />
 
-            <ChevronRight size={12} className="mx-1" />
+  {/* Back Button */}
+  <button
+    onClick={() => navigate("/")}
+    className="absolute top-6 left-6 md:top-8 md:left-10 z-50 inline-flex items-center gap-2 text-white/70 text-xs uppercase tracking-widest hover:text-[#D4A843] transition-colors duration-200"
+    data-aos="fade-down"
+    data-aos-duration="600"
+  >
+    <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+      <path
+        d="M13 4l-6 6 6 6"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+    Back to Home
+  </button>
 
-            <a href="/parts" className="hover:text-white/90">
-              Parts
-            </a>
+  <div
+    className="relative z-10 px-6 md:px-20 pb-14 max-w-3xl"
+    data-aos="fade-up"
+    data-aos-duration="800"
+  >
+    {/* Breadcrumb */}
+    <p className="text-[#D4A843] text-[11px] font-medium tracking-[0.16em] uppercase mb-4 flex items-center">
+      <a href="/" className="hover:text-white/90">
+        Home
+      </a>
 
-            <ChevronRight size={12} className="mx-1" />
+      <ChevronRight size={12} className="mx-1" />
 
-            <span className="text-white">Passenger Car</span>
-          </p>
-          <p className="text-[#D4A843] text-[11px] font-medium tracking-[0.16em] uppercase mb-4">
-            PT Braja Mukti Cakra
-          </p>
-          <h1 className="text-[48px] md:text-[64px] font-bold text-white leading-[1.05] mb-4">
-            Passenger Car Parts
-          </h1>
-          <p className="text-white/50 text-[16px] leading-relaxed max-w-lg">
-            Precision Engineering for Everyday Driving Comfort
-          </p>
-        </div>
-      </section>
+      <a href="/parts" className="hover:text-white/90">
+        Parts
+      </a>
+
+      <ChevronRight size={12} className="mx-1" />
+
+      <span className="text-white">Passenger Car</span>
+    </p>
+
+    {/* Subtitle */}
+    <p className="text-[#D4A843] text-[11px] font-medium tracking-[0.16em] uppercase mb-4">
+      PT Braja Mukti Cakra
+    </p>
+
+    {/* Title */}
+    <h1 className="text-[48px] md:text-[64px] font-bold text-white leading-[1.05] mb-4 drop-shadow-lg">
+      Passenger Car Parts
+    </h1>
+
+    {/* Description */}
+    <p className="text-white/70 text-[16px] leading-relaxed max-w-lg drop-shadow-md">
+      Precision Engineering for Everyday Driving Comfort
+    </p>
+  </div>
+</section>
 
       <section className="bg-[#F4F6FC] py-16 font-condensed">
         <div className="max-w-[1280px] mx-auto px-6">

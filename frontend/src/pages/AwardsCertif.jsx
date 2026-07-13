@@ -14,6 +14,7 @@ import excelentquality from "../assets/excelentquality.jpg";
 import lingkunganhidup from "../assets/lingkunganhidup.jpg";
 import pajakkontribusi from "../assets/pajakkontribusi.jpg";
 import appreciation from "../assets/appreciation.jpg"
+import bmc2 from "../assets/bmc2.jpg"
 
 /* ------------------------------------------------------------------ */
 /*  ONE CONSISTENT COLOR SYSTEM — no rainbow tags, high contrast only  */
@@ -310,54 +311,73 @@ const AwardsCertif = () => {
   return (
     <div className="font-condensed">
       {/* ── HERO ── */}
-      <section
-        id="awards-hero"
-        className="relative h-[40vh] min-h-80 flex items-end overflow-hidden"
-        style={{ background: NAVY }}
-      >
-        <img
-          src={blackimage}
-          alt="BMC"
-          className="absolute inset-0 w-full h-full object-cover opacity-20"
-        />
-        <div
-          className="absolute inset-0"
-          style={{ background: `linear-gradient(100deg, ${NAVY} 40%, ${NAVY}CC 70%, transparent)` }}
-        />
+     <section
+  id="awards-hero"
+  className="relative h-[40vh] min-h-80 flex items-end bg-[#0D1F5C] overflow-hidden"
+>
+  <img
+    src={bmc2}
+    alt="BMC"
+    className="absolute inset-0 w-full h-full object-cover opacity-60"
+  />
 
-        {/* Tombol Back to Home */}
-        <button
-          onClick={() => navigate("/")}
-          className="absolute top-6 left-6 md:top-8 md:left-10 z-999 inline-flex items-center gap-2 text-white/70 text-xs uppercase tracking-widest transition-colors duration-200"
-          onMouseEnter={(e) => (e.currentTarget.style.color = BRASS)}
-          onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.7)")}
-        >
-          <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
-            <path d="M13 4l-6 6 6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-          Back to Home
-        </button>
+  {/* Left Gradient */}
+  <div className="absolute inset-0 bg-gradient-to-r from-[#0D1F5C]/80 via-[#0D1F5C]/40 to-transparent" />
 
-        <div className="relative z-10 px-6 md:px-20 pb-14 max-w-3xl">
-          <p className="text-[11px] font-medium tracking-[0.16em] uppercase mb-4 flex items-center" style={{ color: BRASS }}>
-            <a href="/" className="hover:text-white/90">Home</a>
-            <ChevronRight size={12} className="mx-1" />
-            <a href="/companyprofile" className="hover:text-white/90">About Us</a>
-            <ChevronRight size={12} className="mx-1" />
-            <span className="text-white">Awards & Certifications</span>
-          </p>
-          <p className="text-[11px] font-medium tracking-[0.16em] uppercase mb-4" style={{ color: BRASS }}>
-            PT Braja Mukti Cakra
-          </p>
-          <h1 className="text-[48px] md:text-[64px] font-bold text-white leading-[1.05] mb-4">
-            Awards & Certifications
-          </h1>
-          <p className="text-white/55 text-[16px] leading-relaxed max-w-lg">
-            Diakui Melalui Standar Kualitas dan Kinerja Terbaik
-          </p>
-        </div>
-      </section>
+  {/* Bottom Gradient */}
+  <div className="absolute inset-0 bg-gradient-to-t from-[#0D1F5C]/70 via-transparent to-transparent" />
 
+  {/* Back Button */}
+  <button
+    onClick={() => navigate("/")}
+    className="absolute top-6 left-6 md:top-8 md:left-10 z-50 inline-flex items-center gap-2 text-white/70 text-xs uppercase tracking-widest hover:text-[#D4A843] transition-colors duration-200"
+  >
+    <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+      <path
+        d="M13 4l-6 6 6 6"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+    Back to Home
+  </button>
+
+  <div className="relative z-10 px-6 md:px-20 pb-14 max-w-3xl">
+    {/* Breadcrumb */}
+    <p className="text-[#D4A843] text-[11px] font-medium tracking-[0.16em] uppercase mb-4 flex items-center">
+      <a href="/" className="hover:text-white/90">
+        Home
+      </a>
+
+      <ChevronRight size={12} className="mx-1" />
+
+      <a href="/companyprofile" className="hover:text-white/90">
+        About Us
+      </a>
+
+      <ChevronRight size={12} className="mx-1" />
+
+      <span className="text-white">Awards &amp; Certifications</span>
+    </p>
+
+    {/* Subtitle */}
+    <p className="text-[#D4A843] text-[11px] font-medium tracking-[0.16em] uppercase mb-4">
+      PT Braja Mukti Cakra
+    </p>
+
+    {/* Title */}
+    <h1 className="text-[48px] md:text-[64px] font-bold text-white leading-[1.05] mb-4 drop-shadow-lg">
+      Awards &amp; Certifications
+    </h1>
+
+    {/* Description */}
+    <p className="text-white/70 text-[16px] leading-relaxed max-w-lg drop-shadow-md">
+      Diakui Melalui Standar Kualitas dan Kinerja Terbaik
+    </p>
+  </div>
+</section>
       {/* ── CERTIFICATIONS ── */}
       <section className="py-20 font-condensed" style={{ background: PAPER }}>
         <div className="max-w-[1280px] mx-auto px-6">

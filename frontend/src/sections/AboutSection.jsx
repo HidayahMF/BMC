@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import home1 from '../assets/home1.png'
 import noimage from "../assets/noimage.jpg"
 import blackimage from "../assets/blackimage.jpg"
+import bmc2 from "../assets/bmc2.jpg"
 
 
 const AboutSection = () => {
@@ -82,7 +83,7 @@ const AboutSection = () => {
         >
           <div className="md:-mr-20 md:-mb-16 h-full overflow-hidden rounded-sm">
             <img
-              src={blackimage}
+              src={bmc2}
               alt="BMC Manufacturing"
               className="w-full h-full min-h-[360px] rounded-3xl object-cover"
             />

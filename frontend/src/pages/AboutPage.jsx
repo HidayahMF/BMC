@@ -8,7 +8,11 @@ import iatf16949 from "../assets/iatf16949.png"
 import peta from "../assets/peta.png"
 import { ChevronRight } from "lucide-react";
 import home1 from "../assets/home1.png"
-import bmc2 from "../assets/bmc2.png"
+import bmc2 from "../assets/bmc2.jpg";
+import bmc3 from "../assets/bmc3.png";
+import MACHROBOTICLEANTEC1 from "../assets/MACHROBOTICLEANTEC1.png";
+
+
 const sections = [
   {
     id: "overview",
@@ -18,7 +22,7 @@ const sections = [
     full: `PT Braja Mukti Cakra (BMC) adalah perusahaan manufaktur komponen presisi yang telah menjadi mitra terpercaya berbagai industri selama hampir empat dekade. Berdiri sejak tahun 1986, BMC berfokus pada produksi komponen berkualitas tinggi untuk OEM dan REM di sektor otomotif, alat berat, agribisnis, serta industri permesinan umum.
 
 Didukung teknologi manufaktur modern, sistem manajemen mutu berstandar internasional, serta sumber daya manusia yang berpengalaman, BMC terus menghadirkan solusi komponen presisi yang memenuhi standar global.`,
-    img: home1,
+    img:bmc3,
   },
   {
     id: "journey",
@@ -28,7 +32,7 @@ Didukung teknologi manufaktur modern, sistem manajemen mutu berstandar internasi
     full: `PT Braja Mukti Cakra didirikan pada 24 Januari 1986 melalui kolaborasi antara PT Krama Yudha Tiga Berlian Motors (KTB), pemegang merek Mitsubishi di Indonesia, dan PT Bakrie Autoparts, salah satu pelopor industri pengecoran logam di Indonesia.
 
 Berbekal transfer teknologi dan sistem produksi Jepang, BMC mengembangkan kapabilitas manufaktur untuk industri otomotif nasional dan internasional. Saat ini produk BMC diekspor ke Jepang, Malaysia, Taiwan, Filipina, dan Australia.`,
-    img: blackimage,
+    img: home1,
   },
   {
     id: "quality",
@@ -38,7 +42,7 @@ Berbekal transfer teknologi dan sistem produksi Jepang, BMC mengembangkan kapabi
     full: `Kualitas merupakan fondasi utama seluruh aktivitas operasional BMC. Setiap proses produksi dirancang untuk memastikan presisi, konsistensi, dan keandalan produk sesuai kebutuhan pelanggan OEM maupun aftermarket.
 
 BMC menerapkan sistem manajemen mutu yang memenuhi standar internasional ISO 9001:2015, ISO 14001:2015, dan ISO 45001:2018, diwujudkan melalui budaya continuous improvement dan penguatan kapabilitas engineering.`,
-    img: blackimage,
+    img: MACHROBOTICLEANTEC1,
   },
 ];
 
@@ -244,15 +248,7 @@ const AboutPage = () => {
         data-aos-once="true"
       >
         <div>
-          <h2
-            className="text-[28px] md:text-[32px] font-bold font-['Roboto_Condensed',sans-serif] text-[#0D1F5C] leading-tight mb-5 text-center"
-            data-aos="fade-down"
-            data-aos-duration="700"
-            data-aos-delay="100"
-            data-aos-once="true"
-          >
-            THE PRECISION VALUE
-          </h2>
+         
 
           <div
             data-aos="zoom-in"
@@ -260,11 +256,7 @@ const AboutPage = () => {
             data-aos-delay="250"
             data-aos-once="true"
           >
-            <img
-              src={peta}
-              alt="The Precision Value"
-              className="w-full max-w-6xl h-auto mx-auto pb-10"
-            />
+            
           </div>
         </div>
       </div>

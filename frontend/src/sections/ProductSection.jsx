@@ -195,7 +195,7 @@ export default function ProductSection() {
   const [selected, setSelected] = useState(null);
   const navigate = useNavigate();
 
-const PREVIEW_IDS = [7, 14, 15, 16, 23, 33];
+const PREVIEW_IDS = [7, 12, 14, 15, 16, 23, 33, 34, 31, 30];
 
 const preview = products.filter(product =>
   PREVIEW_IDS.includes(product.id)

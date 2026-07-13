@@ -2,7 +2,7 @@ import React, { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { ChevronRight, ChevronDown, Calendar } from "lucide-react";
 import newsData from "../data/newsData";
-
+import bmc2 from "../assets/bmc2.jpg"
 const BeritaPageAwal = () => {
   const navigate = useNavigate();
   const [selectedYear, setSelectedYear] = useState("All");
@@ -23,57 +23,77 @@ const BeritaPageAwal = () => {
   return (
     <div className="bg-white font-['Roboto_Condensed',sans-serif]">
       {/* ── HERO ── */}
-      <section
-        id="berita-hero"
-        className="relative h-[40vh] min-h-80 flex items-end bg-[#0D1F5C] overflow-hidden"
-      >
-        <img
-          src={newsData[0].image}
-          alt="Siaran Pers & Berita BMC"
-          className="absolute inset-0 w-full h-full object-cover opacity-60"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0D1F5C]/80 via-[#0D1F5C]/40 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0D1F5C]/70 via-transparent to-transparent" />
+        <section
+  id="berita-hero"
+  className="relative h-[40vh] min-h-80 flex items-end bg-[#0D1F5C] overflow-hidden"
+>
+  <img
+    src={bmc2}
+    alt="PT Braja Mukti Cakra"
+    className="absolute inset-0 w-full h-full object-cover opacity-60"
+  />
 
-        <button
-          onClick={() => navigate("/")}
-          className="absolute top-6 left-6 md:top-8 md:left-10 z-999 inline-flex items-center gap-2 text-white/70 text-xs uppercase tracking-widest hover:text-[#D4A843] transition-colors duration-200"
-          data-aos="fade-down"
-          data-aos-duration="600"
-        >
-          <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
-            <path
-              d="M13 4l-6 6 6 6"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-          Back to Home
-        </button>
+  {/* Left Gradient */}
+  <div className="absolute inset-0 bg-gradient-to-r from-[#0D1F5C]/80 via-[#0D1F5C]/40 to-transparent" />
 
-        <div
-          className="relative z-10 px-6 md:px-20 pb-14 max-w-3xl"
-          data-aos="fade-up"
-          data-aos-duration="800"
-        >
-          <p className="text-[#D4A843] text-[11px] font-medium tracking-[0.16em] uppercase mb-4 flex items-center">
-            <a href="/" className="hover:text-white/90">
-              Home
-            </a>
-            <ChevronRight size={12} className="mx-1" />
-            <span className="text-white">Siaran Pers & Berita</span>
-          </p>
-          <h1 className="text-[48px] md:text-[64px] font-bold text-white leading-[1.05] mb-4 drop-shadow-lg">
-            Siaran Pers & Berita
-          </h1>
-          <p className="text-white/70 text-[16px] leading-relaxed max-w-lg drop-shadow-md">
-            Update terbaru seputar aktivitas, inovasi, dan pencapaian PT Braja
-            Mukti Cakra
-          </p>
-        </div>
-      </section>
+  {/* Bottom Gradient */}
+  <div className="absolute inset-0 bg-gradient-to-t from-[#0D1F5C]/70 via-transparent to-transparent" />
+
+  {/* Back Button */}
+  <button
+    onClick={() => navigate("/")}
+    className="absolute top-6 left-6 md:top-8 md:left-10 z-50 inline-flex items-center gap-2 text-white/70 text-xs uppercase tracking-widest hover:text-[#D4A843] transition-colors duration-200"
+    data-aos="fade-down"
+    data-aos-duration="600"
+  >
+    <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+      <path
+        d="M13 4l-6 6 6 6"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+    Back to Home
+  </button>
+
+  <div
+    className="relative z-10 px-6 md:px-20 pb-14 max-w-3xl"
+    data-aos="fade-up"
+    data-aos-duration="800"
+  >
+    {/* Breadcrumb */}
+
+     <p className="mb-4 flex items-center text-[11px] font-semibold uppercase tracking-[0.16em] text-[#D4A843]">
+                <a href="/" className="text-[#D4A843] no-underline">
+                  Home
+                </a>
+                <ChevronRight size={12} className="mx-1 text-[#D4A843]" />
+                <a href="/companyprofile" className="text-[#D4A843] no-underline">
+                  About Us
+                </a>
+                <ChevronRight size={12} className="mx-1 text-[#D4A843]" />
+              <span className="text-white">Siaran Pers &amp; Berita</span>
+              </p>
+
+    {/* Subtitle */}
+    <p className="text-[#D4A843] text-[11px] font-medium tracking-[0.16em] uppercase mb-4">
+      PT Braja Mukti Cakra
+    </p>
+
+    {/* Title */}
+    <h1 className="text-[48px] md:text-[64px] font-bold text-white leading-[1.05] mb-4 drop-shadow-lg">
+      Siaran Pers &amp; Berita
+    </h1>
+
+    {/* Description */}
+    <p className="text-white/70 text-[16px] leading-relaxed max-w-lg drop-shadow-md">
+      Update terbaru seputar aktivitas, inovasi, dan pencapaian PT Braja Mukti
+      Cakra
+    </p>
+  </div>
+</section>
 
       {/* ── FILTER + LIST ── */}
       <section className="max-w-7xl mx-auto px-6 md:px-10 py-16">

@@ -4,7 +4,7 @@ import { ChevronRight } from "lucide-react";
 import Trukkuning from "../assets/Trukkuning.png";
 import Trukoren  from "../assets/Trukoren.png";
 import blackimage from "../assets/blackimage.jpg";
-
+import bmc2 from "../assets/bmc2.jpg";
 import bracketFrAbs    from "../assets/Bracket Fr Abs.png";
 import bracketSpringFr from "../assets/Bracket Spring FR.png";
 import bracketSpringRr from "../assets/Bracket Spring RR.png";
@@ -111,21 +111,26 @@ export default function SparePartDiagram() {
   return (
     <div className="bg-white font-condensed">
       {/* ── HERO ── */}
-    <section
+   <section
   id="parts-hero"
   className="relative h-[40vh] min-h-80 flex items-end bg-[#0D1F5C] overflow-hidden"
 >
   <img
-    src={blackimage}
+    src={bmc2}
     alt="BMC Commercial Vehicle Parts"
-    className="absolute inset-0 w-full h-full object-cover opacity-25"
+    className="absolute inset-0 w-full h-full object-cover opacity-60"
   />
-  <div className="absolute inset-0 bg-gradient-to-r from-[#0D1F5C] via-[#0D1F5C]/80 to-transparent" />
 
-  {/* Tombol Back to Home */}
+  {/* Left Gradient */}
+  <div className="absolute inset-0 bg-gradient-to-r from-[#0D1F5C]/80 via-[#0D1F5C]/40 to-transparent" />
+
+  {/* Bottom Gradient */}
+  <div className="absolute inset-0 bg-gradient-to-t from-[#0D1F5C]/70 via-transparent to-transparent" />
+
+  {/* Back Button */}
   <button
     onClick={() => navigate("/")}
-    className="absolute top-6 left-6 md:top-8 md:left-10 z-999 inline-flex items-center gap-2 text-white/70 text-xs uppercase tracking-widest hover:text-[#D4A843] transition-colors duration-200"
+    className="absolute top-6 left-6 md:top-8 md:left-10 z-50 inline-flex items-center gap-2 text-white/70 text-xs uppercase tracking-widest hover:text-[#D4A843] transition-colors duration-200"
     data-aos="fade-down"
     data-aos-duration="600"
   >
@@ -146,6 +151,7 @@ export default function SparePartDiagram() {
     data-aos="fade-up"
     data-aos-duration="800"
   >
+    {/* Breadcrumb */}
     <p className="text-[#D4A843] text-[11px] font-medium tracking-[0.16em] uppercase mb-4 flex items-center">
       <a href="/" className="hover:text-white/90">
         Home
@@ -161,18 +167,23 @@ export default function SparePartDiagram() {
 
       <span className="text-white">Commercial</span>
     </p>
+
+    {/* Subtitle */}
     <p className="text-[#D4A843] text-[11px] font-medium tracking-[0.16em] uppercase mb-4">
       PT Braja Mukti Cakra
     </p>
-    <h1 className="text-[48px] md:text-[64px] font-bold text-white leading-[1.05] mb-4">
+
+    {/* Title */}
+    <h1 className="text-[48px] md:text-[64px] font-bold text-white leading-[1.05] mb-4 drop-shadow-lg">
       Commercial Vehicle Parts
     </h1>
-    <p className="text-white/50 text-[16px] leading-relaxed max-w-lg">
+
+    {/* Description */}
+    <p className="text-white/70 text-[16px] leading-relaxed max-w-lg drop-shadow-md">
       Reliable Components for Heavy-Duty Commercial Fleets
     </p>
   </div>
 </section>
-
       <section className="bg-[#F4F6FC] py-16 font-condensed">
       <div className="max-w-[1280px] mx-auto px-6">
 

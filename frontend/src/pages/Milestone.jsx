@@ -1,5 +1,6 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
-import blackimage from "../assets/blackimage.jpg";
+import { ChevronRight } from "lucide-react";
+import bmc2 from "../assets/bmc2.jpg";
 
 /* ------------------------------------------------------------------ */
 /*  DATA (UNCHANGED)                                                  */
@@ -126,7 +127,10 @@ const milestones = [
 ];
 
 /* ------------------------------------------------------------------ */
-/*  COLOR PALETTE SYSTEM                                              */
+/*  COLOR TOKENS                                                      */
+/*  (dipakai untuk gradient/stroke dinamis di JS & CSS hover-sync;    */
+/*   untuk styling statis, warna ini sudah dipindah jadi Tailwind     */
+/*   arbitrary value class, mis. bg-[#0D1F5C])                        */
 /* ------------------------------------------------------------------ */
 const PRIMARY = "#0D1F5C";
 const ACCENT = "#D4A843";
@@ -134,7 +138,7 @@ const ROAD = "#BFC4CC";
 const HIGHLIGHT = "#ECECEC";
 const SHADOW_COLOR = "rgba(0,0,0,0.18)";
 
-const SVG_WIDTH = 320; 
+const SVG_WIDTH = 320;
 
 /* ------------------------------------------------------------------ */
 /*  Catmull-Rom -> Smooth 3D Bezier Path                              */
@@ -159,83 +163,41 @@ function smoothPath(points) {
 /* ------------------------------------------------------------------ */
 /*  CARD CONTENT COMPONENT (FLOATING GLASS CARD)                      */
 /* ------------------------------------------------------------------ */
-function CardContent({ item, align, index }) {
+function CardContent({ item, align }) {
   const isRight = align === "right";
   return (
     <div
-      className={`bmc-floating-card bmc-card-index-${index}`}
-      style={{
-        background: "rgba(255, 255, 255, 0.75)",
-        backdropFilter: "blur(12px)",
-        WebkitBackdropFilter: "blur(12px)",
-        borderRadius: "18px",
-        border: "1px solid rgba(255, 255, 255, 0.6)",
-        padding: "20px 24px",
-        boxShadow: "0 8px 32px rgba(13, 31, 92, 0.06), inset 0 1px 0 rgba(255,255,255,0.8)",
-        textAlign: align,
-        position: "relative",
-        transition: "transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), boxShadow 0.4s ease, background-color 0.3s ease",
-        cursor: "pointer",
-      }}
+      className={[
+        "bmc-floating-card relative cursor-pointer rounded-[18px] border border-white/60",
+        "bg-white/75 px-6 py-5 backdrop-blur-md",
+        "shadow-[0_8px_32px_rgba(13,31,92,0.06),inset_0_1px_0_rgba(255,255,255,0.8)]",
+        "transition-all duration-[400ms] ease-[cubic-bezier(0.165,0.84,0.44,1)]",
+        "hover:-translate-y-2 hover:bg-white hover:border-[#D4A843]/30",
+        "hover:shadow-[0_20px_38px_rgba(13,31,92,0.12),inset_0_1px_0_#ffffff]",
+        isRight ? "text-right" : "text-left",
+        "max-[820px]:text-left",
+      ].join(" ")}
     >
-      <div
-        style={{
-          display: "inline-block",
-          fontSize: 11,
-          fontWeight: 700,
-          letterSpacing: "0.12em",
-          textTransform: "uppercase",
-          color: PRIMARY,
-          background: `${HIGHLIGHT}`,
-          borderRadius: "20px",
-          padding: "4px 12px",
-          marginBottom: 8,
-          border: "1px solid rgba(13,31,92,0.05)",
-        }}
-      >
+      <div className="mb-2 inline-block rounded-[20px] border border-[#0D1F5C]/5 bg-[#ECECEC] px-3 py-1 text-[11px] font-bold uppercase tracking-[0.12em] text-[#0D1F5C]">
         {item.tag}
       </div>
 
-      <div
-        style={{
-          fontSize: "clamp(24px, 4vw, 32px)",
-          fontWeight: 900,
-          color: PRIMARY,
-          lineHeight: 1,
-          marginBottom: 12,
-          fontVariantNumeric: "tabular-nums",
-          letterSpacing: "-0.02em",
-        }}
-      >
+      <div className="mb-3 text-[clamp(24px,4vw,32px)] font-black leading-none tracking-[-0.02em] text-[#0D1F5C] [font-variant-numeric:tabular-nums]">
         {item.period}
       </div>
 
-      <ul style={{ margin: 0, padding: 0, listStyle: "none" }}>
+      <ul className="m-0 list-none p-0">
         {item.events.map((ev, i) => (
           <li
             key={i}
-            style={{
-              display: "flex",
-              alignItems: "flex-start",
-              gap: 10,
-              fontSize: 14,
-              color: "rgba(13,31,92,0.8)",
-              lineHeight: 1.6,
-              marginBottom: i < item.events.length - 1 ? 8 : 0,
-              flexDirection: isRight ? "row-reverse" : "row",
-              fontWeight: 400,
-            }}
+            className={[
+              "flex items-start gap-2.5 text-sm font-normal leading-relaxed text-[#0D1F5C]/80",
+              i < item.events.length - 1 ? "mb-2" : "",
+              isRight ? "flex-row-reverse" : "flex-row",
+              "max-[820px]:flex-row",
+            ].join(" ")}
           >
-            <span
-              style={{
-                width: 6,
-                height: 6,
-                borderRadius: "50%",
-                background: ACCENT,
-                flexShrink: 0,
-                marginTop: 9,
-              }}
-            />
+            <span className="mt-[9px] h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[#D4A843]" />
             <span>{ev}</span>
           </li>
         ))}
@@ -245,7 +207,7 @@ function CardContent({ item, align, index }) {
 }
 
 /* ------------------------------------------------------------------ */
-/*  WINDING ROAD TIMELINE (REDESIGNED 3D PERSPECTIVE & ANIMATION)     */
+/*  WINDING ROAD TIMELINE                                             */
 /* ------------------------------------------------------------------ */
 function WindingTimeline({ items, visibleItems, observerRef }) {
   const containerRef = useRef(null);
@@ -266,10 +228,9 @@ function WindingTimeline({ items, visibleItems, observerRef }) {
         const r = el.getBoundingClientRect();
         const y = r.top - cRect.top + r.height / 2;
 
-        // ILLUSION PERSPECTIVE FOR 3D EFFECT: Semakin ke bawah jalan semakin melebar/membesar sedikit
-        // Elemen teratas berjarak sempit di tengah, elemen terbawah berayun lebar (S-Curve perspektif)
-        const progress = i / (count - 1); // 0 -> 1
-        const perspectiveFactor = 0.65 + progress * 0.45; // Mengembang dari 0.65 ke 1.1
+        // Perspektif ilusi 3D: jalan melebar semakin ke bawah
+        const progress = i / (count - 1);
+        const perspectiveFactor = 0.65 + progress * 0.45;
 
         const isLeft = i % 2 === 0;
         const baseOffset = isLeft ? 65 : SVG_WIDTH - 65;
@@ -302,28 +263,19 @@ function WindingTimeline({ items, visibleItems, observerRef }) {
   const pathD = smoothPath(layout.points);
 
   return (
-    <div ref={containerRef} style={{ position: "relative" }}>
+    <div ref={containerRef} className="relative">
       {/* --- Desktop Winding Road (SVG) --- */}
       {layout.height > 0 && (
         <svg
-          className="bmc-road-svg"
+          className="bmc-road-svg pointer-events-none absolute left-1/2 top-0 z-0 -translate-x-1/2 overflow-visible max-[820px]:hidden"
           width={SVG_WIDTH}
           height={layout.height}
           viewBox={`0 0 ${SVG_WIDTH} ${layout.height}`}
-          style={{
-            position: "absolute",
-            left: "50%",
-            transform: "translateX(-50%)",
-            top: 0,
-            zIndex: 0,
-            overflow: "visible",
-            pointerEvents: "none",
-          }}
         >
-          {/* Efek Bayangan Jalan 3D Drop Shadow */}
+          {/* Bayangan jalan 3D */}
           <path
             d={pathD}
-            stroke={SHADOW_COLOR}
+            className="stroke-[rgba(0,0,0,0.18)]"
             strokeWidth={26}
             fill="none"
             strokeLinecap="round"
@@ -332,30 +284,30 @@ function WindingTimeline({ items, visibleItems, observerRef }) {
             opacity="0.6"
           />
 
-          {/* Sisi Luar Border Jalan / Bahu Jalan */}
+          {/* Bahu jalan */}
           <path
             d={pathD}
-            stroke={HIGHLIGHT}
+            className="stroke-[#ECECEC]"
             strokeWidth={22}
             fill="none"
             strokeLinecap="round"
             strokeLinejoin="round"
           />
 
-          {/* Lintasan Utama Jalan Aspal Otomotif */}
+          {/* Aspal utama */}
           <path
             d={pathD}
-            stroke={ROAD}
+            className="stroke-[#BFC4CC]"
             strokeWidth={18}
             fill="none"
             strokeLinecap="round"
             strokeLinejoin="round"
           />
 
-          {/* Garis Tengah Putih Putus-putus Markah Jalan */}
+          {/* Marka jalan putus-putus */}
           <path
             d={pathD}
-            stroke="#ffffff"
+            className="stroke-white"
             strokeWidth={1.5}
             fill="none"
             strokeDasharray="8 10"
@@ -363,17 +315,16 @@ function WindingTimeline({ items, visibleItems, observerRef }) {
             opacity="0.9"
           />
 
-          {/* GLOw EFFECTS FILTER FOR HOVER ACTIONS */}
-          <g className="bmc-glow-group" opacity="0" style={{ transition: "opacity 0.4s" }}>
+          {/* Glow saat hover */}
+          <g className="bmc-glow-group opacity-0 transition-opacity duration-[400ms]">
             <path
               d={pathD}
-              stroke={ACCENT}
+              className="stroke-[#D4A843] blur-[6px]"
               strokeWidth={28}
               fill="none"
               strokeLinecap="round"
               strokeLinejoin="round"
               opacity="0.15"
-              style={{ filter: "blur(6px)" }}
             />
           </g>
         </svg>
@@ -383,13 +334,13 @@ function WindingTimeline({ items, visibleItems, observerRef }) {
       {items.map((item, index) => {
         const isLeft = index % 2 === 0;
         const isVisible = visibleItems.has(index);
-        
+
         return (
           <div
             key={item.period}
             data-milestone-row
             data-index={index}
-            className={`bmc-row bmc-row-idx-${index} ${isVisible ? "is-visible" : ""}`}
+            className={`bmc-row bmc-row-idx-${index} relative z-[1] grid grid-cols-[1fr_320px_1fr] items-center py-12 max-[820px]:grid-cols-[32px_1fr] max-[820px]:py-6`}
             ref={(el) => {
               rowRefs.current[index] = el;
               if (el && observerRef.current) {
@@ -398,120 +349,85 @@ function WindingTimeline({ items, visibleItems, observerRef }) {
               }
             }}
             style={{
-              display: "grid",
-              gridTemplateColumns: `1fr ${SVG_WIDTH}px 1fr`,
-              alignItems: "center",
-              position: "relative",
-              zIndex: 1,
-              padding: "48px 0",
               opacity: isVisible ? 1 : 0,
               transform: isVisible ? "translateY(0)" : "translateY(40px)",
-              transition: `opacity 0.8s cubic-bezier(0.215, 0.610, 0.355, 1) ${index * 0.05}s, transform 0.8s cubic-bezier(0.215, 0.610, 0.355, 1) ${index * 0.05}s`,
+              transitionProperty: "opacity, transform",
+              transitionDuration: "0.8s",
+              transitionTimingFunction: "cubic-bezier(0.215, 0.610, 0.355, 1)",
+              transitionDelay: `${index * 0.05}s`,
             }}
           >
             {/* Kolom Kiri */}
-            <div className="bmc-left-col" style={{ padding: "0 40px 0 0", gridColumn: "1" }}>
-              {isLeft ? <CardContent item={item} align="right" index={index} /> : null}
+            <div className="pr-10 max-[820px]:hidden">
+              {isLeft ? <CardContent item={item} align="right" /> : null}
             </div>
 
-            {/* Kolom Tengah Space Untuk Jalan */}
-            <div className="bmc-mobile-marker" style={{ gridColumn: "2", position: "relative", height: "100%" }}>
-              <span className="bmc-mobile-dot" />
-              <span className="bmc-mobile-line" />
+            {/* Kolom Tengah (marker mobile) */}
+            <div className="relative hidden h-full flex-col items-center max-[820px]:col-start-1 max-[820px]:flex">
+              <span className="mt-5 h-4 w-4 flex-shrink-0 rounded-full border-[3px] border-white bg-[#D4A843] shadow-[0_0_0_2px_#0D1F5C22]" />
+              <span className="mt-1.5 w-[3px] flex-1 rounded-sm bg-[linear-gradient(180deg,#BFC4CC_0%,rgba(191,196,204,0.1)_100%)]" />
             </div>
 
             {/* Kolom Kanan */}
-            <div className="bmc-right-col" style={{ padding: "0 0 0 40px", gridColumn: "3" }}>
-              {!isLeft ? <CardContent item={item} align="left" index={index} /> : null}
+            <div className="pl-10 max-[820px]:col-start-2 max-[820px]:w-full max-[820px]:pl-4">
+              {!isLeft ? <CardContent item={item} align="left" /> : null}
             </div>
           </div>
         );
       })}
 
-      {/* --- 3D PIN STOPS AND STEM CONNECTIONS GENERATOR --- */}
+      {/* --- 3D PIN STOPS AND STEM CONNECTIONS --- */}
       {layout.height > 0 &&
         layout.points.map((p, i) => {
           const isVisible = visibleItems.has(i);
-          const stemHeight = 65 * p.factor; // Tinggi tiang konektor menyesuaikan ilusi perspektif
-          const pinDiameter = (26 + p.factor * 4); // Diameter mengecil/membesar halus sesuai kedalaman bidang
+          const stemHeight = 65 * p.factor;
+          const pinDiameter = 26 + p.factor * 4;
 
           return (
             <div
               key={`stop-${i}`}
-              className={`bmc-milestone-stop bmc-stop-target-${i} ${isVisible ? "animated" : ""}`}
+              className={`bmc-milestone-stop bmc-stop-target-${i} pointer-events-none absolute z-[2] max-[820px]:hidden`}
               style={{
-                position: "absolute",
                 left: `calc(50% - ${SVG_WIDTH / 2}px + ${p.x}px)`,
                 top: p.y,
-                zIndex: 2,
-                pointerEvents: "none",
               }}
             >
-              {/* 1. Bayangan Oval Kecil Di Bawah Pin di Atas Jalan */}
+              {/* Bayangan oval di bawah pin */}
               <div
+                className="absolute left-[-50%] top-[-4px] rounded-full bg-black/35 blur-[2px] transition-opacity duration-500"
                 style={{
-                  position: "absolute",
-                  left: "-50%",
-                  top: "-4px",
                   width: pinDiameter * 1.2,
                   height: 6,
-                  background: "rgba(0,0,0,0.35)",
-                  borderRadius: "50%",
-                  filter: "blur(2px)",
                   transform: "translate(-18%, -50%)",
                   opacity: isVisible ? 1 : 0,
-                  transition: "opacity 0.6s ease",
                 }}
               />
 
-              {/* 2. Vertical Stem (Tiang Mini 3D Bergradient & Berbayangan) */}
+              {/* Tiang mini 3D */}
               <div
-                className="bmc-vertical-stem"
+                className="bmc-vertical-stem absolute bottom-0 left-[-50%] w-1 origin-bottom shadow-[2px_0_5px_rgba(0,0,0,0.15)] transition-[height,background] duration-[800ms]"
                 style={{
-                  position: "absolute",
-                  bottom: 0,
-                  left: "-50%",
-                  width: "4px",
                   height: isVisible ? stemHeight : 0,
                   background: `linear-gradient(180deg, ${PRIMARY} 0%, ${ACCENT} 100%)`,
                   transform: "translateX(-50%) scaleX(1)",
-                  transformOrigin: "bottom center",
-                  boxShadow: "2px 0 5px rgba(0,0,0,0.15)",
-                  transition: "height 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.3s",
+                  transitionTimingFunction: "cubic-bezier(0.175, 0.885, 0.32, 1.275)",
                 }}
               />
 
-              {/* 3. Milestone Pin Body */}
+              {/* Kepala pin */}
               <div
-                className="bmc-pin-head"
+                className="bmc-pin-head absolute left-[-50%] flex items-center justify-center rounded-full border-[3px] border-[#0D1F5C] bg-white shadow-[0_6px_14px_rgba(0,0,0,0.18)] transition-[transform,bottom,border-color,width,height] duration-500"
                 style={{
-                  position: "absolute",
                   bottom: isVisible ? stemHeight : 0,
-                  left: "-50%",
                   width: pinDiameter,
                   height: pinDiameter,
-                  borderRadius: "50%",
-                  background: "white",
-                  border: `3px solid ${PRIMARY}`,
-                  boxShadow: `0 6px 14px ${SHADOW_COLOR}`,
-                  transform: isVisible ? "translate(-50%, 50%) scale(1)" : "translate(-50%, 50%) scale(0.6)",
-                  transformOrigin: "center center",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  transition: "transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), bottom 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s, width 0.3s, height 0.3s",
+                  transform: isVisible
+                    ? "translate(-50%, 50%) scale(1)"
+                    : "translate(-50%, 50%) scale(0.6)",
+                  transitionTimingFunction: "cubic-bezier(0.175, 0.885, 0.32, 1.275)",
                 }}
               >
-                {/* Inner Circle Accent */}
-                <div
-                  style={{
-                    width: "45%",
-                    height: "45%",
-                    borderRadius: "50%",
-                    background: ACCENT,
-                    boxShadow: "inset 0 1px 2px rgba(0,0,0,0.2)",
-                  }}
-                />
+                <div className="h-[45%] w-[45%] rounded-full bg-[#D4A843] shadow-[inset_0_1px_2px_rgba(0,0,0,0.2)]" />
               </div>
             </div>
           );
@@ -548,25 +464,26 @@ const Milestone = () => {
 
   return (
     <div
-      style={{
-        background: `linear-gradient(180deg, #FFFFFF 0%, #F3F5F9 50%, #EAEFF5 100%)`,
-        fontFamily: "'Roboto Condensed', 'Roboto', sans-serif",
-        minHeight: "100vh",
-        position: "relative",
-        overflow: "hidden",
-      }}
+      className="relative min-h-screen overflow-hidden bg-[linear-gradient(180deg,#FFFFFF_0%,#F3F5F9_50%,#EAEFF5_100%)]"
+      style={{ fontFamily: "'Roboto Condensed', 'Roboto', sans-serif" }}
     >
-      {/* BACKROUND BLURRED GLASS CIRCLES & DIGITAL NOISE PATTERN EFFECT */}
-      <div style={{ position: "absolute", top: "15%", left: "-10%", width: "40vw", height: "40vw", borderRadius: "50%", background: `${ACCENT}08`, filter: "blur(100px)", pointerEvents: "none", zIndex: 0 }} />
-      <div style={{ position: "absolute", bottom: "20%", right: "-10%", width: "45vw", height: "45vw", borderRadius: "50%", background: `${PRIMARY}05`, filter: "blur(120px)", pointerEvents: "none", zIndex: 0 }} />
-      <div style={{ position: "absolute", inset: 0, opacity: 0.015, backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`, pointerEvents: "none", zIndex: 0 }} />
+      {/* Blur circles & noise pattern */}
+      <div className="pointer-events-none absolute left-[-10%] top-[15%] z-0 h-[40vw] w-[40vw] rounded-full bg-[#D4A84308] blur-[100px]" />
+      <div className="pointer-events-none absolute bottom-[20%] right-[-10%] z-0 h-[45vw] w-[45vw] rounded-full bg-[#0D1F5C05] blur-[120px]" />
+      <div
+        className="pointer-events-none absolute inset-0 z-0 opacity-[0.015]"
+        style={{
+          backgroundImage:
+            "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E\")",
+        }}
+      />
 
-      {/* DYNAMIC HOVER STYLING INJECTIONS */}
+      {/* Hover-sync CSS antara row, tiang & jalan (per-index, harus tetap style tag  */}
+      {/* karena selector sibling dinamis tidak bisa diekspresikan lewat Tailwind statis) */}
       <style>{`
-        .bmc-mobile-marker { display: none; }
-        
-        /* HOVER INTERACTIONS MECHANISM */
-        ${milestones.map((_, idx) => `
+        ${milestones
+          .map(
+            (_, idx) => `
           .bmc-row-idx-${idx}:hover ~ .bmc-stop-target-${idx} .bmc-pin-head {
             transform: translate(-50%, 50%) scale(1.22) !important;
             border-color: ${ACCENT} !important;
@@ -578,78 +495,25 @@ const Milestone = () => {
           .bmc-row-idx-${idx}:hover ~ .bmc-road-svg .bmc-glow-group {
             opacity: 1 !important;
           }
-        `).join("\n")}
-
-        .bmc-floating-card:hover {
-          transform: translateY(-8px);
-          background-color: #ffffff !important;
-          box-shadow: 0 20px 38px rgba(13, 31, 92, 0.12), inset 0 1px 0 rgba(255,255,255,1) !important;
-          border-color: ${ACCENT}55 !important;
-        }
-
-        /* RESPONSIVE RENDERING STRUCTURE */
-        @media (max-width: 820px) {
-          .bmc-road-svg, .bmc-road-dot, .bmc-milestone-stop { display: none !important; }
-          .bmc-row { grid-template-columns: 32px 1fr !important; padding: 24px 0 !important; }
-          .bmc-left-col { display: none !important; }
-          .bmc-right-col { padding: 0 0 0 16px !important; grid-column: 2 !important; width: 100% !important; }
-          
-          .bmc-mobile-marker {
-            display: flex !important;
-            flex-direction: column;
-            align-items: center;
-            grid-column: 1 !important;
-          }
-          .bmc-mobile-dot {
-            width: 16px; height: 16px; border-radius: 50%;
-            background: ${ACCENT}; border: 3px solid white;
-            box-shadow: 0 0 0 2px ${PRIMARY}22; flex-shrink: 0; margin-top: 20px;
-          }
-          .bmc-mobile-line {
-            width: 3px; flex: 1; margin-top: 6px;
-            background: linear-gradient(180deg, ${ROAD} 0%, rgba(191,196,204,0.1) 100%);
-            border-radius: 2px;
-          }
-          .bmc-floating-card { text-align: left !important; }
-          .bmc-floating-card li { flex-direction: row !important; }
-        }
+        `
+          )
+          .join("\n")}
       `}</style>
 
-      {/* ============================= HERO (ORIGINAL, UNCHANGED) ============================= */}
-      <section
-        style={{
-          position: "relative",
-          height: "40vh",
-          minHeight: 380,
-          display: "flex",
-          alignItems: "flex-end",
-          background: "#0D1F5C",
-          overflow: "hidden",
-        }}
-      >
+      {/* ============================= HERO ============================= */}
+      <section className="relative flex h-[40vh] min-h-[380px] items-end overflow-hidden bg-[#0D1F5C]">
         <img
-          src={blackimage}
+          src={bmc2}
           alt="BMC"
-          style={{
-            position: "absolute",
-            inset: 0,
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            opacity: 0.2,
-          }}
+          className="absolute inset-0 h-full w-full object-cover opacity-60"
         />
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            background:
-              "linear-gradient(100deg, #0D1F5C 40%, #0D1F5C80 70%, transparent)",
-          }}
-        />
+
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(13,31,92,.80)_0%,rgba(13,31,92,.40)_45%,transparent_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(13,31,92,.70),transparent_45%)]" />
+
         <button
           onClick={() => window.location.assign("/")}
-          className="absolute top-6 left-6 md:top-8 md:left-10 z-999 inline-flex items-center gap-2 text-white/70 text-xs uppercase tracking-widest hover:text-[#D4A843] transition-colors duration-200"
+          className="absolute left-6 top-6 z-50 inline-flex items-center gap-2 text-xs uppercase tracking-widest text-white/70 transition-colors duration-200 hover:text-[#D4A843] md:left-10 md:top-8"
           data-aos="fade-down"
           data-aos-duration="600"
         >
@@ -666,195 +530,78 @@ const Milestone = () => {
         </button>
 
         <div
-          style={{
-            position: "relative",
-            zIndex: 10,
-            padding: "0 80px 56px",
-            maxWidth: 700,
-          }}
+          data-aos="fade-up"
+          data-aos-duration="800"
+          className="relative z-10 max-w-[720px] px-20 pb-14"
         >
-          <p
-            style={{
-              color: "#D4A843",
-              fontSize: 11,
-              fontWeight: 600,
-              letterSpacing: "0.15em",
-              textTransform: "uppercase",
-              marginBottom: 16,
-            }}
-          >
-            <a href="/" style={{ color: "#D4A843", textDecoration: "none" }}>Home</a>
-            <span style={{ margin: "0 6px" }}>&rsaquo;</span>
-            <a href="/companyprofile" style={{ color: "#D4A843", textDecoration: "none" }}>About Us</a>
-            <span style={{ margin: "0 6px" }}>&rsaquo;</span>
-            <span style={{ color: "white" }}>History & Milestones</span>
+          {/* Breadcrumb */}
+          <p className="mb-4 flex items-center text-[11px] font-semibold uppercase tracking-[0.16em] text-[#D4A843]">
+            <a href="/" className="text-[#D4A843] no-underline">
+              Home
+            </a>
+            <ChevronRight size={12} className="mx-1 text-[#D4A843]" />
+            <a href="/companyprofile" className="text-[#D4A843] no-underline">
+              About Us
+            </a>
+            <ChevronRight size={12} className="mx-1 text-[#D4A843]" />
+            <span className="text-white">History &amp; Milestones</span>
           </p>
-          <h1
-            style={{
-              fontSize: "clamp(40px, 6vw, 64px)",
-              fontWeight: 900,
-              color: "white",
-              lineHeight: 1.05,
-              margin: "0 0 12px",
-              letterSpacing: "-0.02em",
-            }}
-          >
+
+          {/* Subtitle */}
+          <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#D4A843]">
+            PT Braja Mukti Cakra
+          </p>
+
+          {/* Title */}
+          <h1 className="m-0 mb-4 text-[clamp(48px,6vw,64px)] font-bold leading-[1.05] text-white [text-shadow:0_4px_18px_rgba(0,0,0,.35)]">
             Our Journey
           </h1>
-          <p style={{ color: "rgba(255,255,255,0.5)", fontSize: 16, lineHeight: 1.6, margin: 0 }}>
-            Tracing the milestones that shaped PT Braja Mukti Cakra — from a single brake drum line to a multi-product automotive powerhouse.
-          </p>
-        </div>
 
-        <div
-          style={{
-            position: "absolute",
-            bottom: 0,
-            right: 0,
-            display: "flex",
-            gap: 1,
-          }}
-        >
-          {[["38+", "Years"], ["13", "Eras"], ["40+", "Milestones"]].map(
-            ([num, label]) => (
-              <div
-                key={label}
-                style={{
-                  background: "rgba(255,255,255,0.07)",
-                  backdropFilter: "blur(8px)",
-                  padding: "16px 28px",
-                  textAlign: "center",
-                  borderTop: "1px solid rgba(255,255,255,0.12)",
-                }}
-              >
-                <div
-                  style={{
-                    fontSize: 28,
-                    fontWeight: 800,
-                    color: "#D4A843",
-                    lineHeight: 1,
-                  }}
-                >
-                  {num}
-                </div>
-                <div
-                  style={{
-                    fontSize: 11,
-                    color: "rgba(255,255,255,0.5)",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.1em",
-                    marginTop: 4,
-                  }}
-                >
-                  {label}
-                </div>
-              </div>
-            )
-          )}
+          {/* Description */}
+          <p className="m-0 max-w-[560px] text-base leading-[1.7] text-white/70 [text-shadow:0_2px_10px_rgba(0,0,0,.25)]">
+            Tracing the milestones that shaped PT Braja Mukti Cakra — from a
+            single brake drum line to a multi-product automotive powerhouse.
+          </p>
         </div>
       </section>
 
-      {/* ============================= TIMELINE REDESIGN AREA ============================= */}
-      <div
-        style={{
-          maxWidth: 1140,
-          margin: "0 auto",
-          padding: "80px 24px 120px",
-          position: "relative",
-          zIndex: 1,
-        }}
-      >
-        <div style={{ textAlign: "center", marginBottom: 80 }}>
-          <div
-            style={{
-              display: "inline-block",
-              background: "#0D1F5C",
-              color: "white",
-              fontSize: 11,
-              fontWeight: 700,
-              letterSpacing: "0.15em",
-              textTransform: "uppercase",
-              padding: "6px 20px",
-              borderRadius: 20,
-              marginBottom: 16,
-            }}
-          >
+      {/* ============================= TIMELINE ============================= */}
+      <div className="relative z-[1] mx-auto max-w-[1140px] px-6 py-20 pb-[120px]">
+        <div className="mb-20 text-center">
+          <div className="mb-4 inline-block rounded-[20px] bg-[#0D1F5C] px-5 py-1.5 text-[11px] font-bold uppercase tracking-[0.15em] text-white">
             Since 1986
           </div>
-          <h2
-            style={{
-              fontSize: clamp(32, '5vw', 42),
-              fontWeight: 900,
-              color: "#0D1F5C",
-              margin: "0 0 16px",
-              letterSpacing: "-0.02em",
-            }}
-          >
+          <h2 className="m-0 mb-4 text-[clamp(32px,5vw,42px)] font-black tracking-[-0.02em] text-[#0D1F5C]">
             Four Decades of Excellence
           </h2>
-          <p style={{ color: "#5a6375", fontSize: 16, maxWidth: 520, margin: "0 auto", lineHeight: 1.6 }}>
-            A chronicle of innovation, certification, and growth in automotive components manufacturing.
+          <p className="mx-auto max-w-[520px] text-base leading-relaxed text-[#5a6375]">
+            A chronicle of innovation, certification, and growth in
+            automotive components manufacturing.
           </p>
         </div>
 
-        <WindingTimeline items={milestones} visibleItems={visibleItems} observerRef={observerRef} />
+        <WindingTimeline
+          items={milestones}
+          visibleItems={visibleItems}
+          observerRef={observerRef}
+        />
 
-        {/* Footer callout (ORIGINAL, UNCHANGED) */}
-        <div
-          style={{
-            marginTop: 96,
-            background: "linear-gradient(135deg, #0D1F5C, #1a3a8a)",
-            borderRadius: 16,
-            padding: "40px 48px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            gap: 32,
-            flexWrap: "wrap",
-          }}
-        >
+        {/* Footer callout */}
+        <div className="mt-24 flex flex-wrap items-center justify-between gap-8 rounded-2xl bg-[linear-gradient(135deg,#0D1F5C,#1a3a8a)] px-12 py-10">
           <div>
-            <div
-              style={{
-                fontSize: 13,
-                color: "#D4A843",
-                fontWeight: 700,
-                letterSpacing: "0.1em",
-                textTransform: "uppercase",
-                marginBottom: 8,
-              }}
-            >
+            <div className="mb-2 text-[13px] font-bold uppercase tracking-[0.1em] text-[#D4A843]">
               The Journey Continues
             </div>
-            <h3
-              style={{
-                color: "white",
-                fontSize: 24,
-                fontWeight: 800,
-                margin: 0,
-                letterSpacing: "-0.01em",
-              }}
-            >
+            <h3 className="m-0 text-2xl font-extrabold tracking-[-0.01em] text-white">
               PT Braja Mukti Cakra
             </h3>
-            <p style={{ color: "rgba(255,255,255,0.5)", fontSize: 14, margin: "8px 0 0" }}>
+            <p className="mt-2 text-sm text-white/50">
               Driving the future of Indonesian automotive manufacturing.
             </p>
           </div>
           <a
             href="/companyprofile"
-            style={{
-              background: "#D4A843",
-              color: "#0D1F5C",
-              padding: "12px 28px",
-              borderRadius: 8,
-              fontWeight: 800,
-              fontSize: 14,
-              textDecoration: "none",
-              letterSpacing: "0.05em",
-              textTransform: "uppercase",
-              whiteSpace: "nowrap",
-            }}
+            className="whitespace-nowrap rounded-lg bg-[#D4A843] px-7 py-3 text-sm font-extrabold uppercase tracking-[0.05em] text-[#0D1F5C] no-underline"
           >
             About Us →
           </a>
@@ -863,10 +610,5 @@ const Milestone = () => {
     </div>
   );
 };
-
-// Helper utility function for CSS clamp fluid type natively inside inline-styles
-function clamp(min, val, max) {
-  return `clamp(${min}px, ${val}, ${max}px)`;
-}
 
 export default Milestone;

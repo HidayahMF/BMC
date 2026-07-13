@@ -2,16 +2,6 @@ import React, { useState, useEffect } from "react";
 import { ChevronRight, X, ArrowUpRight, Quote } from "lucide-react";
 import { management } from "../data/ManajemenData";
 
-const splitVIP = (data) => {
-  const vipIdx = data.findIndex((p) =>
-    p.position?.toLowerCase().includes("utama")
-  );
-  const idx = vipIdx === -1 ? 0 : vipIdx;
-  const vip = data[idx];
-  const rest = data.filter((_, i) => i !== idx);
-  return { vip, rest };
-};
-
 const MonoBadge = ({ children, tone = "light" }) => (
   <span
     className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 font-mono text-[10px] uppercase tracking-widest ${
@@ -98,8 +88,8 @@ const ProfileDrawer = ({ person, open, onClose }) => {
               <p className="text-[#334155] text-[15px] leading-relaxed">
                 {person.bio}
               </p>
-
-              <a
+                <a
+              
                 href="#"
                 className="inline-flex items-center gap-1.5 mt-8 text-sm font-semibold text-[#0D1F5C] hover:text-[#D4A843] transition-colors duration-200"
               >
@@ -115,70 +105,7 @@ const ProfileDrawer = ({ person, open, onClose }) => {
 };
 
 /* ────────────────────────────────────────────────────────────
-   VIP Feature — the leading figure of the board
-──────────────────────────────────────────────────────────── */
-
-const VIPCard = ({ person, label, onOpen }) => (
-  <div
-    className="relative grid grid-cols-1 lg:grid-cols-5 rounded-3xl overflow-hidden border border-[#0D1F5C]/10 shadow-xl shadow-[#0D1F5C]/[0.06]"
-    data-aos="fade-up"
-  >
-    {/* Photo */}
-    <div className="relative lg:col-span-3 h-[380px] lg:h-[560px] overflow-hidden">
-      <img
-        src={person.photo}
-        alt={person.name}
-        className="absolute inset-0 w-full h-full object-cover"
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#08132E] via-[#08132E]/25 to-transparent" />
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent lg:from-transparent via-transparent to-[#08132E]/10" />
-
-      <div className="absolute top-6 left-6 md:top-8 md:left-8">
-        <MonoBadge>{label}</MonoBadge>
-      </div>
-
-      <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
-        <p className="font-mono text-[11px] tracking-[0.3em] uppercase text-[#D4A843] mb-3">
-          {person.code}
-        </p>
-        <h2 className="font-['Roboto_Condensed',sans-serif] text-3xl md:text-5xl font-bold text-white leading-[1.05]">
-          {person.name}
-        </h2>
-        <p className="text-white/70 text-base md:text-lg mt-2">
-          {person.position}
-        </p>
-      </div>
-    </div>
-
-    {/* Info panel */}
-    <div className="lg:col-span-2 bg-[#0D1F5C] relative flex flex-col justify-center p-8 md:p-12">
-      <div
-        className="absolute inset-0 opacity-[0.06]"
-        style={{
-          backgroundImage:
-            "linear-gradient(#D4A843 1px, transparent 1px), linear-gradient(90deg, #D4A843 1px, transparent 1px)",
-          backgroundSize: "40px 40px",
-        }}
-      />
-      <div className="relative">
-        <Quote size={28} className="text-[#D4A843] mb-4" strokeWidth={1.5} />
-        <p className="text-white/80 text-[15px] leading-relaxed line-clamp-6">
-          {person.bio}
-        </p>
-        <button
-          onClick={onOpen}
-          className="inline-flex items-center gap-2 mt-8 px-5 py-3 rounded-full bg-[#D4A843] text-[#0D1F5C] text-sm font-semibold hover:bg-white transition-colors duration-300"
-        >
-          Lihat profil lengkap
-          <ArrowUpRight size={15} />
-        </button>
-      </div>
-    </div>
-  </div>
-);
-
-/* ────────────────────────────────────────────────────────────
-   Grid Card — remaining board members
+   Grid Card — semua anggota setara, hanya position yang membedakan
 ──────────────────────────────────────────────────────────── */
 
 const MemberCard = ({ person, onOpen }) => (
@@ -226,16 +153,10 @@ const TABS = [
   { key: "heads", label: "Head of Departments", group: "head-of-department" },
 ];
 
-const VIP_LABELS = {
-  commissioners: "Pucuk Pimpinan Komisaris",
-  directors: "Pucuk Pimpinan Direksi",
-  heads: "Kepala Departemen",
-};
-
-const MEMBER_LABELS = {
-  commissioners: "Komisaris",
-  directors: "Direksi",
-  heads: "Departemen",
+const SECTION_LABELS = {
+  commissioners: "Board of Commissioners",
+  directors: "Board of Directors",
+  heads: "Head of Departments",
 };
 
 const ManajemenPage = () => {
@@ -245,8 +166,6 @@ const ManajemenPage = () => {
 
   const activeGroup = TABS.find((tab) => tab.key === activeTab)?.group;
   const data = management.filter((item) => item.group === activeGroup);
-  const { vip, rest } = splitVIP(data);
-  const vipLabel = VIP_LABELS[activeTab];
 
   const openProfile = (person) => {
     setSelected(person);
@@ -325,24 +244,17 @@ const ManajemenPage = () => {
         </div>
       </section>
 
-      {/* ── VIP FEATURE ── */}
-      {vip && (
-        <section className="max-w-7xl mx-auto px-6 pt-16">
-          <VIPCard person={vip} label={vipLabel} onOpen={() => openProfile(vip)} />
-        </section>
-      )}
-
-      {/* ── MEMBER GRID ── */}
+      {/* ── MEMBER GRID (semua setara) ── */}
       <section className="max-w-7xl mx-auto px-6 py-16">
         <div className="flex items-center gap-4 mb-8">
           <span className="font-mono text-[11px] tracking-[0.25em] uppercase text-[#D4A843]">
-            Anggota {MEMBER_LABELS[activeTab]} Lainnya
+            {SECTION_LABELS[activeTab]}
           </span>
           <div className="h-px flex-1 bg-[#0D1F5C]/10" />
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {rest.map((person) => (
+          {data.map((person) => (
             <MemberCard
               key={person.code}
               person={person}
