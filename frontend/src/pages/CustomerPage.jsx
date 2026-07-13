@@ -32,7 +32,7 @@
     { name: "Marugo",           logo: marugo,     category: "Component Partner" },
     { name: "Bina Usaha Mandiri Mizusawa", logo: bina,   category: "Group & Affiliate" },
     { name: "Bakrie Autoparts", logo: bakrie,     category: "Group & Affiliate" },
-    { name: "IGC",              logo: igc,        category: "Group & Affiliate" },
+    { name: "IGC",              logo: igc,        category: "Component Partner" },
   ];
 
   const CATEGORIES = ["All", "Automotive OEM", "Heavy Equipment", "Component Partner", "Group & Affiliate"];

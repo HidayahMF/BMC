@@ -147,9 +147,9 @@ const MachiningSection = () => {
           }}
         >
           {[
-            { n: "27+", l: "Unit Mesin & Lini" },
-            { n: "3",   l: "Kategori Fasilitas" },
-            { n: "ISO", l: "9001:2015 Certified" },
+            // { n: "27+", l: "Unit Mesin & Lini" },
+            // { n: "3",   l: "Kategori Fasilitas" },
+            // { n: "ISO", l: "9001:2015 Certified" },
           ].map((s) => (
             <div key={s.l} className="text-center border-x border-white/10 px-2 first:border-l-0 last:border-r-0">
               <p className="text-[1.6rem] font-bold text-[#D4A843] leading-none mb-1">{s.n}</p>

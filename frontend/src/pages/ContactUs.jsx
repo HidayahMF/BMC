@@ -213,7 +213,7 @@ const ContactUs = () => {
                                                 Fax
                                             </p>
                                             <p className="text-white text-[13.5px] font-semibold">
-                                                (62-21) 8878949
+                                                (62-21) 8871835
                                             </p>
                                         </div>
                                     </div>

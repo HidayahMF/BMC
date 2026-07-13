@@ -17,7 +17,7 @@ const menuItems = [
       "Events, Awards & Certification",
       "Top Management",
       "Customer",
-      "Berita",
+
     ],
   },
   {
