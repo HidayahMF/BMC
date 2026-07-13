@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import blackimage from "../assets/blackimage.jpg";
-import iso9001 from "../assets/iso9001.png"
-import iso14001 from "../assets/iso14001.png"
-import iso45001 from "../assets/iso45001.png"
-import iatf16949 from "../assets/iatf16949.png"
+
 import peta from "../assets/peta.png"
 import { ChevronRight } from "lucide-react";
 import home1 from "../assets/home1.png"
@@ -43,29 +40,6 @@ Berbekal transfer teknologi dan sistem produksi Jepang, BMC mengembangkan kapabi
 
 BMC menerapkan sistem manajemen mutu yang memenuhi standar internasional ISO 9001:2015, ISO 14001:2015, dan ISO 45001:2018, diwujudkan melalui budaya continuous improvement dan penguatan kapabilitas engineering.`,
     img: MACHROBOTICLEANTEC1,
-  },
-];
-
-const certs = [
-  {
-    code: "ISO 9001:2015",
-    label: "Quality Management",
-    img: iso9001,
-  },
-  {
-    code: "ISO 14001:2015",
-    label: "Environmental Management",
-    img: iso14001,
-  },
-  {
-    code: "ISO 45001:2018",
-    label: "Occupational Safety",
-    img: iso45001,
-  },
-  {
-    code: "IATF 16949:2016",
-    label: "Quality Management System",
-    img: iatf16949,
   },
 ];
 

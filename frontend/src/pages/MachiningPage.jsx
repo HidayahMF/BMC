@@ -55,11 +55,30 @@ import SURFCOM from "../assets/SURFCOM.png";
 import CMMACCURA from "../assets/CMMACCURA.png";
 import CMMACCRETECH from "../assets/CMMACCRETECH.png";
 import CMMHEXAGON from "../assets/CMMHEXAGON.png";
+import ROBOTTO from "../assets/ROBOTTO.png";
 
 /* ══════════════════════════════════════════════════════════
    DATA — FACILITIES (tidak diubah)
 ══════════════════════════════════════════════════════════ */
 const FACILITIES = [
+      { name: "Robot Disc Brake",             category: "Machining Center", image: ROBOTTO },
+  { name: "Doosan 4500",                category: "Machining Center", image: MACHDOOSAN4500 },
+  { name: "Doosan 5700",                category: "Machining Center", image: MACHDOOSAN5700 },
+  { name: "Doosan DNM 5700",            category: "Machining Center", image: MACHDOOSANDNM5700 },
+  { name: "Doosan NHP 6300",            category: "Machining Center", image: MACHDOOSANNHP6300 },
+  { name: "Doosan V8300",               category: "Machining Center", image: MACHDOOSANV8300 },
+    { name: "Makino n51nx",               category: "Machining Center", image: MACHMAKINOn51nx },
+      { name: "Robotic Cleantec",           category: "Machining Center", image: MACHROBOTICLEANTEC },
+      { name: "SPM Check DTV RR Disc",      category: "Machining Center", image: SPMCHECKDTVRRDISC },
+  { name: "Honning Machine",            category: "Machining Center", image: MACHHONNING },
+  { name: "Leak Test Machine",          category: "Machining Center", image: MACHLEAKTEST },
+
+  { name: "Makino Slim 3N",             category: "Machining Center", image: MACHMAKINOSLIM3N },
+
+
+
+  { name: "Balancing Machine",          category: "Machining Center", image: MACHBALANCING },
+  { name: "MC Polishing",               category: "Machining Center", image: MCPOLISHING },
   { name: "Axle Assy Line 1",           category: "Production Line", image: AxleAssyLine1 },
   { name: "Axle Assy Line 2",           category: "Production Line", image: AxleAssyLine2 },
   { name: "Brake Assy Line",            category: "Production Line", image: BRAKEASSYLINE },
@@ -68,19 +87,7 @@ const FACILITIES = [
   { name: "Exhaust Gas Line EGR",       category: "Production Line", image: EXHGASLINEEGR },
   { name: "Exhaust Manifold Line",      category: "Production Line", image: EXHMANIFOLDLINE },
   { name: "Knuckle Line",               category: "Production Line", image: KnuckleLine },
-  { name: "Balancing Machine",          category: "Machining Center", image: MACHBALANCING },
-  { name: "Doosan 4500",                category: "Machining Center", image: MACHDOOSAN4500 },
-  { name: "Doosan 5700",                category: "Machining Center", image: MACHDOOSAN5700 },
-  { name: "Doosan DNM 5700",            category: "Machining Center", image: MACHDOOSANDNM5700 },
-  { name: "Doosan NHP 6300",            category: "Machining Center", image: MACHDOOSANNHP6300 },
-  { name: "Doosan V8300",               category: "Machining Center", image: MACHDOOSANV8300 },
-  { name: "Honning Machine",            category: "Machining Center", image: MACHHONNING },
-  { name: "Leak Test Machine",          category: "Machining Center", image: MACHLEAKTEST },
-  { name: "Makino n51nx",               category: "Machining Center", image: MACHMAKINOn51nx },
-  { name: "Makino Slim 3N",             category: "Machining Center", image: MACHMAKINOSLIM3N },
-  { name: "Robotic Cleantec",           category: "Machining Center", image: MACHROBOTICLEANTEC },
-  { name: "SPM Check DTV RR Disc",      category: "Machining Center", image: SPMCHECKDTVRRDISC },
-  { name: "MC Polishing",               category: "Machining Center", image: MCPOLISHING },
+
   { name: "Photomicroscope",            category: "Quality & Inspection Lab", image: PHOTOMICRO },
   { name: "Hardness Vickers/Rockwell",  category: "Quality & Inspection Lab", image: HARDNESSVICKERSROCKWELL },
   { name: "Hardness Brinell",           category: "Quality & Inspection Lab", image: HARDNESSBRINELL },
@@ -298,6 +305,24 @@ const MACHINE_INFO = {
     applications: ["Final Dimensional Verification"],
     keyFeatures: ["Standar pengukuran internasional", "Akurasi dan repeatability tinggi", "Mendukung full traceability"],
   },
+  "Robot Disc Brake": {
+  machineType: "Robotic Machining Cell",
+  description:
+    "Sel machining otomatis berbasis robot yang menangani proses loading dan unloading komponen disc brake pada CNC machining center. Sistem ini meningkatkan efisiensi produksi, menjaga konsistensi kualitas, serta mengurangi waktu siklus melalui otomatisasi proses penanganan material.",
+  applications: [
+    "Disc Brake Machining",
+    "Automatic CNC Loading & Unloading",
+    "Automotive Brake Components"
+  ],
+  keyFeatures: [
+    "6-axis industrial robot automation",
+    "Automatic loading & unloading system",
+    "Reduced cycle time",
+    "Consistent part positioning",
+    "Improved production safety",
+    "High repeatability and accuracy"
+  ],
+},
 };
 
 /* ══════════════════════════════════════════════════════════

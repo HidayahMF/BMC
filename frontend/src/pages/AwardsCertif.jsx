@@ -5,7 +5,7 @@ import blackimage from "../assets/blackimage.jpg";
 import iso9001 from "../assets/iso9001.jpg";
 import iso14001 from "../assets/iso14001.png";
 import iso45001 from "../assets/iso45001.png";
-import proper2025 from "../assets/proper2025.png";
+import proper2025 from "../assets/proper2025.jpg";
 import iatf16949 from "../assets/iatf16949.jpg";
 import gooddelivery from "../assets/gooddelivery.jpg";
 import excelentoemdelivery from "../assets/excelentoemdelivery.jpg";
@@ -34,7 +34,7 @@ const CERTIFICATIONS = [
     name: "IATF 16949:2016",
     subtitle: "Automotive Quality Management System",
     image: iatf16949,
-    desc: "Sistem Manajemen Mutu Otomotif untuk pembuatan pemesinan (machining) dan perakitan komponen (assembling parts) yang digunakan pada mesin (engine), poros penggerak (drive axle), dan sistem rem (brake system). diterbitkan oleh BSI (British Standards Institution).",
+    desc: "The Manufacture of Machining and Assembling Parts used in Engine, Drive Axle, Brake System and Exterior Body Components. Permitted exclusion: Product Design.",
     tag: "Quality",
   },
   {
@@ -42,7 +42,7 @@ const CERTIFICATIONS = [
     name: "ISO 9001:2015",
     subtitle: "Quality Management System",
     image: iso9001,
-    desc: "Sertifikasi standar internasional untuk sistem manajemen mutu, memastikan konsistensi kualitas produk dan proses produksi pada sektor mesin, poros penggerak, dan sistem rem.",
+    desc: "The Manufacture of Machining and Assembling Parts used in Engine, Drive Axle, Brake System and Exterior Body Components.",
     tag: "Quality",
   },
   {
@@ -50,21 +50,20 @@ const CERTIFICATIONS = [
     name: "ISO 14001:2015",
     subtitle: "Environmental Management System",
     image: iso14001,
-    desc: "Sertifikasi standar internasional untuk sistem manajemen lingkungan, mendukung komitmen operasional yang ramah lingkungan dalam proses manufaktur.",
-    tag: "Environment",
+    desc: "The manufacture of Machining and Assembling Parts used in Engine, Drive Axle and Brake System.",
   },
   {
     id: 4,
     name: "ISO 45001:2018",
     subtitle: "Occupational Health & Safety",
     image: iso45001,
-    desc: "Sertifikasi sistem manajemen keselamatan dan kesehatan kerja (K3) untuk melindungi seluruh karyawan di lingkungan produksi presisi.",
+    desc: "The manufacture of Machining and Assembling Parts used in Engine, Drive Axle and Brake System.",
     tag: "Safety",
   },
   {
     id: 5,
     name: "PROPER – Peringkat Biru",
-    subtitle: "Penilaian Kinerja Perusahaan (2023–2024)",
+    subtitle: "Penilaian Kinerja Perusahaan (2025)",
     image: proper2025,
     desc: "Penghargaan Program Penilaian Peringkat Kinerja Perusahaan dalam Pengelolaan Lingkungan Hidup (PROPER) dengan predikat Peringkat Biru, menunjukkan kepatuhan penuh perusahaan terhadap regulasi lingkungan yang berlaku.",
     tag: "Environment",
