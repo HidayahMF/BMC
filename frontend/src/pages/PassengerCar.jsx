@@ -27,16 +27,16 @@ const CAT_COLOR = {
 
 const HOTSPOTS = [
   // Baris 1
-  { id: 1, name: "Disc Brake",       category: "Brake",    image: discBrake,       x: 20, y: 30 },
-  { id: 2, name: "Drum Brake",       category: "Brake",    image: drumBrake,       x: 40, y: 30 },
-  { id: 3, name: "Rotor Brake",      category: "Brake",    image: rotorBrake,      x: 60, y: 30 },
-  { id: 4, name: "Axle Assy",        category: "Axle",     image: axleassy,        x: 80, y: 30 },
+  { id: 1, name: "Disc Brake",       category: "Brake",    image: discBrake,       /* x: 20, y: 30 */ },
+  { id: 2, name: "Drum Brake",       category: "Brake",    image: drumBrake,       /* x: 40, y: 30 */ },
+  { id: 3, name: "Rotor Brake",      category: "Brake",    image: rotorBrake,      /* x: 60, y: 30 */ },
+  { id: 4, name: "Axle Assy",        category: "Axle",     image: axleassy,        /* x: 80, y: 30 */ },
 
   // Baris 2
-  { id: 5, name: "Hub Assy",         category: "Wheel",    image: hubAssy,         x: 20, y: 65 },
-  { id: 6, name: "Knuckle Steering", category: "Steering", image: knuckleSteering, x: 40, y: 65 },
-  { id: 7, name: "Case Bearing",     category: "Bearing",  image: caseBearing,     x: 60, y: 65 },
-  { id: 8, name: "Bracket Engine",   category: "Engine",   image: bracketEngine,   x: 80, y: 65 },
+  { id: 5, name: "Hub Assy",         category: "Wheel",    image: hubAssy,         /* x: 20, y: 65 */ },
+  { id: 6, name: "Knuckle Steering", category: "Steering", image: knuckleSteering, /* x: 40, y: 65 */ },
+  { id: 7, name: "Case Bearing",     category: "Bearing",  image: caseBearing,     /* x: 60, y: 65 */ },
+  { id: 8, name: "Bracket Engine",   category: "Engine",   image: bracketEngine,   /* x: 80, y: 65 */ },
 ];
 /* ─── LEGEND ── */
 const LEGEND = [
@@ -242,7 +242,7 @@ const PassengerCar = () => {
                       }}
                       aria-label={spot.name}
                     >
-                      <PulseDot color={dotColor} active={isActive} />
+                      {/* <PulseDot color={dotColor} active={isActive} /> */}
 
                       <div
                         className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 rounded-md text-[0.6rem] font-bold uppercase tracking-wide text-white bg-[#0D1F5C] whitespace-nowrap pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-150"

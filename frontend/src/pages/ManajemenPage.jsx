@@ -135,8 +135,8 @@ const MemberCard = ({ person, onOpen }) => (
 
       <div className="flex items-center justify-between mt-3 pt-3 border-t border-white/10">
         <span className="flex items-center gap-1 text-[11px] font-semibold text-[#D4A843] opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
-          Profil
-          <ArrowUpRight size={12} />
+          {/* Profil
+          <ArrowUpRight size={12} /> */}
         </span>
       </div>
     </div>
@@ -263,8 +263,8 @@ const ManajemenPage = () => {
           ))}
         </div>
       </section>
-
-      <ProfileDrawer person={selected} open={drawerOpen} onClose={closeProfile} />
+{/* 
+      <ProfileDrawer person={selected} open={drawerOpen} onClose={closeProfile} /> */}
     </div>
   );
 };

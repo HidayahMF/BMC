@@ -1,8 +1,9 @@
 import { useState, useEffect, useRef } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import logobmcbg from "../assets/logobmcbg.png";
 import { ChevronDown, Menu, X } from "lucide-react";
+
 
 const menuItems = [
   {
@@ -160,7 +161,7 @@ const Navbar = () => {
           style={{ height: scrolled ? "68px" : "82px" }}
         >
           {/* DESKTOP */}
-          <nav className="hidden xl:flex items-center h-full">
+          <nav className="hidden xl:flex items-center h-full gap-3">
             {menuItems.map((item, i) => {
               const hasSubmenu = Array.isArray(item.submenu) && item.submenu.length > 0;
               return (
@@ -324,12 +325,7 @@ const Navbar = () => {
             );
           })}
 
-          <a
-            href="#"
-            className="block mx-6 mt-6 py-3 text-center bg-[#0D1F5C] text-white no-underline font-['Roboto Condensed',sans-serif] font-semibold text-[0.85rem] tracking-[0.01em] uppercase hover:bg-[#D4A843] hover:text-[#0D1F5C] transition-colors duration-200"
-          >
-            Contact Us
-          </a>
+         
         </div>
       </div>
 

@@ -21,7 +21,7 @@ import hubDrumAssy     from "../assets/Hub & Drum Assy.png";
 import hubWheel        from "../assets/Hub Wheel.png";
 import pressurePlate   from "../assets/Pressure Plate.png";
 import pulleyCrankshaft from "../assets/Pulley Crankshaft.png";
-
+import rearcamera from "../assets/rearcamera.png";
 
 /* ─── CATEGORY COLORS ── */
 const CAT_COLOR = {
@@ -37,29 +37,28 @@ const CAT_COLOR = {
   "Heavy Equipment": { bg: "#F4F4F4", text: "#444444", dot: "#6B7280" },
 };
 
-
 const HOTSPOTS = [
   // ===== Truck Kuning (Kiri) =====
-  { id: 1,  name: "Holder Injection",      category: "Engine",          image: holderInjection,    x: 12, y: 15, zone: "yellow" },
-  { id: 2,  name: "Fly Wheel",             category: "Engine",          image: flyWheel,           x: 12, y: 28, zone: "yellow" },
-  { id: 3,  name: "Pressure Plate",        category: "Clutch",          image: pressurePlate,      x: 12, y: 41, zone: "yellow" },
-  { id: 4,  name: "Exhaust Manifold Set",  category: "Engine",          image: exhaustManifoldSet, x: 12, y: 54, zone: "yellow" },
-  { id: 5,  name: "Pulley Crankshaft",     category: "Engine",          image: pulleyCrankshaft,   x: 12, y: 67, zone: "yellow" },
-  { id: 6,  name: "Bracket Front ABS",     category: "Bracket",         image: bracketFrAbs,       x: 12, y: 80, zone: "yellow" },
-  { id: 7,  name: "Hook Front",            category: "Cabin",           image: hookFr,             x: 38, y: 22, zone: "yellow" },
-  { id: 8,  name: "Hook Cab",              category: "Cabin",           image: hookCab,            x: 9, y: 70, zone: "yellow" },
-  { id: 9,  name: "Hub & Drum Assembly",   category: "Brake",           image: hubDrumAssy,        x: 28, y: 58, zone: "yellow" },
-  { id: 10, name: "Case Inter Axle Diff",  category: "Transmission",    image: caseInterAxleDiff,  x: 28, y: 76, zone: "yellow" },
-  { id: 11, name: "Collar Trunnion",       category: "Heavy Equipment", image: collarTrunnion,     x: 28, y: 90, zone: "yellow" },
+  { id: 1,  name: "Holder Injection",      category: "Engine",          image: holderInjection,    /* x: 12, y: 15, zone: "yellow" */ },
+  { id: 2,  name: "Fly Wheel",             category: "Engine",          image: flyWheel,           /* x: 12, y: 28, zone: "yellow" */ },
+  { id: 3,  name: "Pressure Plate",        category: "Clutch",          image: pressurePlate,      /* x: 12, y: 41, zone: "yellow" */ },
+  { id: 4,  name: "Exhaust Manifold Set",  category: "Engine",          image: exhaustManifoldSet, /* x: 12, y: 54, zone: "yellow" */ },
+  { id: 5,  name: "Pulley Crankshaft",     category: "Engine",          image: pulleyCrankshaft,   /* x: 12, y: 67, zone: "yellow" */ },
+  { id: 6,  name: "Bracket Front ABS",     category: "Bracket",         image: bracketFrAbs,       /* x: 12, y: 80, zone: "yellow" */ },
+  { id: 7,  name: "Hook Front",            category: "Cabin",           image: hookFr,             /* x: 38, y: 22, zone: "yellow" */ },
+  { id: 8,  name: "Hook Cab",              category: "Cabin",           image: hookCab,            /* x: 9,  y: 70, zone: "yellow" */ },
+  { id: 9,  name: "Hub & Drum Assembly",   category: "Brake",           image: hubDrumAssy,        /* x: 28, y: 58, zone: "yellow" */ },
+  { id: 10, name: "Case Inter Axle Diff",  category: "Transmission",    image: caseInterAxleDiff,  /* x: 28, y: 76, zone: "yellow" */ },
+  { id: 11, name: "Collar Trunnion",       category: "Heavy Equipment", image: collarTrunnion,     /* x: 28, y: 90, zone: "yellow" */ },
 
   // ===== Truck Oren (Kanan) =====
-  { id: 12, name: "Drum Brake",            category: "Brake",           image: drumBrake,          x: 72, y: 22, zone: "orange" },
-  { id: 13, name: "Hub Wheel",             category: "Axle",            image: hubWheel,           x: 72, y: 40, zone: "orange" },
-  { id: 14, name: "Brake Assembly",        category: "Brake",           image: brakeAssy,          x: 72, y: 58, zone: "orange" },
-  { id: 15, name: "Bracket Spring FR",     category: "Suspension",      image: bracketSpringFr,    x: 72, y: 76, zone: "orange" },
-  { id: 16, name: "Bracket Spring RR",     category: "Suspension",      image: bracketSpringRr,    x: 72, y: 90, zone: "orange" },
+  { id: 12, name: "Drum Brake",            category: "Brake",           image: drumBrake,          /* x: 72, y: 22, zone: "orange" */ },
+  { id: 13, name: "Hub Wheel",             category: "Axle",            image: hubWheel,           /* x: 72, y: 40, zone: "orange" */ },
+  { id: 14, name: "Brake Assembly",        category: "Brake",           image: brakeAssy,          /* x: 72, y: 58, zone: "orange" */ },
+  { id: 15, name: "Bracket Spring FR",     category: "Suspension",      image: bracketSpringFr,    /* x: 72, y: 76, zone: "orange" */ },
+  { id: 16, name: "Bracket Spring RR",     category: "Suspension",      image: bracketSpringRr,    /* x: 72, y: 90, zone: "orange" */ },
+  { id: 17, name: "Rear Camera",           category: "Body",            image: rearcamera,         /* x: 92, y: 18, zone: "orange" */ },
 ];
-
 /* ─── LEGEND CATEGORIES ── */
 const LEGEND = [
   { label: "Engine / Powertrain", dot: "#F59E0B" },
@@ -69,7 +68,7 @@ const LEGEND = [
   { label: "Transmission / Axle", dot: "#3B82F6" },
   { label: "Heavy Equipment",     dot: "#6B7280" },
 ];
-
+  
 /* ─── PULSE DOT ── */
 function PulseDot({ color, active }) {
   return (
@@ -242,10 +241,11 @@ export default function SparePartDiagram() {
           >
             {/* Zone labels */}
             <div className="absolute top-3 left-3 z-10 text-[0.58rem] font-bold tracking-widest uppercase text-[#0D1F5C] bg-[#D4A843]/90 px-2 py-1 rounded-md">
-              Truck Kuning
+            Medium Duty Truck
+
             </div>
             <div className="absolute top-3 right-3 z-10 text-[0.58rem] font-bold tracking-widest uppercase text-[#0D1F5C] bg-[#D4A843]/90 px-2 py-1 rounded-md">
-              Truck Oren
+             Heavy Duty Truck 
             </div>
 
             {/* Truck images side-by-side */}
@@ -279,7 +279,7 @@ export default function SparePartDiagram() {
                     }}
                     aria-label={spot.name}
                   >
-                    <PulseDot color={dotColor} active={isActive} />
+                    {/* <PulseDot color={dotColor} active={isActive} /> */}
 
                     {/* Tooltip on hover */}
                     <div

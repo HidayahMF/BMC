@@ -33,8 +33,7 @@ import retainerCover from "../assets/Retainer Cover.png";
 import rotorBrake from "../assets/Rotor Brake.png";
 import seatTrunnion from "../assets/Seattrunion.png";
 import axleassy from "../assets/axleassy.png";
-
-
+import rearcamera from "../assets/rearcamera.png";
 
 // =======================
 // PRODUCT DATA
@@ -42,7 +41,7 @@ import axleassy from "../assets/axleassy.png";
 
 export const products = [
   {
-    id: 1,  
+    id: 1,
     name: "Balancer Shaft",
     category: "Engine",
     image: balancerShaft,
@@ -346,8 +345,16 @@ export const products = [
     description: "Heavy-duty seat trunnion component.",
     applications: ["Mining", "Construction"],
   },
+  {
+    id: 35,
+    name: "Rear Camera",
+    category: "Body",
+    image: rearcamera,
+    description:
+      "High-quality rear camera system designed to improve visibility, enhance driving safety, and assist vehicle maneuvering in commercial and heavy-duty applications.",
+    applications: ["Commercial Vehicle", "Truck", "Bus"],
+  },
 ];
-
 
 // =======================
 // FILTER CATEGORIES

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { products } from "../data/Products";
+import { products } from "../data/ProductsData";
 
 /* ─── CATEGORY COLOR MAP ── */
 const CAT_COLOR = {

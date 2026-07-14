@@ -178,7 +178,7 @@ const ContactUs = () => {
                                                 Robyandi Dwi Ronudi
                                             </p>
                                             <p className="text-white/60 text-[12px] leading-relaxed">
-                                               Head of Commercial & Bussines Development 
+                                               Head of Commercial & Business Development 
                                             </p>
                                         </div>
                                     </div>
@@ -203,20 +203,7 @@ const ContactUs = () => {
                                         </div>
                                     </div>
 
-                                    {/* Fax */}
-                                    <div className="flex gap-4">
-                                        <div className="shrink-0 w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center">
-                                            <Printer size={17} className="text-[#D4A843]" strokeWidth={1.75} />
-                                        </div>
-                                        <div>
-                                            <p className="text-white/50 text-[10px] font-bold uppercase tracking-widest mb-1">
-                                                Fax
-                                            </p>
-                                            <p className="text-white text-[13.5px] font-semibold">
-                                                (62-21) 8871835
-                                            </p>
-                                        </div>
-                                    </div>
+                                  
 
                                     {/* Emails */}
                                     <div className="flex gap-4">

@@ -109,6 +109,9 @@ const socials = [
   },
 ];
 
+// eslint-disable-next-line no-unused-vars
+const _unusedIconFB = IconFB;
+
 const contacts = [
   {
     Icon: IconMail,

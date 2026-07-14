@@ -1,36 +1,21 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { FACILITIES, CAT_COLOR, sortFacilities } from "../data/MachiningData";
 
-import AxleAssyLine1 from "../assets/AxleAssyLine1.png";
-import AxleAssyLine2 from "../assets/AxleAssyLine2.png";
-import BRAKEASSYLINE from "../assets/BRAKEASSYLINE.png";
-import DiscBrakeLine from "../assets/DiscBrakeLine.png";
-import DrumBrakeAndHUBCAT3Line from "../assets/DrumBrakeHUBCAT3Line.png";
-import EXHGASLINEEGR from "../assets/EXHGASLINEEGR.png";
-import EXHMANIFOLDLINE from "../assets/EXHMANIFOLDLINE.png";
-import KnuckleLine from "../assets/KnuckleLine.png";
-import MACHDOOSAN5700 from "../assets/MACHDOOSAN5700.png";
-import MACHMAKINOSLIM3N from "../assets/MACHMAKINOSLIM3N.png";
-import MACHROBOTICLEANTEC from "../assets/MACHROBOTICLEANTEC.png";
-import CMMHEXAGON from "../assets/CMMHEXAGON.png";
-
-/* ─── DATA PREVIEW (subset untuk Home) ── */
-const PREVIEW_FACILITIES = [
-  { name: "Axle Assembly Line",        category: "Production Line", image: AxleAssyLine1 },
-  { name: "Brake Assembly Line",       category: "Production Line", image: BRAKEASSYLINE },
-  { name: "Disc Brake Line",           category: "Production Line", image: DiscBrakeLine },
-  { name: "Knuckle Line",              category: "Production Line", image: KnuckleLine },
-  { name: "Doosan Machining Center",   category: "Machining Center", image: MACHDOOSAN5700 },
-  { name: "Makino Slim 3N",            category: "Machining Center", image: MACHMAKINOSLIM3N },
-  { name: "Robotic Cleantec",          category: "Machining Center", image: MACHROBOTICLEANTEC },
-  { name: "CMM Hexagon",               category: "Quality & Inspection Lab", image: CMMHEXAGON },
+/* ─── PREVIEW SELECTION ──────────────────────────────────
+   1 dari Machining Center (Robot Disc Brake)
+   7 dari Quality & Inspection Lab (semua item lab QC)
+────────────────────────────────────────────────────────── */
+const PREVIEW_NAMES = [
+  "Robot Disc Brake",           // Machining Center
+  "Photomicroscope",            // Quality & Inspection Lab
+  "Hardness Vickers/Rockwell",  // Quality & Inspection Lab
+  "Hardness Brinell",           // Quality & Inspection Lab
+  "Surfcom",                    // Quality & Inspection Lab
+  "CMM Accura",                 // Quality & Inspection Lab
+  "CMM Accretech",              // Quality & Inspection Lab
+  "CMM Hexagon",                // Quality & Inspection Lab
 ];
-
-const CAT_COLOR = {
-  "Production Line":        { bg: "#EEF9F1", text: "#3B6D11", dot: "#22C55E" },
-  "Machining Center":       { bg: "#EBF5FF", text: "#185FA5", dot: "#3B82F6" },
-  "Quality & Inspection Lab": { bg: "#F3F0FF", text: "#5C3D9E", dot: "#8B5CF6" },
-};
 
 function FacilityCard({ item, index }) {
   const [hov, setHov] = useState(false);
@@ -104,6 +89,12 @@ const MachiningSection = () => {
     return () => clearTimeout(t);
   }, []);
 
+  // Ambil item preview berdasarkan PREVIEW_NAMES, lalu urutkan
+  // dengan prioritas Quality > Japan > Korea > Other (dari MachiningData.js)
+  const preview = sortFacilities(
+    FACILITIES.filter((f) => PREVIEW_NAMES.includes(f.name))
+  );
+
   return (
     <section className="bg-[#0A1642] py-20 font-condensed relative overflow-hidden">
       {/* decorative bg grid lines */}
@@ -138,32 +129,12 @@ const MachiningSection = () => {
           </p>
         </div>
 
-        {/* Stats bar */}
-        <div
-          className="grid grid-cols-3 gap-4 max-w-2xl mx-auto mb-14"
-          style={{
-            opacity: entered ? 1 : 0,
-            transition: "opacity 0.7s ease 0.15s",
-          }}
-        >
-          {[
-            // { n: "27+", l: "Unit Mesin & Lini" },
-            // { n: "3",   l: "Kategori Fasilitas" },
-            // { n: "ISO", l: "9001:2015 Certified" },
-          ].map((s) => (
-            <div key={s.l} className="text-center border-x border-white/10 px-2 first:border-l-0 last:border-r-0">
-              <p className="text-[1.6rem] font-bold text-[#D4A843] leading-none mb-1">{s.n}</p>
-              <p className="text-[0.62rem] text-[#8B96C0] uppercase tracking-widest font-semibold">{s.l}</p>
-            </div>
-          ))}
-        </div>
-
         {/* Preview grid */}
         <div
           className="grid gap-5 mb-12"
           style={{ gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))" }}
         >
-          {PREVIEW_FACILITIES.map((item, i) => (
+          {preview.map((item, i) => (
             <FacilityCard key={item.name} item={item} index={i} />
           ))}
         </div>
@@ -180,7 +151,7 @@ const MachiningSection = () => {
             onClick={() => navigate("/machiningfacilities")}
             className="px-10 py-[14px] bg-[#D4A843] text-[#0A1642] border-none rounded-[9px] text-[0.78rem] font-bold tracking-[0.1em] uppercase font-condensed cursor-pointer hover:opacity-90 transition-opacity inline-flex items-center gap-2"
           >
-            Lihat Semua Fasilitas →
+            Lihat Semua Fasilitas ({FACILITIES.length}) →
           </button>
         </div>
       </div>

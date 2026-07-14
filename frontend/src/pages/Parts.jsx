@@ -1,7 +1,7 @@
   import React, { useState, useEffect, useRef } from "react";
   import { useSearchParams, useNavigate } from "react-router-dom";
   import { ChevronRight } from "lucide-react";
-  import { products, categories } from "../data/Products";
+  import { products, categories } from "../data/ProductsData";
   import blackimage from "../assets/blackimage.jpg";
   import bmc2 from "../assets/bmc2.jpg";
 
@@ -127,7 +127,7 @@
       { label: "Nama Produk", val: product.name },
       { label: "Kategori",    val: product.category },
       { label: "Aplikasi",    val: product.applications?.join(" · ") || "—" },
-      { label: "Standar",     val: "ISO 9001:2015 Certified" },
+      { label: "Standar",     val: "ISO 9001:2015 & IATF 16949:2016 Certified" },
       { label: "Pasar",       val: "OEM & REM — Export Ready" },
     ];
 

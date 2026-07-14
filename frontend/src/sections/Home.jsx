@@ -24,7 +24,7 @@ const slides = [
 
 const stats = [
   { value: "1986", label: "Est. Year", sub: "Decades of precision" },
-  { value: "500+", label: "Employees", sub: "Skilled professionals" },
+  { value: "608", label: "Employees", sub: "Skilled professionals" },
   { value: "5+", label: "Export Countries", sub: "Global footprint" },
   { value: "OEM / OES", label: "Market Segments", sub: "Dual market capability" },
 ];
