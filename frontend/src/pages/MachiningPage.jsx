@@ -320,6 +320,14 @@ const MachiningPage = () => {
               dan keandalan sesuai kebutuhan pelanggan OEM dan OES di pasar domestik maupun ekspor.
             </p>
           </div>
+          <div className="flex flex-col items-center mt-10 animate-bounce">
+            <p className="text-white/50 text-[0.9rem] font-bold tracking-[0.15em] uppercase mb-3">
+              Scroll for Gallery
+            </p>
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#D4A843" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M6 9l6 6 6-6" />
+            </svg>
+          </div>
         </div>
       </section>
 

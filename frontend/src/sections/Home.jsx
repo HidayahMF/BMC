@@ -24,7 +24,6 @@ const slides = [
 
 const stats = [
   { value: "1986", label: "Est. Year", sub: "Decades of precision" },
-  { value: "608", label: "Employees", sub: "Skilled professionals" },
   { value: "5+", label: "Export Countries", sub: "Global footprint" },
   { value: "OEM / OES", label: "Market Segments", sub: "Dual market capability" },
 ];
@@ -266,7 +265,7 @@ export default function Home() {
       {/* ══ STATS — dark navy, clean numbers ══ */}
       <section className="bg-[#0D1F5C]">
         <div className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/10 font-[600] font-['Roboto Condensed',sans-serif]">
+          <div className="grid grid-cols-2 md:grid-cols-3 divide-x divide-white/10 font-[600] font-['Roboto Condensed',sans-serif]">
             {stats.map((s, i) => <StatCard key={i} {...s} index={i} />)}
           </div>
 
