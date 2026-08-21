@@ -42,60 +42,6 @@ import rearcamera from "../assets/rearcamera.png";
 export const products = [
   {
     id: 1,
-    name: "Balancer Shaft",
-    category: "Engine",
-    image: balancerShaft,
-    description: "Precision machined balancer shaft for engine balancing and vibration reduction.",
-    applications: ["Automotive", "Commercial Vehicle"],
-  },
-
-  {
-    id: 2,
-    name: "Bracket Engine",
-    category: "Bracket",
-    image: bracketEngine,
-    description: "High-strength engine mounting bracket.",
-    applications: ["Truck", "Heavy Equipment"],
-  },
-
-  {
-    id: 3,
-    name: "Bracket Exhaust Pipe",
-    category: "Bracket",
-    image: bracketExhPipe,
-    description: "Durable exhaust pipe support bracket.",
-    applications: ["Automotive"],
-  },
-
-  {
-    id: 4,
-    name: "Bracket Front ABS",
-    category: "Brake",
-    image: bracketFrAbs,
-    description: "ABS mounting bracket manufactured with precision machining.",
-    applications: ["Passenger Vehicle"],
-  },
-
-  {
-    id: 5,
-    name: "Bracket Spring FR",
-    category: "Suspension",
-    image: bracketSpringFr,
-    description: "Front suspension spring bracket.",
-    applications: ["Commercial Vehicle"],
-  },
-
-  {
-    id: 6,
-    name: "Bracket Spring RR",
-    category: "Suspension",
-    image: bracketSpringRr,
-    description: "Rear suspension spring bracket.",
-    applications: ["Commercial Vehicle"],
-  },
-
-  {
-    id: 7,
     name: "Brake Assembly",
     category: "Brake",
     image: brakeAssy,
@@ -104,30 +50,84 @@ export const products = [
   },
 
   {
+    id: 2,
+    name: "Cover Axle Housing",
+    category: "Axle",
+    image: coverAxleHousing,
+    description: "Machined axle housing cover.",
+    applications: ["Commercial Vehicle"],
+  },
+
+  {
+    id: 3,
+    name: "Cylinder Wheel",
+    category: "Brake",
+    image: cylinderWheel,
+    description: "Brake wheel cylinder.",
+    applications: ["Automotive"],
+  },
+
+  {
+    id: 4,
+    name: "Disc Brake",
+    category: "Brake",
+    image: discBrake,
+    description: "High-performance brake disc.",
+    applications: ["Passenger Vehicle"],
+  },
+
+  {
+    id: 5,
+    name: "Drum Brake",
+    category: "Brake",
+    image: drumBrake,
+    description: "Durable drum brake assembly.",
+    applications: ["Truck"],
+  },
+
+  {
+    id: 6,
+    name: "Hub & Drum Assembly",
+    category: "Brake",
+    image: hubDrumAssy,
+    description: "Hub and drum brake assembly.",
+    applications: ["Commercial Vehicle"],
+  },
+
+  {
+    id: 7,
+    name: "Rotor Brake",
+    category: "Brake",
+    image: rotorBrake,
+    description: "Brake rotor with precision machining.",
+    applications: ["Passenger Vehicle"],
+  },
+
+  {
     id: 8,
-    name: "Case Bearing",
-    category: "Transmission",
-    image: caseBearing,
-    description: "Precision bearing housing component.",
-    applications: ["Industrial", "Automotive"],
+    name: "Seat Trunnion",
+    category: "Heavy Equipment",
+    image: seatTrunnion,
+    description: "Heavy-duty seat trunnion component.",
+    applications: ["Mining", "Construction"],
   },
 
   {
     id: 9,
-    name: "Case Inter Axle Differential",
-    category: "Transmission",
-    image: caseInterAxleDiff,
-    description: "Inter axle differential housing.",
-    applications: ["Heavy Duty Truck"],
+    name: "Pulley Crankshaft",
+    category: "Engine",
+    image: pulleyCrankshaft,
+    description: "Crankshaft pulley.",
+    applications: ["Diesel Engine"],
   },
 
   {
     id: 10,
-    name: "Collar PC200",
-    category: "Heavy Equipment",
-    image: collarPc200,
-    description: "Precision collar for PC200 excavator.",
-    applications: ["Mining", "Construction"],
+    name: "Pressure Plate",
+    category: "Clutch",
+    image: pressurePlate,
+    description: "Clutch pressure plate.",
+    applications: ["Passenger Vehicle"],
   },
 
   {
@@ -141,11 +141,11 @@ export const products = [
 
   {
     id: 12,
-    name: "Cover Axle Housing",
-    category: "Axle",
-    image: coverAxleHousing,
-    description: "Machined axle housing cover.",
-    applications: ["Commercial Vehicle"],
+    name: "Balancer Shaft",
+    category: "Engine",
+    image: balancerShaft,
+    description: "Precision machined balancer shaft for engine balancing and vibration reduction.",
+    applications: ["Automotive", "Commercial Vehicle"],
   },
 
   {
@@ -159,29 +159,29 @@ export const products = [
 
   {
     id: 14,
-    name: "Cylinder Wheel",
-    category: "Brake",
-    image: cylinderWheel,
-    description: "Brake wheel cylinder.",
-    applications: ["Automotive"],
+    name: "Bracket Engine",
+    category: "Bracket",
+    image: bracketEngine,
+    description: "High-strength engine mounting bracket.",
+    applications: ["Truck", "Heavy Equipment"],
   },
 
   {
     id: 15,
-    name: "Disc Brake",
-    category: "Brake",
-    image: discBrake,
-    description: "High-performance brake disc.",
-    applications: ["Passenger Vehicle"],
+    name: "Bracket Exhaust Pipe",
+    category: "Bracket",
+    image: bracketExhPipe,
+    description: "Durable exhaust pipe support bracket.",
+    applications: ["Automotive"],
   },
 
   {
     id: 16,
-    name: "Drum Brake",
+    name: "Bracket Front ABS",
     category: "Brake",
-    image: drumBrake,
-    description: "Durable drum brake assembly.",
-    applications: ["Truck"],
+    image: bracketFrAbs,
+    description: "ABS mounting bracket manufactured with precision machining.",
+    applications: ["Passenger Vehicle"],
   },
 
   {
@@ -240,10 +240,10 @@ export const products = [
 
   {
     id: 23,
-    name: "Hub & Drum Assembly",
-    category: "Brake",
-    image: hubDrumAssy,
-    description: "Hub and drum brake assembly.",
+    name: "Bracket Spring FR",
+    category: "Suspension",
+    image: bracketSpringFr,
+    description: "Front suspension spring bracket.",
     applications: ["Commercial Vehicle"],
   },
 
@@ -303,20 +303,20 @@ export const products = [
 
   {
     id: 30,
-    name: "Pressure Plate",
-    category: "Clutch",
-    image: pressurePlate,
-    description: "Clutch pressure plate.",
-    applications: ["Passenger Vehicle"],
+    name: "Bracket Spring RR",
+    category: "Suspension",
+    image: bracketSpringRr,
+    description: "Rear suspension spring bracket.",
+    applications: ["Commercial Vehicle"],
   },
 
   {
     id: 31,
-    name: "Pulley Crankshaft",
-    category: "Engine",
-    image: pulleyCrankshaft,
-    description: "Crankshaft pulley.",
-    applications: ["Diesel Engine"],
+    name: "Case Bearing",
+    category: "Transmission",
+    image: caseBearing,
+    description: "Precision bearing housing component.",
+    applications: ["Industrial", "Automotive"],
   },
 
   {
@@ -330,19 +330,19 @@ export const products = [
 
   {
     id: 33,
-    name: "Rotor Brake",
-    category: "Brake",
-    image: rotorBrake,
-    description: "Brake rotor with precision machining.",
-    applications: ["Passenger Vehicle"],
+    name: "Case Inter Axle Differential",
+    category: "Transmission",
+    image: caseInterAxleDiff,
+    description: "Inter axle differential housing.",
+    applications: ["Heavy Duty Truck"],
   },
 
   {
     id: 34,
-    name: "Seat Trunnion",
+    name: "Collar PC200",
     category: "Heavy Equipment",
-    image: seatTrunnion,
-    description: "Heavy-duty seat trunnion component.",
+    image: collarPc200,
+    description: "Precision collar for PC200 excavator.",
     applications: ["Mining", "Construction"],
   },
   {
@@ -375,4 +375,3 @@ export const categories = [
   "Seal",
   "Heavy Equipment",
 ];
-
