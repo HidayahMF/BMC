@@ -246,8 +246,42 @@
       return matchCat && matchQ;
     });
 
-    const visible = filtered.slice(0, showCount);
-    const hasMore = showCount < filtered.length;
+    /* ── SORT BY PRIORITY ── */
+    const getProductPriority = (product) => {
+      const name = product.name.toLowerCase();
+      const isBrake =
+        product.category === "Brake" ||
+        name.includes("brake") ||
+        name.includes("bracket front abs");
+      if (isBrake) return 0;
+
+      const priorityProducts = [
+        "hub wheel",
+        "knuckle steering",
+        "pressure plate",
+        "fly wheel",
+        "front grill",
+        "exhaust manifold set",
+        "seat trunnion",
+        "cover axle housing",
+        "balancer shaft",
+        "cylinder sleeve",
+      ];
+      const idx = priorityProducts.indexOf(name);
+      if (idx !== -1) return idx + 1;
+
+      return 11;
+    };
+
+    const sorted = [...filtered].sort((a, b) => {
+      const pa = getProductPriority(a);
+      const pb = getProductPriority(b);
+      if (pa !== pb) return pa - pb;
+      return a.id - b.id;
+    });
+
+    const visible = sorted.slice(0, showCount);
+    const hasMore = showCount < sorted.length;
 
     const resetAndFilter = (cat) => { setActiveCat(cat); setShowCount(12); };
     const handleSearch   = (e)   => { setSearch(e.target.value); setShowCount(12); };
@@ -374,9 +408,9 @@
                       ].join(" ")}
                     >
                       {cat}
-                      {active && filtered.length > 0 && (
+                      {active && sorted.length > 0 && (
                         <span className="bg-gold text-navy text-[0.6rem] font-bold px-[7px] py-[1px] rounded-[10px] leading-[1.6]">
-                          {filtered.length}
+                          {sorted.length}
                         </span>
                       )}
                     </button>
@@ -387,14 +421,14 @@
 
             {(search || activeCat !== "All") && (
               <p className="text-[0.78rem] text-muted mb-5">
-                {filtered.length === 0
+                {sorted.length === 0
                   ? "Tidak ada produk ditemukan"
-                  : `Menampilkan ${visible.length} dari ${filtered.length} produk`}
+                  : `Menampilkan ${visible.length} dari ${sorted.length} produk`}
                 {search && <> untuk "<strong className="text-navy">{search}</strong>"</>}
               </p>
             )}
 
-            {filtered.length === 0 && (
+            {sorted.length === 0 && (
               <div className="text-center py-16">
                 <div className="text-5xl mb-4">🔍</div>
                 <p className="text-base font-bold text-navy mb-2">Produk tidak ditemukan</p>
@@ -410,7 +444,7 @@
               </div>
             )}
 
-            {filtered.length > 0 && (
+            {sorted.length > 0 && (
               <>
                 <div
                   className="grid gap-5"
@@ -427,7 +461,7 @@
         onClick={() => setShowCount((v) => v + 12)}
         className="px-10 py-[13px] border-2 border-navy rounded-[9px] bg-white text-navy text-[0.75rem] font-bold tracking-[0.1em] uppercase font-condensed cursor-pointer transition-all duration-200 hover:bg-navy hover:text-gold"
       >
-        Tampilkan Lebih Banyak ({filtered.length - showCount} produk tersisa)
+        Tampilkan Lebih Banyak ({sorted.length - showCount} produk tersisa)
       </button>
     </div>
   )}

@@ -19,9 +19,6 @@ const CAT_COLOR = {
 };
 
 
-const PREVIEW_IDS = [1, 2, 3, 4, 5, 6];
-
-
 function ProductCard({ product, index, onClick }) {
   const [hov, setHov] = useState(false);
   const [vis, setVis] = useState(false);
@@ -195,11 +192,40 @@ export default function ProductSection() {
   const [selected, setSelected] = useState(null);
   const navigate = useNavigate();
 
-const PREVIEW_IDS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const getProductPriority = (product) => {
+  const name = product.name.toLowerCase();
+  const isBrake =
+    product.category === "Brake" ||
+    name.includes("brake") ||
+    name.includes("bracket front abs");
+  if (isBrake) return 0;
 
-const preview = products.filter(product =>
-  PREVIEW_IDS.includes(product.id)
-);
+  const priorityProducts = [
+    "hub wheel",
+    "knuckle steering",
+    "pressure plate",
+    "fly wheel",
+    "front grill",
+    "exhaust manifold set",
+    "seat trunnion",
+    "cover axle housing",
+    "balancer shaft",
+    "cylinder sleeve",
+  ];
+  const idx = priorityProducts.indexOf(name);
+  if (idx !== -1) return idx + 1;
+
+  return 11;
+};
+
+const preview = [...products]
+  .sort((a, b) => {
+    const pa = getProductPriority(a);
+    const pb = getProductPriority(b);
+    if (pa !== pb) return pa - pb;
+    return a.id - b.id;
+  })
+  .slice(0, 10);
   return (
     <section id="products" className="bg-site py-[80px_0_60px] font-condensed">
       <div className="max-w-[1280px] mx-auto px-6 pt-8">
