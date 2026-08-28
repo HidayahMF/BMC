@@ -417,6 +417,7 @@ export const STANDARDS = ["JIS B0651", "JIS B7440", "JIS B7451", "JIS B7153", "J
 export const WORKFLOW = [
   { label: "Raw Material",           icon: Boxes },
   { label: "Machining",              icon: Cog },
+  { label: "Assembly",               icon: Layers },
   { label: "Dimensional Inspection", icon: Ruler },
   { label: "Surface Inspection",     icon: ScanLine },
   { label: "Hardness Test",          icon: Gauge },

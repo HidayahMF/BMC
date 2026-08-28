@@ -58,13 +58,13 @@ export const products = [
     applications: ["Commercial Vehicle"],
   },
 
-  {
+    {
     id: 3,
-    name: "Cylinder Wheel",
-    category: "Brake",
-    image: cylinderWheel,
-    description: "Brake wheel cylinder.",
-    applications: ["Automotive"],
+    name: "Hub Assembly",
+    category: "Axle",
+    image: hubAssy,
+    description: "Wheel hub assembly.",
+    applications: ["Truck"],
   },
 
   {
@@ -247,15 +247,15 @@ export const products = [
     applications: ["Commercial Vehicle"],
   },
 
-  {
-    id: 24,
-    name: "Hub Assembly",
-    category: "Axle",
-    image: hubAssy,
-    description: "Wheel hub assembly.",
-    applications: ["Truck"],
+   {
+    id: 24  ,
+    name: "Cylinder Wheel",
+    category: "Brake",
+    image: cylinderWheel,
+    description: "Brake wheel cylinder.",
+    applications: ["Automotive"],
+    isLast: true,
   },
-
   {
     id: 25,
     name: "Hub Wheel",

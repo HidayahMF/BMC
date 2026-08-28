@@ -127,7 +127,6 @@
       { label: "Nama Produk", val: product.name },
       { label: "Kategori",    val: product.category },
       { label: "Aplikasi",    val: product.applications?.join(" · ") || "—" },
-      { label: "Standar",     val: "ISO 9001:2015 & IATF 16949:2016 Certified" },
       { label: "Pasar",       val: "OEM & REM — Export Ready" },
     ];
 
@@ -175,9 +174,7 @@
               >
                 {product.category}
               </span>
-              <span className="text-[0.62rem] font-bold px-3 py-[4px] rounded-full uppercase tracking-[0.07em] bg-[#EEF1FB] text-navy">
-                ISO 9001:2015
-              </span>
+           
             </div>
 
             <p className="text-[0.88rem] text-[#4A5568] leading-[1.75] mb-[22px]">
@@ -249,6 +246,9 @@
     /* ── SORT BY PRIORITY ── */
     const getProductPriority = (product) => {
       const name = product.name.toLowerCase();
+      
+      if (product.isLast) return 999;
+
       const isBrake =
         product.category === "Brake" ||
         name.includes("brake") ||
