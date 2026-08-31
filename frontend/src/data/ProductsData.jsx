@@ -178,7 +178,7 @@ export const products = [
   {
     id: 16,
     name: "Bracket Front ABS",
-    category: "Brake",
+    category: "Bracket",
     image: bracketFrAbs,
     description: "ABS mounting bracket manufactured with precision machining.",
     applications: ["Passenger Vehicle"],

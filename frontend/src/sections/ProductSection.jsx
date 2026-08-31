@@ -196,8 +196,7 @@ const getProductPriority = (product) => {
   const name = product.name.toLowerCase();
   const isBrake =
     product.category === "Brake" ||
-    name.includes("brake") ||
-    name.includes("bracket front abs");
+    name.includes("brake");
   if (isBrake) return 0;
 
   const priorityProducts = [
