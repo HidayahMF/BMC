@@ -513,7 +513,7 @@ const Milestone = () => {
 
         <button
           onClick={() => window.location.assign("/")}
-          className="absolute left-6 top-6 z-50 inline-flex items-center gap-2 text-xs uppercase tracking-widest text-white/70 transition-colors duration-200 hover:text-[#D4A843] md:left-10 md:top-8"
+          className="absolute left-6 top-28 z-50 inline-flex items-center gap-2 text-xs uppercase tracking-widest text-white/70 transition-colors duration-200 hover:text-[#D4A843] md:left-10 md:top-8"
           data-aos="fade-down"
           data-aos-duration="600"
         >
