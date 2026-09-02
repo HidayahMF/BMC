@@ -1,0 +1,20 @@
+# cPanel SPA routing untuk frontend React (Vite build -> dist/)
+# Letakkan file ini DI DALAM folder document root tempat `dist/` di-copy
+# (misal public_html). Redirect semua request yang bukan file/dir nyata ke
+# index.html agar React Router bisa menangani route seperti /pemadaman.
+#
+# CATATAN: JANGAN redirect path /api/* ke index.html — biarkan diteruskan
+# ke backend Express (atau atur reverse proxy sehingga /api -> backend).
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Jangan rewrite file/dir yang benar-benar ada (assets, dll.)
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # Semua route SPA -> index.html
+    RewriteRule ^ index.html [L]
+</IfModule>
