@@ -20,6 +20,11 @@ import CustomerPage from "./pages/CustomerPage"
 import BeritaPage from "./pages/BeritaPage";
 import BeritaPageAwal from "./pages/BeritaPageAwal"
 import ManajemenPage from "./pages/ManajemenPage";
+import { AuthProvider } from "./context/AuthContext";
+import ProtectedRoute from "./pages/pemadaman/ProtectedRoute";
+import PemadamanLogin from "./pages/pemadaman/PemadamanLogin";
+import PemadamanPage from "./pages/pemadaman/PemadamanPage";
+import PemadamanAdmin from "./pages/pemadaman/PemadamanAdmin";
 
 
 const MainLayout = () => (
@@ -49,7 +54,8 @@ const PageLayout = ({ children }) => {
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <AuthProvider>
+      <BrowserRouter>
       <div className="scroll-smooth">
         <Routes>
           <Route path="/" element={<MainLayout />} />
@@ -67,11 +73,16 @@ const App = () => {
           <Route path="/berita/:slug" element={<PageLayout><BeritaPage /></PageLayout>} /> */}
           <Route path="/manajemen" element={<PageLayout><ManajemenPage /></PageLayout>} />
 
+          <Route path="/pemadaman/login" element={<PemadamanLogin />} />
+          <Route element={<ProtectedRoute />}>
+            <Route path="/pemadaman" element={<PemadamanPage />} />
+            <Route path="/admin/pemadaman/employees" element={<PemadamanAdmin />} />
+          </Route>
 
-      
         </Routes>
       </div>
     </BrowserRouter>
+    </AuthProvider>
   );
 };
 
