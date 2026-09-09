@@ -14,6 +14,7 @@ import lingkunganhidup from "../assets/lingkunganhidup.jpg";
 import pajakkontribusi from "../assets/pajakkontribusi.jpg";
 import appreciation from "../assets/appreciation.jpg"
 import bmc2 from "../assets/bmc2.jpg"
+import policyImage from "../assets/Kebijaka Manajemen Mutu, Keselamatan Kesehatan Kerja, Lingkungan dan EnergiGambar.png"
 
 /* ------------------------------------------------------------------ */
 /*  ONE CONSISTENT COLOR SYSTEM — no rainbow tags, high contrast only  */
@@ -134,9 +135,10 @@ const CERTIFICATIONS = [
       "Kebijakan ini mencakup kepatuhan terhadap peraturan dan persyaratan yang berlaku, pencegahan kecelakaan kerja dan pencemaran lingkungan, efisiensi penggunaan energi dan sumber daya alam, peningkatan berkelanjutan terhadap sistem manajemen, serta keterlibatan seluruh karyawan dalam menciptakan lingkungan kerja yang aman, nyaman, dan kondusif.",
       "Kebijakan tersebut menjadi pedoman bagi seluruh insan PT Braja Mukti Cakra dan pihak terkait dalam mendukung pencapaian sasaran perusahaan secara berkelanjutan.",
     ],
-    tag: "Corporate Update",
-    isDocument: true,
-    pdf: POLICY_PDF,
+     tag: "Corporate Update",
+     isDocument: true,
+     image: policyImage,
+     pdf: POLICY_PDF,
   },
 ];
 
@@ -177,23 +179,15 @@ function CertCard({ item, index, onClick }) {
         className="h-[210px] shrink-0 flex items-center justify-center p-6 border-b overflow-hidden"
         style={{ background: PAPER, borderColor: "#DDE1EF" }}
       >
-        {item.isDocument ? (
-          <div className="flex h-full w-full flex-col items-center justify-center text-center" style={{ color: NAVY }}>
-            <FileText size={58} strokeWidth={1.25} className="mb-3 transition-transform duration-300" style={{ transform: hov ? "scale(1.06)" : "scale(1)" }} />
-            <span className="max-w-[190px] text-[0.68rem] font-bold uppercase tracking-[0.12em]">Dokumen Kebijakan</span>
-            <span className="mt-1 text-[0.62rem] font-semibold uppercase tracking-wider" style={{ color: SLATE }}>PDF · 30 April 2026</span>
-          </div>
-        ) : (
-          <img
-            src={item.image}
-            alt={item.name}
-            className="max-h-full max-w-full object-contain transition-transform duration-300"
-            style={{
-              transform: hov ? "scale(1.06)" : "scale(1)",
-              filter: "drop-shadow(0 6px 14px rgba(13,31,92,0.15))",
-            }}
-          />
-        )}
+        <img
+          src={item.image}
+          alt={item.name}
+          className="max-h-full max-w-full object-contain transition-transform duration-300"
+          style={{
+            transform: hov ? "scale(1.06)" : "scale(1)",
+            filter: "drop-shadow(0 6px 14px rgba(13,31,92,0.15))",
+          }}
+        />
       </div>
 
       {/* Info */}
@@ -281,19 +275,12 @@ function Lightbox({ item, onClose }) {
           className="border-b flex items-center justify-center p-8 min-h-[320px]"
           style={{ background: PAPER, borderColor: "#DDE1EF" }}
         >
-           {item.isDocument ? (
-             <div className="flex flex-col items-center text-center" style={{ color: NAVY }}>
-               <FileText size={76} strokeWidth={1.15} />
-               <span className="mt-4 text-[0.72rem] font-bold uppercase tracking-[0.14em]">Dokumen Kebijakan PDF</span>
-             </div>
-           ) : (
-             <img
-               src={item.image}
-               alt={item.name}
-               className="max-h-[420px] max-w-full object-contain rounded-md"
-               style={{ filter: "drop-shadow(0 10px 24px rgba(13,31,92,0.18))" }}
-             />
-           )}
+           <img
+             src={item.image}
+             alt={item.name}
+             className="max-h-[420px] max-w-full object-contain rounded-md"
+             style={{ filter: "drop-shadow(0 10px 24px rgba(13,31,92,0.18))" }}
+           />
         </div>
 
         <div className="p-[22px_24px]">
