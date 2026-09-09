@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { ChevronRight, X, ArrowRight, ShieldCheck } from "lucide-react";
-import blackimage from "../assets/blackimage.jpg";
+import { ChevronRight, X, ArrowRight, ShieldCheck, FileText, ExternalLink } from "lucide-react";
 import iso9001 from "../assets/iso9001.jpg";
 import iso14001 from "../assets/iso14001.png";
 import iso45001 from "../assets/iso45001.png";
@@ -26,6 +25,7 @@ const BRASS = "#D4A843";
 const PAPER = "#F4F6FC";
 const SLATE = "#5A6785"; // muted body text, still readable (>4.5:1 on white)
 const BRASS_DARK = "#8A6413"; // darker brass variant for readable text-on-light use
+const POLICY_PDF = "/assets/kebijakan-manajemen-mutu-k3-lingkungan-energi-bmc.pdf";
 
 /* ─── DATA SERTIFIKASI & PENGHARGAAN ── */
 const CERTIFICATIONS = [
@@ -124,6 +124,20 @@ const CERTIFICATIONS = [
     desc: "Penghargaan dari PT Hino Motors Manufacturing Indonesia atas pengakuan terhadap kinerja luar biasa dan dukungan penuh (outstanding performance and support) sepanjang tahun 2021.",
     tag: "Award",
   },
+  {
+    id: 13,
+    name: "Kebijakan Manajemen Mutu, Keselamatan Kesehatan Kerja, Lingkungan dan Energi",
+    subtitle: "30 April 2026",
+    desc: "PT Braja Mukti Cakra menetapkan Kebijakan Manajemen Mutu, Keselamatan Kesehatan Kerja, Lingkungan dan Energi sebagai bentuk komitmen perusahaan dalam menjaga kualitas, menciptakan lingkungan kerja yang aman dan sehat, melindungi lingkungan, serta meningkatkan efisiensi penggunaan energi secara berkelanjutan.",
+    detail: [
+      "PT Braja Mukti Cakra berkomitmen untuk menjalankan kegiatan operasional dengan mengedepankan mutu, keselamatan dan kesehatan kerja, perlindungan lingkungan, serta pengelolaan energi yang efektif dan efisien.",
+      "Kebijakan ini mencakup kepatuhan terhadap peraturan dan persyaratan yang berlaku, pencegahan kecelakaan kerja dan pencemaran lingkungan, efisiensi penggunaan energi dan sumber daya alam, peningkatan berkelanjutan terhadap sistem manajemen, serta keterlibatan seluruh karyawan dalam menciptakan lingkungan kerja yang aman, nyaman, dan kondusif.",
+      "Kebijakan tersebut menjadi pedoman bagi seluruh insan PT Braja Mukti Cakra dan pihak terkait dalam mendukung pencapaian sasaran perusahaan secara berkelanjutan.",
+    ],
+    tag: "Corporate Update",
+    isDocument: true,
+    pdf: POLICY_PDF,
+  },
 ];
 
 /* ─── CERTIFICATE CARD ── */
@@ -163,15 +177,23 @@ function CertCard({ item, index, onClick }) {
         className="h-[210px] shrink-0 flex items-center justify-center p-6 border-b overflow-hidden"
         style={{ background: PAPER, borderColor: "#DDE1EF" }}
       >
-        <img
-          src={item.image}
-          alt={item.name}
-          className="max-h-full max-w-full object-contain transition-transform duration-300"
-          style={{
-            transform: hov ? "scale(1.06)" : "scale(1)",
-            filter: "drop-shadow(0 6px 14px rgba(13,31,92,0.15))",
-          }}
-        />
+        {item.isDocument ? (
+          <div className="flex h-full w-full flex-col items-center justify-center text-center" style={{ color: NAVY }}>
+            <FileText size={58} strokeWidth={1.25} className="mb-3 transition-transform duration-300" style={{ transform: hov ? "scale(1.06)" : "scale(1)" }} />
+            <span className="max-w-[190px] text-[0.68rem] font-bold uppercase tracking-[0.12em]">Dokumen Kebijakan</span>
+            <span className="mt-1 text-[0.62rem] font-semibold uppercase tracking-wider" style={{ color: SLATE }}>PDF · 30 April 2026</span>
+          </div>
+        ) : (
+          <img
+            src={item.image}
+            alt={item.name}
+            className="max-h-full max-w-full object-contain transition-transform duration-300"
+            style={{
+              transform: hov ? "scale(1.06)" : "scale(1)",
+              filter: "drop-shadow(0 6px 14px rgba(13,31,92,0.15))",
+            }}
+          />
+        )}
       </div>
 
       {/* Info */}
@@ -180,7 +202,7 @@ function CertCard({ item, index, onClick }) {
           className="inline-flex items-center gap-1.5 text-[0.56rem] font-bold tracking-[0.14em] uppercase px-2.5 py-[4px] rounded-full mb-3 self-start"
           style={{ background: INK, color: BRASS }}
         >
-          <ShieldCheck size={11} strokeWidth={2.5} />
+           {item.isDocument ? <FileText size={11} strokeWidth={2.5} /> : <ShieldCheck size={11} strokeWidth={2.5} />}
           {item.tag}
         </span>
         <h3 className="text-[1rem] font-bold uppercase tracking-wide leading-tight mb-1" style={{ color: INK }}>
@@ -197,7 +219,7 @@ function CertCard({ item, index, onClick }) {
           className="mt-auto pt-4 flex items-center gap-1.5 text-[0.68rem] font-bold uppercase tracking-wide"
           style={{ color: NAVY }}
         >
-          Lihat Sertifikat
+          {item.isDocument ? "Lihat Kebijakan" : "Lihat Sertifikat"}
           <ArrowRight
             size={13}
             strokeWidth={2.5}
@@ -259,12 +281,19 @@ function Lightbox({ item, onClose }) {
           className="border-b flex items-center justify-center p-8 min-h-[320px]"
           style={{ background: PAPER, borderColor: "#DDE1EF" }}
         >
-          <img
-            src={item.image}
-            alt={item.name}
-            className="max-h-[420px] max-w-full object-contain rounded-md"
-            style={{ filter: "drop-shadow(0 10px 24px rgba(13,31,92,0.18))" }}
-          />
+           {item.isDocument ? (
+             <div className="flex flex-col items-center text-center" style={{ color: NAVY }}>
+               <FileText size={76} strokeWidth={1.15} />
+               <span className="mt-4 text-[0.72rem] font-bold uppercase tracking-[0.14em]">Dokumen Kebijakan PDF</span>
+             </div>
+           ) : (
+             <img
+               src={item.image}
+               alt={item.name}
+               className="max-h-[420px] max-w-full object-contain rounded-md"
+               style={{ filter: "drop-shadow(0 10px 24px rgba(13,31,92,0.18))" }}
+             />
+           )}
         </div>
 
         <div className="p-[22px_24px]">
@@ -272,24 +301,44 @@ function Lightbox({ item, onClose }) {
             className="inline-flex items-center gap-1.5 text-[0.6rem] font-bold px-3 py-[5px] rounded-full uppercase tracking-[0.1em] mb-3"
             style={{ background: INK, color: BRASS }}
           >
-            <ShieldCheck size={12} strokeWidth={2.5} />
+             {item.isDocument ? <FileText size={12} strokeWidth={2.5} /> : <ShieldCheck size={12} strokeWidth={2.5} />}
             {item.tag}
           </span>
           <p className="text-[0.72rem] font-semibold uppercase tracking-wider mb-2" style={{ color: SLATE }}>
             {item.subtitle}
           </p>
-          <p className="text-[0.86rem] leading-[1.75] mb-5" style={{ color: "#334063" }}>
-            {item.desc}
-          </p>
-          <button
-            onClick={onClose}
-            className="px-5 py-3 rounded-[9px] border-[1.5px] bg-transparent text-[0.75rem] font-bold tracking-[0.06em] uppercase font-condensed cursor-pointer transition-colors duration-150"
-            style={{ borderColor: "#DDE1EF", color: SLATE }}
-            onMouseEnter={(e) => { e.currentTarget.style.borderColor = NAVY; e.currentTarget.style.color = NAVY; }}
-            onMouseLeave={(e) => { e.currentTarget.style.borderColor = "#DDE1EF"; e.currentTarget.style.color = SLATE; }}
-          >
-            Tutup
-          </button>
+           {item.detail ? item.detail.map((paragraph) => (
+             <p key={paragraph} className="text-[0.86rem] leading-[1.75] mb-4" style={{ color: "#334063" }}>
+               {paragraph}
+             </p>
+           )) : (
+             <p className="text-[0.86rem] leading-[1.75] mb-5" style={{ color: "#334063" }}>
+               {item.desc}
+             </p>
+           )}
+           <div className="flex flex-wrap items-center gap-3">
+             {item.pdf && (
+               <a
+                 href={item.pdf}
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 className="inline-flex items-center gap-2 px-5 py-3 rounded-[9px] text-[0.75rem] font-bold tracking-[0.06em] uppercase font-condensed transition-colors duration-150"
+                 style={{ background: NAVY, color: "white" }}
+               >
+                 Lihat Kebijakan
+                 <ExternalLink size={14} strokeWidth={2.5} />
+               </a>
+             )}
+             <button
+               onClick={onClose}
+               className="px-5 py-3 rounded-[9px] border-[1.5px] bg-transparent text-[0.75rem] font-bold tracking-[0.06em] uppercase font-condensed cursor-pointer transition-colors duration-150"
+               style={{ borderColor: "#DDE1EF", color: SLATE }}
+               onMouseEnter={(e) => { e.currentTarget.style.borderColor = NAVY; e.currentTarget.style.color = NAVY; }}
+               onMouseLeave={(e) => { e.currentTarget.style.borderColor = "#DDE1EF"; e.currentTarget.style.color = SLATE; }}
+             >
+               Tutup
+             </button>
+           </div>
         </div>
       </div>
     </div>
