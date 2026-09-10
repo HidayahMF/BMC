@@ -27,7 +27,7 @@ export const management = [
   {
     group: "board-of-commissioners",
     code: "BOC · 02",
-    name: "TAKUYA OGAWA",
+    name: "Iwao Akama",
     position: "Commissioner",
     photo: Commissioner,
     // bio: ".....",

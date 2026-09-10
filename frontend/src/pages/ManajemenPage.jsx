@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { ChevronRight, X, ArrowUpRight, Quote } from "lucide-react";
 import { management } from "../data/ManajemenData";
 
+
 const MonoBadge = ({ children, tone = "light" }) => (
   <span
     className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 font-mono text-[10px] uppercase tracking-widest ${
