@@ -59,21 +59,21 @@ import ROBOTTO from "../assets/ROBOTTO.png";
    karena data asli tidak menyertakan info merek/negara asal.
 ══════════════════════════════════════════════════════════ */
 export const FACILITIES = [
-  // ── Machining Center ──
-  { name: "Robot Disc Brake",           category: "Machining Center", image: ROBOTTO,             origin: "Other" },
-  { name: "Doosan 4500",                category: "Machining Center", image: MACHDOOSAN4500,       origin: "Korea" }, // Doosan = Korea
-  { name: "Doosan 5700",                category: "Machining Center", image: MACHDOOSAN5700,       origin: "Korea" }, // Doosan = Korea
-  { name: "Doosan DNM 5700",            category: "Machining Center", image: MACHDOOSANDNM5700,    origin: "Korea" }, // Doosan = Korea
-  { name: "Doosan NHP 6300",            category: "Machining Center", image: MACHDOOSANNHP6300,    origin: "Korea" }, // Doosan = Korea
-  { name: "Doosan V8300",               category: "Machining Center", image: MACHDOOSANV8300,      origin: "Korea" }, // Doosan = Korea
-  { name: "Makino n51nx",               category: "Machining Center", image: MACHMAKINOn51nx,      origin: "Japan" }, // Makino = Japan
-  { name: "Makino Slim 3N",             category: "Machining Center", image: MACHMAKINOSLIM3N,     origin: "Japan" }, // Makino = Japan
-  { name: "Robotic Cleantec",           category: "Machining Center", image: MACHROBOTICLEANTEC,   origin: "Other" },
-  { name: "SPM Check DTV RR Disc",      category: "Machining Center", image: SPMCHECKDTVRRDISC,    origin: "Other" },
-  { name: "Honning Machine",            category: "Machining Center", image: MACHHONNING,          origin: "Other" },
-  { name: "Leak Test Machine",          category: "Machining Center", image: MACHLEAKTEST,         origin: "Other" },
-  { name: "Balancing Machine",          category: "Machining Center", image: MACHBALANCING,        origin: "Other" },
-  { name: "MC Polishing",               category: "Machining Center", image: MCPOLISHING,          origin: "Other" },
+   // ── Machining Facilities ──
+   { name: "Robot Disc Brake",           category: "Machining Facilities", image: ROBOTTO,             origin: "Other" },
+   { name: "Doosan 4500",                category: "Machining Facilities", image: MACHDOOSAN4500,       origin: "Korea" }, // Doosan = Korea
+   { name: "Doosan 5700",                category: "Machining Facilities", image: MACHDOOSAN5700,       origin: "Korea" }, // Doosan = Korea
+   { name: "Doosan DNM 5700",            category: "Machining Facilities", image: MACHDOOSANDNM5700,    origin: "Korea" }, // Doosan = Korea
+   { name: "Doosan NHP 6300",            category: "Machining Facilities", image: MACHDOOSANNHP6300,    origin: "Korea" }, // Doosan = Korea
+   { name: "Doosan V8300",               category: "Machining Facilities", image: MACHDOOSANV8300,      origin: "Korea" }, // Doosan = Korea
+   { name: "Makino n51nx",               category: "Machining Facilities", image: MACHMAKINOn51nx,      origin: "Japan" }, // Makino = Japan
+   { name: "Makino Slim 3N",             category: "Machining Facilities", image: MACHMAKINOSLIM3N,     origin: "Japan" }, // Makino = Japan
+   { name: "Robotic Cleantec",           category: "Machining Facilities", image: MACHROBOTICLEANTEC,   origin: "Other" },
+   { name: "SPM Check DTV RR Disc",      category: "Machining Facilities", image: SPMCHECKDTVRRDISC,    origin: "Other" },
+   { name: "Honning Machine",            category: "Machining Facilities", image: MACHHONNING,          origin: "Other" },
+   { name: "Leak Test Machine",          category: "Machining Facilities", image: MACHLEAKTEST,         origin: "Other" },
+   { name: "Balancing Machine",          category: "Machining Facilities", image: MACHBALANCING,        origin: "Other" },
+
 
   // ── Production Line ──
   { name: "Axle Assy Line 1",           category: "Production Line",  image: AxleAssyLine1,        origin: "Other" },
@@ -93,13 +93,14 @@ export const FACILITIES = [
   { name: "CMM Accura",                 category: "Quality & Inspection Lab", image: CMMACCURA,              origin: "Other" },
   { name: "CMM Accretech",              category: "Quality & Inspection Lab", image: CMMACCRETECH,           origin: "Japan" }, // Accretech = Japan
   { name: "CMM Hexagon",                category: "Quality & Inspection Lab", image: CMMHEXAGON,             origin: "Other" }, // Hexagon = Sweden/Swiss
+    { name: "MC Polishing",               category: "Quality & Inspection Lab", image: MCPOLISHING,          origin: "Other" },
 ];
 
-export const CATEGORIES = ["All", "Production Line", "Machining Center", "Quality & Inspection Lab"];
+export const CATEGORIES = ["All", "Production Line", "Machining Facilities", "Quality & Inspection Lab"];
 
 export const CAT_COLOR = {
   "Production Line":          { bg: "#EEF9F1", text: "#3B6D11" },
-  "Machining Center":         { bg: "#EBF5FF", text: "#185FA5" },
+  "Machining Facilities":     { bg: "#EBF5FF", text: "#185FA5" },
   "Quality & Inspection Lab": { bg: "#F3F0FF", text: "#5C3D9E" },
 };
 

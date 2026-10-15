@@ -34,7 +34,7 @@ function FacilityCard({ item, index, onClick }) {
   const [hov, setHov] = useState(false);
   const [vis, setVis] = useState(false);
   const ref = useRef(null);
-  const cc = CAT_COLOR[item.category] || CAT_COLOR["Machining Center"];
+  const cc = CAT_COLOR[item.category] || CAT_COLOR["Machining Facilities"];
 
   useEffect(() => {
     const obs = new IntersectionObserver(
@@ -115,7 +115,7 @@ function Lightbox({ item, onClose, onPrev, onNext }) {
   }, [onClose, onPrev, onNext]);
 
   if (!item) return null;
-  const cc = CAT_COLOR[item.category] || CAT_COLOR["Machining Center"];
+  const cc = CAT_COLOR[item.category] || CAT_COLOR["Machining Facilities"];
   const info = MACHINE_INFO[item.name] || {};
 
   return (

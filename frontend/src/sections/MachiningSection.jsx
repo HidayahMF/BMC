@@ -3,11 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { FACILITIES, CAT_COLOR, sortFacilities } from "../data/MachiningData";
 
 /* ─── PREVIEW SELECTION ──────────────────────────────────
-   1 dari Machining Center (Robot Disc Brake)
+   1 dari Machining Facilities (Robot Disc Brake)
    7 dari Quality & Inspection Lab (semua item lab QC)
 ────────────────────────────────────────────────────────── */
 const PREVIEW_NAMES = [
-  "Robot Disc Brake",           // Machining Center
+   "Robot Disc Brake",           // Machining Facilities
   "Photomicroscope",            // Quality & Inspection Lab
   "Hardness Vickers/Rockwell",  // Quality & Inspection Lab
   "Hardness Brinell",           // Quality & Inspection Lab
@@ -21,7 +21,7 @@ function FacilityCard({ item, index }) {
   const [hov, setHov] = useState(false);
   const [vis, setVis] = useState(false);
   const ref = useRef(null);
-  const cc = CAT_COLOR[item.category] || CAT_COLOR["Machining Center"];
+  const cc = CAT_COLOR[item.category] || CAT_COLOR["Machining Facilities"];
 
   useEffect(() => {
     const obs = new IntersectionObserver(
